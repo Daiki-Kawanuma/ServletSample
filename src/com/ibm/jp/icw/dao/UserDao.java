@@ -1,7 +1,10 @@
 package com.ibm.jp.icw.dao;
 
-public class UserDao extends AbstDao {
-	
-	
+import com.ibm.jp.icw.model.User;
 
+public class UserDao extends AbstDao {
+
+	public User getUser(String userid) {
+		return new User();
+	}
 }
