@@ -1,0 +1,5 @@
+com.ibm.jp.icw.dao
+com.ibm.jp.icw.dao.util
+com.ibm.jp.icw.dto
+com.ibm.jp.icw.service
+com.ibm.jp.icw.servlet
