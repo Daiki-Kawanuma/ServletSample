@@ -4,43 +4,45 @@ import java.util.Date;
 
 public class User {
 
-	private String id;
+	private int accountNumber;
 	private String name;
-	private Date birthDay;
-	private String address;
-	public String getId() {
-		return id;
+	private int creditCardNumber;
+	private String nameOfCreditCard;
+	private int creditCardSecurityCode;
+	private Date creditCardValidatedDate;
+
+	public User(int accountNumber, String name, int creditCardNumber, String nameOfCreditCard,
+			int creditCardSecurityCode, Date creditCardValidatedDate) {
+		super();
+		this.accountNumber = accountNumber;
+		this.name = name;
+		this.creditCardNumber = creditCardNumber;
+		this.nameOfCreditCard = nameOfCreditCard;
+		this.creditCardSecurityCode = creditCardSecurityCode;
+		this.creditCardValidatedDate = creditCardValidatedDate;
 	}
 
-	public static User getUser(String id){
-		return new User();
-	}
-
-	public void setId(String id) {
-		this.id = id;
+	public int getAccountNumber() {
+		return accountNumber;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public int getCreditCardNumber() {
+		return creditCardNumber;
 	}
 
-	public Date getBirthDay() {
-		return birthDay;
+	public String getNameOfCreditCard() {
+		return nameOfCreditCard;
 	}
 
-	public void setBirthDay(Date birthDay) {
-		this.birthDay = birthDay;
+	public int getCreditCardSecurityCode() {
+		return creditCardSecurityCode;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	public Date getCreditCardValidatedDate() {
+		return creditCardValidatedDate;
 	}
 }

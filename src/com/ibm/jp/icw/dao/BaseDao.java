@@ -1,6 +1,6 @@
 package com.ibm.jp.icw.dao;
 
-public abstract class AbstDao {
+public abstract class BaseDao {
 
 	static {
 		try {
