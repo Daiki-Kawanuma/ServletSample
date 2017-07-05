@@ -32,7 +32,10 @@ public class BrandInfoServlet extends BaseServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 
-		Brand.getBrandByBrandName("");
+		Brand.getBrand("jh");
+
+
+
 
 
 
