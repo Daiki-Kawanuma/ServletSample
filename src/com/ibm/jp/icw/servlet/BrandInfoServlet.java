@@ -24,7 +24,6 @@ import com.ibm.jp.icw.model.User;
 //import com.ibm.jp.icw.dto.BookDTO;
 //import com.ibm.jp.icw.service.SearchBookService;
 
-
 public class BrandInfoServlet extends BaseServlet {
 
 	@Override
@@ -33,15 +32,15 @@ public class BrandInfoServlet extends BaseServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		HttpSession session = request.getSession();
-		
+
 		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 		Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 
-//		String currentPage = (String) request.getAttribute(PARAM_CURRENT_PAGE);
-//		String nextPage = null;
+		String currentPage = (String) request.getAttribute(PARAM_CURRENT_PAGE);
+		String nextPage = null;
 
 		switch (currentPage) {
-		case ServletConstants.ORDER_ENTRY:
+		case ServletConstants.BRAND_SEARCH:
 
 			String orderType = (String) request.getAttribute(PARAM_ORDER_TYPE);
 			String orderCondition = (String) request.getAttribute(PARAM_ORDER_CONDITION);

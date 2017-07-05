@@ -9,7 +9,7 @@
 <body>
 <h1>マイページ</h1>
 <br>
-<p>ようこそ、<%= person.getName() %>さん</p><br>
+<%-- <p>ようこそ、<%= person.getName() %>さん</p><br> --%>
 
 <input type="button" onClick="location.href=brandsearch.jsp" value="銘柄を検索/買い注文する"><br><br>
 <input type="button" onClick="location.href=orderedinfo.jsp" value="注文状況を確認する">
