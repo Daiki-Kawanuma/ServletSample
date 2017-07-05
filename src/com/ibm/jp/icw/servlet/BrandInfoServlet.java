@@ -1,4 +1,5 @@
 package com.ibm.jp.icw.servlet;
+
 import java.io.IOException;
 import java.util.Date;
 
@@ -13,26 +14,20 @@ import com.ibm.jp.icw.model.Brand;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
 
-//package com.ibm.jp.icw.servlet;
-//
-//import java.io.IOException;
-//import java.util.ArrayList;
-//
-//import javax.servlet.ServletException;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import com.ibm.jp.icw.dto.BookDTO;
-//import com.ibm.jp.icw.service.SearchBookService;
-
 public class BrandInfoServlet extends BaseServlet {
 
+	// 色々定義しときます
+	private static final String PARAM_CURRENT_PAGE = "current_page";
+	private static final String PARAM_ERROR_MESSAGE = "error_message";
+
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 
+		// セッションがありますよ〜何も取得はしないけど、あとで注文入力画面遷移前にユーザー情報と銘柄情報を引き渡すので！
 		HttpSession session = request.getSession();
-
 		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 		Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 
@@ -40,42 +35,58 @@ public class BrandInfoServlet extends BaseServlet {
 		String nextPage = null;
 
 		switch (currentPage) {
+
+		// [銘柄検索画面]のとき；
 		case ServletConstants.BRAND_SEARCH:
 
-			String orderType = (String) request.getAttribute(PARAM_ORDER_TYPE);
-			String orderCondition = (String) request.getAttribute(PARAM_ORDER_CONDITION);
-			String orderAmout  = (String) request.getAttribute(PARAM_ORDER_AMOUNT);
-			String orderUnitPrice = (String) request.getAttribute(PARAM_ORDER_UNIT_PRICE);
+			String searchType = request.getParameter("searchtype");
+			String searchCondition = request.getParameter("searchcondition");
 
-			if(validateInputs(orderType, orderCondition, orderAmout,orderUnitPrice)){
-
-				nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
-
+			// 検索条件の入力が正常である場合、[銘柄一覧画面]に遷移、そうでなければStay
+			if (validateInputs(searchType, searchCondition)) {
+				nextPage = ServletConstants.BRAND_LIST + ".jsp";
 			} else {
-
-				nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
-
-				order = new Order(brand, user, Order.OrderType.getEnum(orderType),
-						Order.OrderCondition.getEnum(orderCondition),
-						Integer.parseInt(orderAmout), Integer.parseInt(orderUnitPrice), new Date());
-
-				session.setAttribute(SessionConstants.PARAM_ORDER, order);
+				nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
 			}
 			break;
-		case ServletConstants.ORDER_CONFIRM:
-			nextPage = ServletConstants.ORDER_COMPLETE + ".jsp";
+
+		// [銘柄一覧画面]のとき；
+		case ServletConstants.BRAND_LIST:
+
+			String actionType = request.getParameter("action");
+
+			// [詳細閲覧]ボタンで[銘柄詳細画面]に遷移し、[買い注文]ボタンなら[買い注文画面]に遷移する
+			if (actionType.equals("詳細閲覧")) {
+				nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
+			} else {
+				nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
+
+				order = new Order(brand, user);
+			}
 			break;
-		case ServletConstants.ORDER_COMPLETE:
-			nextPage = ServletConstants.MY_PAGE;
+
+		// [銘柄詳細画面]のとき；
+		case ServletConstants.BRAND_DETAIL:
+			nextPage = ServletConstants.ORDER_ENTRY;
 			break;
+
 		default:
-			break;
-		}
-
-		response.sendRedirect(nextPage);
+			break;}}
 
 
+			private boolean validateInputs(String searchType, String searchCondition)
+			{
+			if (searchType == null || searchCondition == null)
+				return false;
 
+			if(searchType.equals("brandcode")){
+				 try{
+					 if(searchCondition.length()> 4 || searchCondition.length()<4){
+					 return false;
+					 } else {
+					 return true;
+					 }
+			}}
 
 
 	}

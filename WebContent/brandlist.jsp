@@ -1,3 +1,4 @@
+<%@page import="com.ibm.jp.icw.dao.BrandDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
@@ -62,18 +63,24 @@ html部分には
 			<td>高値</td>
 			<td>安値</td>
 			<td>アクション</td>
-		</tr>
-		<%-- <% for (BrandDAO brand: list) { %>
+			</tr>
+	<%--
+		<% for (BrandDao brand: list) { %>
 		<tr>
 			<td><%= brand.getCode() %></td>
 			<td><%= brand.getName() %></td>
 			<td><%= brand.getMarket() %></td>
 			<td><%= brand.getIndustry() %></td>
 			<td><%= brand.getUnit() %></td>
-			<td><%= brand.getDetail() %></td>
-			<td><%= brand.getFairValue() %></td>
+			<td><%= brand.getMarketPrice() %></td>
+			<td><%= brand.getStartPrice() %></td>
+			<td><%= brand.getHighPrice() %></td>
+			<td><%= brand.getLowPrice() %></td>
+			<td><button type="button" name="action" value="詳細閲覧">詳細閲覧</button>
+			<button type="button" name="action" value="買い注文">買い注文</button></td>
 		</tr>
-		<% } %> --%>
+		<% } %>
+	 --%>
 	</table>
 	<br>
 </body>
