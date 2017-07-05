@@ -18,17 +18,16 @@ import com.ibm.jp.icw.model.User;
 /**
  * Servlet implementation class OrderServlet
  */
-@WebServlet("/OrderServlet")
+@WebServlet("/order")
 public class OrderServlet extends BaseServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final String PARAM_CURRENT_PAGE = "CURRENT_PAGE";
-	private static final String PARAM_ORDER_TYPE = "ORDER_TYPE";
-	private static final String PARAM_ORDER_CONDITION = "ORDER_CONDITION";
-	private static final String PARAM_ORDER_AMOUNT = "ORDER_AMOUNT";
-	private static final String PARAM_ORDER_UNIT_PRICE = "ORDER_UNIT_PRICE";
-	private static final String PARAM_ERROR_MESSAGE = "ERROR_MESSAGE";
-
+	private static final String PARAM_CURRENT_PAGE = "current_page";
+	private static final String PARAM_ORDER_TYPE = "order_type";
+	private static final String PARAM_ORDER_CONDITION = "order_condition";
+	private static final String PARAM_ORDER_AMOUNT = "order_amount";
+	private static final String PARAM_ORDER_UNIT_PRICE = "order_unit_price";
+	private static final String PARAM_ERROR_MESSAGE = "error_message";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -43,30 +42,30 @@ public class OrderServlet extends BaseServlet {
 		Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 		Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
 
-		String currentPage = (String) request.getAttribute(PARAM_CURRENT_PAGE);
+		String currentPage = request.getParameter(PARAM_CURRENT_PAGE);
 		String nextPage = null;
 
 		switch (currentPage) {
 		case ServletConstants.ORDER_ENTRY:
 
-			String orderType = (String) request.getAttribute(PARAM_ORDER_TYPE);
-			String orderCondition = (String) request.getAttribute(PARAM_ORDER_CONDITION);
-			String orderAmout  = (String) request.getAttribute(PARAM_ORDER_AMOUNT);
-			String orderUnitPrice = (String) request.getAttribute(PARAM_ORDER_UNIT_PRICE);
+			String orderType = request.getParameter(PARAM_ORDER_TYPE);
+			String orderCondition = request.getParameter(PARAM_ORDER_CONDITION);
+			String orderAmout  = request.getParameter(PARAM_ORDER_AMOUNT);
+			String orderUnitPrice = request.getParameter(PARAM_ORDER_UNIT_PRICE);
 
 			if(validateInputs(orderType, orderCondition, orderAmout,orderUnitPrice)){
 
 				nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
-
-			} else {
-
-				nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
 
 				order = new Order(brand, user, Order.OrderType.getEnum(orderType),
 						Order.OrderCondition.getEnum(orderCondition),
 						Integer.parseInt(orderAmout), Integer.parseInt(orderUnitPrice), new Date());
 
 				session.setAttribute(SessionConstants.PARAM_ORDER, order);
+
+			} else {
+
+				nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
 			}
 			break;
 		case ServletConstants.ORDER_CONFIRM:
