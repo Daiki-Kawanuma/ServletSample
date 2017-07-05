@@ -4,9 +4,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>ログイン画面</title>
 </head>
 <body>
+<h1>長谷川証券トレーディングシステム</h1>
+<hr>
+<div align="center">
+<table border="0">
+<form action="list.html" method="get">
+<h2>ログイン画面</h2>
+<tr>
+<th>口座番号</th>
+<td><input type="text" name="user_id" value="" size="24"></td>
+</tr>
+<tr>
+<th>ログインパスワード</th>
+<td><input type="text" name="user_id" value="" size="24"></td>
+</tr>
+<tr>
+<td colspan="2">
+<input type="submit" value="ログイン">
+</td>
+</tr>
+</form>
+</table>
 
+</div>
 </body>
 </html>
