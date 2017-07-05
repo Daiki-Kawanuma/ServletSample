@@ -48,9 +48,10 @@ public class OrderDao extends BaseDao {
 			while (resultSet.next()){
 
 				User user = new User(resultSet.getString(UserDao.COLUMN_ACCOUNT_NUMBER),
+						resultSet.getString(UserDao.COLUMN_USER_NAME),
+						resultSet.getString(UserDao.COLUMN_LOGIN_PASS),
 						resultSet.getString(UserDao.COLUMN_CC_NAME),
 						resultSet.getString(UserDao.COLUMN_CC_NO),
-						resultSet.getString(UserDao.COLUMN_USER_NAME),
 						resultSet.getString(UserDao.COLUMN_CC_SEC),
 						resultSet.getDate(UserDao.COLUMN_CC_VALID));
 

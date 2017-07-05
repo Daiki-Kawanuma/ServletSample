@@ -13,6 +13,7 @@ public class UserDao extends BaseDao {
 
 	public static final String COLUMN_ACCOUNT_NUMBER = "ACCOUNT_NO";
 	public static final String COLUMN_USER_NAME = "USER_NAME";
+	public static final String COLUMN_LOGIN_PASS = "LOGIN_PASS";
 	public static final String COLUMN_CC_NO = "CC_NO";
 	public static final String COLUMN_CC_NAME = "CC_NAME";
 	public static final String COLUMN_CC_SEC = "CC_SEC";
@@ -35,9 +36,10 @@ public class UserDao extends BaseDao {
 
 			if (resultSet.next()){
 				user = new User(resultSet.getString(COLUMN_ACCOUNT_NUMBER),
+						resultSet.getString(COLUMN_USER_NAME),
+						resultSet.getString(COLUMN_LOGIN_PASS),
 						resultSet.getString(COLUMN_CC_NAME),
 						resultSet.getString(COLUMN_CC_NO),
-						resultSet.getString(COLUMN_USER_NAME),
 						resultSet.getString(COLUMN_CC_SEC),
 						resultSet.getDate(COLUMN_CC_VALID));
 			}

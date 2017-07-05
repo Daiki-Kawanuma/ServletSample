@@ -6,16 +6,18 @@ public class User {
 
 	private String accountNumber;
 	private String name;
+	private String password;
 	private String creditCardNumber;
 	private String creditCardName;
 	private String creditCardSecurityCode;
 	private Date creditCardValidatedDate;
 
-	public User(String accountNumber, String name, String creditCardNumber, String creditCardName,
+	public User(String accountNumber, String name, String password, String creditCardNumber, String creditCardName,
 			String creditCardSecurityCode, Date creditCardValidatedDate) {
 		super();
 		this.accountNumber = accountNumber;
 		this.name = name;
+		this.password = password;
 		this.creditCardNumber = creditCardNumber;
 		this.creditCardName = creditCardName;
 		this.creditCardSecurityCode = creditCardSecurityCode;
@@ -28,6 +30,10 @@ public class User {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getPassword(){
+		return password;
 	}
 
 	public String getCreditCardNumber() {

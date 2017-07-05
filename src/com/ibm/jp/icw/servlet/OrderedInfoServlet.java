@@ -1,6 +1,7 @@
 package com.ibm.jp.icw.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ibm.jp.icw.constant.SessionConstants;
+import com.ibm.jp.icw.dao.MarketPriceDao;
+import com.ibm.jp.icw.dao.OrderDao;
+import com.ibm.jp.icw.model.Brand;
+import com.ibm.jp.icw.model.MarketPrice;
+import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
 
 /**
@@ -31,7 +38,16 @@ public class OrderedInfoServlet extends BaseServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("");
+		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
+
+		ArrayList<Order> orderList = OrderDao.getOrders(user.getAccountNumber());
+		Order order = orderList.get(0);
+		Brand brand = order.getBrand();
+		String brandname = brand.getBrandName();
+
+		MarketPrice marketPrice = MarketPriceDao.getMarketPrice(brand.getBrandCode());
+		// Commit Test Comment
+		response.sendRedirect("orderdinfo.jsp");
 	}
 
 }
