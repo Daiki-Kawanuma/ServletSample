@@ -18,7 +18,7 @@ public class UserDao extends BaseDao {
 	public static final String COLUMN_CC_SEC = "CC_SEC";
 	public static final String COLUMN_CC_VALID = "CC_VALID";
 
-	public User getUser(String accountNumber) {
+	public static User getUser(String accountNumber) {
 
 		User user = null;
 		Connection connection = null;

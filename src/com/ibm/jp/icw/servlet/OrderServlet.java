@@ -7,6 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ibm.jp.icw.constant.ServletConstants;
+import com.ibm.jp.icw.constant.SessionConstants;
+import com.ibm.jp.icw.model.User;
 
 /**
  * Servlet implementation class OrderServlet
@@ -33,8 +38,30 @@ public class OrderServlet extends BaseServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+
+		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
+
+		String currentPage = request.getParameter(ServletConstants.ORDER_ENTRY);
+		String nextPage = null;
+
+		switch (currentPage) {
+		case ServletConstants.ORDER_ENTRY:
+			nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
+			break;
+		case ServletConstants.ORDER_CONFIRM:
+			nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
+			break;
+		case ServletConstants.ORDER_COMPLETE:
+
+			break;
+		default:
+			break;
+		}
+
+		response.sendRedirect(nextPage);
 	}
 
 }
