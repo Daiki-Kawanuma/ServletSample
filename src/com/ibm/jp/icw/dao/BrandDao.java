@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.ibm.jp.icw.constant.DatabaseConstants;
 import com.ibm.jp.icw.model.Brand;
@@ -68,9 +69,9 @@ public class BrandDao extends BaseDao{
 		return brand;
 	}
 
-	public static Brand getBrandByBrandName(String brandName){
+	public static ArrayList<Brand> getBrandListByBrandName(String brandName){
 
-		Brand brand = null;
+		ArrayList<Brand> brandList = new ArrayList<Brand>();
 		Connection connection = null;
 		Statement statement = null;
 
@@ -84,15 +85,16 @@ public class BrandDao extends BaseDao{
 			ResultSet resultSet = statement.executeQuery(
 					String.format("SELECT * FROM brand WHERE brand_name = '%s'", brandName));
 
-			if (resultSet.next()){
+			while (resultSet.next()){
 				// TODO 数字を ResultSet から入れる
-				brand = new Brand(resultSet.getString(COLUMN_BRAND_CODE),
+				Brand brand = new Brand(resultSet.getString(COLUMN_BRAND_CODE),
 						resultSet.getString(COLUMN_BRAND_NAME),
 						resultSet.getString(COLUMN_MARKET),
 						resultSet.getString(COLUMN_INDUSTRY),
 						resultSet.getInt(COLUMN_TRADING_UNIT),
 						resultSet.getString(COLUMN_BRAND_STATUS),
 						0,0,0,0,0,0,0,0);
+				brandList.add(brand);
 			}
 		} catch (SQLException e) {
 			System.err.println("エラー：BrandDao#DBデータ操作時にエラー発生");
@@ -115,6 +117,6 @@ public class BrandDao extends BaseDao{
 				}
 			}
 		}
-		return brand;
+		return brandList;
 	}
 }

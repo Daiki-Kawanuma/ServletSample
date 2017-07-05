@@ -30,7 +30,7 @@ public class OrderDao extends BaseDao {
 	 * @param accountNumber
 	 * @return
 	 */
-	public static ArrayList<Order> getOrders(String accountNumber){
+	public static ArrayList<Order> getOrderList(String accountNumber){
 
 		ArrayList<Order> orders = new ArrayList<Order>();
 		Connection connection = null;

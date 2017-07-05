@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
+import com.ibm.jp.icw.dao.MarketPriceDao;
 import com.ibm.jp.icw.model.Brand;
+import com.ibm.jp.icw.model.MarketPrice;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
 
@@ -30,7 +32,7 @@ public class OrderServlet extends BaseServlet {
 	private static final String PARAM_ERROR_MESSAGE = "error_message";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,9 +45,19 @@ public class OrderServlet extends BaseServlet {
 		Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
 
 		String currentPage = request.getParameter(PARAM_CURRENT_PAGE);
+		// TODO Testコード
+		currentPage = ServletConstants.ORDER_ENTRY;
 		String nextPage = null;
 
 		switch (currentPage) {
+		case ServletConstants.BRAND_LIST:
+		case ServletConstants.BRAND_DETAIL:
+
+			MarketPrice price = MarketPriceDao.getMarketPrice(brand.getBrandCode());
+
+
+			nextPage = ServletConstants.ORDER_ENTRY;
+			break;
 		case ServletConstants.ORDER_ENTRY:
 
 			String orderType = request.getParameter(PARAM_ORDER_TYPE);
@@ -75,10 +87,11 @@ public class OrderServlet extends BaseServlet {
 			nextPage = ServletConstants.MY_PAGE;
 			break;
 		default:
+			nextPage = ServletConstants.ORDER_ENTRY;
 			break;
 		}
 
-		response.sendRedirect(nextPage);
+		request.getRequestDispatcher("/" + nextPage).forward(request, response);
 	}
 
 	/**

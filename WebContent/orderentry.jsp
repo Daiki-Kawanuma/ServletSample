@@ -1,5 +1,11 @@
+<%@page import="com.ibm.jp.icw.constant.SessionConstants"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.ibm.jp.icw.model.Brand" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+    Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -16,6 +22,7 @@ table, td {
 </head>
 <body>
 	<h1>買い注文</h1>
+	<h2><%= brand.getBrandName() %></h2>
 	<form action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderentry">
 		<h3>注文の種類</h3>
