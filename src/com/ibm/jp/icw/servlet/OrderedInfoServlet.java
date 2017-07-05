@@ -37,7 +37,7 @@ public class OrderedInfoServlet extends BaseServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 
-		ArrayList<Order> orderList = OrderDao.getOrders(user.getAccountNumber());
+		ArrayList<Order> orderList = OrderDao.getOrderList(user.getAccountNumber());
 		int size = orderList.size();
 
 		if(size == 0){
