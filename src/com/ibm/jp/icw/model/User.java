@@ -4,25 +4,25 @@ import java.util.Date;
 
 public class User {
 
-	private int accountNumber;
+	private String accountNumber;
 	private String name;
-	private int creditCardNumber;
-	private String nameOfCreditCard;
-	private int creditCardSecurityCode;
+	private String creditCardNumber;
+	private String creditCardName;
+	private String creditCardSecurityCode;
 	private Date creditCardValidatedDate;
 
-	public User(int accountNumber, String name, int creditCardNumber, String nameOfCreditCard,
-			int creditCardSecurityCode, Date creditCardValidatedDate) {
+	public User(String accountNumber, String name, String creditCardNumber, String creditCardName,
+			String creditCardSecurityCode, Date creditCardValidatedDate) {
 		super();
 		this.accountNumber = accountNumber;
 		this.name = name;
 		this.creditCardNumber = creditCardNumber;
-		this.nameOfCreditCard = nameOfCreditCard;
+		this.creditCardName = creditCardName;
 		this.creditCardSecurityCode = creditCardSecurityCode;
 		this.creditCardValidatedDate = creditCardValidatedDate;
 	}
 
-	public int getAccountNumber() {
+	public String getAccountNumber() {
 		return accountNumber;
 	}
 
@@ -30,15 +30,15 @@ public class User {
 		return name;
 	}
 
-	public int getCreditCardNumber() {
+	public String getCreditCardNumber() {
 		return creditCardNumber;
 	}
 
-	public String getNameOfCreditCard() {
-		return nameOfCreditCard;
+	public String getCreditCardName() {
+		return creditCardName;
 	}
 
-	public int getCreditCardSecurityCode() {
+	public String getCreditCardSecurityCode() {
 		return creditCardSecurityCode;
 	}
 

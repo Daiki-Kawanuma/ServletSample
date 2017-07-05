@@ -2,13 +2,13 @@ package com.ibm.jp.icw.model;
 
 import java.util.Date;
 
-public class FairPrice {
+public class MarketPrice {
 
 	private int brandCode;
 	private Date date;
 	private double price;
 
-	public FairPrice(int brandCode, Date date, double price) {
+	public MarketPrice(int brandCode, Date date, double price) {
 		super();
 		this.brandCode = brandCode;
 		this.date = date;

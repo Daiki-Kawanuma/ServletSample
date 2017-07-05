@@ -9,7 +9,7 @@ public class Order {
 		orderWithLimit
 	}
 
-	public enum EnforcementConditions{
+	public enum OrderConditions{
 		unconditional,
 		donation,
 		shrinkage,
@@ -22,14 +22,14 @@ public class Order {
 
 
 	public Order(int receptionNumber, Brand brand, User user, OrderKind orderKind,
-			EnforcementConditions enforcementConditions, int orderAmount, double orderUnitPrice,
+			OrderConditions orderConditions, int orderAmount, double orderUnitPrice,
 			double closingUnitPrice, Date orderDate, Date closingDate, OrderStatus orderStatus) {
 		super();
 		this.receptionNumber = receptionNumber;
 		this.brand = brand;
 		this.user = user;
 		this.orderKind = orderKind;
-		this.enforcementConditions = enforcementConditions;
+		this.orderConditions = orderConditions;
 		this.orderAmount = orderAmount;
 		this.orderUnitPrice = orderUnitPrice;
 		this.closingUnitPrice = closingUnitPrice;
@@ -42,7 +42,7 @@ public class Order {
 	private Brand brand;
 	private User user;
 	private OrderKind orderKind;
-	private EnforcementConditions enforcementConditions;
+	private OrderConditions orderConditions;
 	private int orderAmount;
 	private double orderUnitPrice;
 	private double closingUnitPrice;
@@ -66,8 +66,8 @@ public class Order {
 		return orderKind;
 	}
 
-	public EnforcementConditions getEnforcementConditions() {
-		return enforcementConditions;
+	public OrderConditions getOrderConditions() {
+		return orderConditions;
 	}
 
 	public int getOrderAmount() {
