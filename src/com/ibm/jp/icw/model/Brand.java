@@ -2,11 +2,12 @@ package com.ibm.jp.icw.model;
 
 public class Brand {
 
-	private int brandCode;
+	private String brandCode;
 	private String brandName;
 	private String market;
 	private String industry;
 	private int tradingUnit;
+	private String brandStatus;
 	private double marketPrice;
 	private double openingPrice;
 	private double highPrice;
@@ -16,8 +17,8 @@ public class Brand {
 	private double yearToDateHighs;
 	private double yearToDateLows;
 
-	public Brand(int brandCode, String brandName, String market, String industry, int tradingUnit, double marketPrice,
-			double openingPrice, double highPrice, double lowPrice, double offerPrice, double bidPrice,
+	public Brand(String brandCode, String brandName, String market, String industry, int tradingUnit, String brandStatus,
+			double marketPrice, double openingPrice, double highPrice, double lowPrice, double offerPrice, double bidPrice,
 			double yearToDateHighs, double yearToDateLows) {
 		super();
 		this.brandCode = brandCode;
@@ -25,6 +26,7 @@ public class Brand {
 		this.market = market;
 		this.industry = industry;
 		this.tradingUnit = tradingUnit;
+		this.brandStatus = brandStatus;
 		this.marketPrice = marketPrice;
 		this.openingPrice = openingPrice;
 		this.highPrice = highPrice;
@@ -35,7 +37,7 @@ public class Brand {
 		this.yearToDateLows = yearToDateLows;
 	}
 
-	public int getBrandCode() {
+	public String getBrandCode() {
 		return brandCode;
 	}
 
@@ -53,6 +55,10 @@ public class Brand {
 
 	public int getTradingUnit(){
 		return tradingUnit;
+	}
+
+	public String getBrandStatus(){
+		return brandStatus;
 	}
 
 	public double getMarketPrice() {
