@@ -46,7 +46,7 @@ public class OrderedInfoServlet extends BaseServlet {
 		String brandname = brand.getBrandName();
 
 		MarketPrice marketPrice = MarketPriceDao.getMarketPrice(brand.getBrandCode());
-
+		// Commit Test Comment
 		response.sendRedirect("orderdinfo.jsp");
 	}
 
