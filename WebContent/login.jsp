@@ -11,15 +11,15 @@
 <hr>
 <div align="center">
 <table border="0">
-<form action="list.html" method="get">
+<form method="POST" action="LoginServlet">
 <h2>ログイン画面</h2>
 <tr>
 <th>口座番号</th>
-<td><input type="text" name="user_id" value="" size="24"></td>
+<td><input type="text" name="account_number" value="" size="24"></td>
 </tr>
 <tr>
 <th>ログインパスワード</th>
-<td><input type="text" name="user_id" value="" size="24"></td>
+<td><input type="text" name="login_pass" value="" size="24"></td>
 </tr>
 <tr>
 <td colspan="2">
