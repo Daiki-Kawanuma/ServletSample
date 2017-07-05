@@ -36,40 +36,32 @@ public class UserDao extends BaseDao {
 			if (resultSet.next()){
 				user = new User(resultSet.getString(COLUMN_ACCOUNT_NUMBER),
 						resultSet.getString(COLUMN_CC_NAME),
-						resultSet.getString(COLUMN_CC_NO));
+						resultSet.getString(COLUMN_CC_NO),
+						resultSet.getString(COLUMN_USER_NAME),
+						resultSet.getString(COLUMN_CC_SEC),
+						resultSet.getDate(COLUMN_CC_VALID));
 			}
 		} catch (SQLException e) {
-			System.out.println("エラー：UserDAO#DBデータ操作時にエラー発生");
-
+			System.err.println("エラー：UserDao#DBデータ操作時にエラー発生");
 			e.printStackTrace();
 		} finally {
-			System.out.println("情報：UserDAO#finally処理開始");
 			if (statement != null) {
-				System.out.println("情報：UserDAO#statementがnullではない場合の処理開始");
 				try {
-					System.out.println("情報：UserDAO#statementのクローズ処理開始");
 					statement.close();
-					System.out.println("情報：UserDAO#statementのクローズ処理終了");
 				} catch (SQLException e) {
-					System.out.println("エラー：UserDAO#statementのクローズ処理時にエラー発生");
+					System.err.println("エラー：UserDao#Statementのクローズ処理時にエラー発生");
 					e.printStackTrace();
 				}
 			}
 			if (connection != null) {
-				System.out.println("情報：UserDAO#connectionがnullではない場合の処理開始");
 				try {
-					System.out.println("情報：UserDAO#connectionのクローズ処理終了");
 					connection.close();
-					System.out.println("情報：UserDAO#connectionのクローズ処理終了");
 				} catch (SQLException e) {
-					System.out.println("エラー：UserDAO#connectionのクローズ処理時にエラー発生");
+					System.err.println("エラー：UserDao#connectionのクローズ処理時にエラー発生");
 					e.printStackTrace();
 				}
 			}
 		}
-
-		System.out.println("情報：BookDAO#getBookListByUserid 終了");
-		return userDto;
-
+		return user;
 	}
 }
