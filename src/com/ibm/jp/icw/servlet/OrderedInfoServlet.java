@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.SessionConstants;
+import com.ibm.jp.icw.dao.MarketPriceDao;
 import com.ibm.jp.icw.dao.OrderDao;
 import com.ibm.jp.icw.model.Brand;
+import com.ibm.jp.icw.model.MarketPrice;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
 
@@ -41,7 +43,11 @@ public class OrderedInfoServlet extends BaseServlet {
 		ArrayList<Order> orderList = OrderDao.getOrders(user.getAccountNumber());
 		Order order = orderList.get(0);
 		Brand brand = order.getBrand();
-		brand.getBrandName();
+		String brandname = brand.getBrandName();
+
+		MarketPrice marketPrice = MarketPriceDao.getMarketPrice(brand.getBrandCode());
+
+		response.sendRedirect("orderdinfo.jsp");
 	}
 
 }
