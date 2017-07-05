@@ -11,10 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.SessionConstants;
-import com.ibm.jp.icw.dao.MarketPriceDao;
 import com.ibm.jp.icw.dao.OrderDao;
-import com.ibm.jp.icw.model.Brand;
-import com.ibm.jp.icw.model.MarketPrice;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
 
@@ -41,13 +38,18 @@ public class OrderedInfoServlet extends BaseServlet {
 		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 
 		ArrayList<Order> orderList = OrderDao.getOrders(user.getAccountNumber());
-		Order order = orderList.get(0);
-		Brand brand = order.getBrand();
-		String brandname = brand.getBrandName();
+		int size = orderList.size();
 
-		MarketPrice marketPrice = MarketPriceDao.getMarketPrice(brand.getBrandCode());
-		// Commit Test Comment
-		response.sendRedirect("orderdinfo.jsp");
+		if(size == 0){
+			request.setAttribute("message", "注文情報がありません。");
+		}else{
+			request.setAttribute("orderList",orderList );
+		}
+		request.getRequestDispatcher("orderdinfo.jsp").forward(request, response);
+
+
+
+
 	}
 
 }
