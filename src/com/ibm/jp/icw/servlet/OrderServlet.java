@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
-import com.ibm.jp.icw.dao.OrderDao;
 import com.ibm.jp.icw.model.Brand;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
@@ -28,7 +27,6 @@ public class OrderServlet extends BaseServlet {
 	private static final String PARAM_ORDER_CONDITION = "order_condition";
 	private static final String PARAM_ORDER_AMOUNT = "order_amount";
 	private static final String PARAM_ORDER_UNIT_PRICE = "order_unit_price";
-	private static final String PARAM_RECEPTION_NUMBER = "reception_number";
 	//private static final String PARAM_ERROR_MESSAGE = "error_message";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,11 +41,7 @@ public class OrderServlet extends BaseServlet {
 		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 		Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 
-		// Testコード
-		/*brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
-				0, 0, 0, 0, 0, 0, 0, 0);*/
-
-		Order order = (Order) request.getAttribute(SessionConstants.PARAM_ORDER);
+		Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
 
 		String currentPage = request.getParameter(PARAM_CURRENT_PAGE);
 		if(currentPage == null)
@@ -57,7 +51,6 @@ public class OrderServlet extends BaseServlet {
 		switch (currentPage) {
 		case ServletConstants.BRAND_LIST:
 		case ServletConstants.BRAND_DETAIL:
-			// TODO テストコード
 			request.getSession().setAttribute(SessionConstants.PARAM_BRAND, brand);
 			nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
 			break;
@@ -76,7 +69,7 @@ public class OrderServlet extends BaseServlet {
 						Order.OrderCondition.getEnum(orderCondition),
 						Integer.parseInt(orderAmout), Integer.parseInt(orderUnitPrice), new Date());
 
-				request.setAttribute(SessionConstants.PARAM_ORDER, order);
+				session.setAttribute(SessionConstants.PARAM_ORDER, order);
 
 			} else {
 
@@ -85,10 +78,17 @@ public class OrderServlet extends BaseServlet {
 			break;
 		case ServletConstants.ORDER_CONFIRM:
 
+			//* Debug
+			order.setReceptionNumber(123456789);
+			Order registeredOrder = order;
+			/*/
 			Order registeredOrder = OrderDao.registOrder(order);
+			//*/
+
 			if(registeredOrder != null){
 				nextPage = ServletConstants.ORDER_COMPLETE + ".jsp";
-				request.setAttribute(PARAM_RECEPTION_NUMBER, order);
+				session.removeAttribute(SessionConstants.PARAM_ORDER);
+				request.setAttribute(SessionConstants.PARAM_RECEPTION_NUMBER, order.getReceptionNumber());
 			} else {
 				// TODO Orderが登録できなかった場合
 			}

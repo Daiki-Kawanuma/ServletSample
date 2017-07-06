@@ -4,7 +4,7 @@
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	Order order = (Order) request.getAttribute(SessionConstants.PARAM_ORDER);
+	long number = Long.parseLong(String.valueOf(request.getAttribute(SessionConstants.PARAM_RECEPTION_NUMBER)));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,9 +15,9 @@
 <body>
 	<h1>ご注文完了</h1>
 	<h2>
-		注文番号<%=order.getReceptionNumber()%>で承りました。
+		注文番号<%= number %>で承りました。
 	</h2>
-	<h2>またご注文をお待ちしております。</h2>
+	<h2>またのご注文をお待ちしております。</h2>
 	<br>
 	<br>
 	<form action="mypage.jsp" method="GET">

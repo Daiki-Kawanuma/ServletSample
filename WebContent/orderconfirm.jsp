@@ -5,7 +5,7 @@
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants" %>
 <%
 	request.setCharacterEncoding("UTF-8");
-	Order order = (Order) request.getAttribute(SessionConstants.PARAM_ORDER);
+	Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
 %>
 <html>
 <head>
@@ -58,7 +58,7 @@ table, td {
 	<br>
 	<form action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderconfirm">
-		<input type="submit" value="注文確認へ進む" style="font-size: 20pt" />
+		<input type="submit" value="注文を確定する" style="font-size: 20pt" />
 	</form>
 	<br>
 </body>
