@@ -18,4 +18,8 @@ public class ServletConstants {
 	public static final String BRAND_LIST = "brandlist";
 	public static final String BRAND_DETAIL = "branddetail";
 
+	public static final String ORDERS="order";
+	public static final String BRANDINFOS="brandinfo";
+	public static final String ORDEREDINFOS="orderedinfos";
+
 }

@@ -1,7 +1,6 @@
 package com.ibm.jp.icw.servlet;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
 import com.ibm.jp.icw.model.Brand;
-import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
 
 public class BrandInfoServlet extends BaseServlet {
@@ -47,21 +45,22 @@ public class BrandInfoServlet extends BaseServlet {
 				nextPage = ServletConstants.BRAND_LIST + ".jsp";
 			} else {
 				nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
+				request.setAttribute(PARAM_ERROR_MESSAGE, "入力に不備があります。銘柄コードは半角数字4桁でご入力ください。");
 			}
 			break;
 
 		// [銘柄一覧画面]のとき；
 		case ServletConstants.BRAND_LIST:
-
+			session.setAttribute(user, user1);
 			String actionType = request.getParameter("action");
 
 			// [詳細閲覧]ボタンで[銘柄詳細画面]に遷移し、[買い注文]ボタンなら[買い注文画面]に遷移する
 			if (actionType.equals("詳細閲覧")) {
 				nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
 			} else {
-				nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
+				nextPage = ServletConstants.ORDERS;
 
-				order = new Order(brand, user);
+				// order = new Order(brand, user);
 			}
 			break;
 
@@ -71,23 +70,30 @@ public class BrandInfoServlet extends BaseServlet {
 			break;
 
 		default:
-			break;}}
+			break;
+		}
+	}
 
+	private boolean validateInputs(String searchType, String searchCondition) {
+		if (searchType == null || searchCondition == null)
+			return false;
 
-			private boolean validateInputs(String searchType, String searchCondition)
-			{
-			if (searchType == null || searchCondition == null)
+		if (searchType.equals("brandcode")) {
+
+			if (searchCondition.length() > 4 || searchCondition.length() < 4) {
 				return false;
+			} else {
+				try {
+					int brandcode = Integer.parseInt(searchCondition);
+					return true;
+				} catch (NumberFormatException e) {
+					return false;
+				}
 
-			if(searchType.equals("brandcode")){
-				 try{
-					 if(searchCondition.length()> 4 || searchCondition.length()<4){
-					 return false;
-					 } else {
-					 return true;
-					 }
-			}}
-
+				// TODO: handle exception
+			}
+		} else
+			return true;
 
 	}
 }
