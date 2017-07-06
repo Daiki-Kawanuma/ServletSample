@@ -43,6 +43,10 @@ public class BrandInfoServlet extends BaseServlet {
 			// 検索条件の入力が正常である場合、[銘柄一覧画面]に遷移、そうでなければStay
 			if (validateInputs(searchType, searchCondition)) {
 				nextPage = ServletConstants.BRAND_LIST + ".jsp";
+
+
+
+
 			} else {
 				nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
 				request.setAttribute(PARAM_ERROR_MESSAGE, "入力に不備があります。銘柄コードは半角数字4桁でご入力ください。");
@@ -51,7 +55,7 @@ public class BrandInfoServlet extends BaseServlet {
 
 		// [銘柄一覧画面]のとき；
 		case ServletConstants.BRAND_LIST:
-			session.setAttribute(user, user1);
+//			session.setAttribute(user, user1);
 			String actionType = request.getParameter("action");
 
 			// [詳細閲覧]ボタンで[銘柄詳細画面]に遷移し、[買い注文]ボタンなら[買い注文画面]に遷移する
