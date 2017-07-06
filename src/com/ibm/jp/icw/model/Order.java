@@ -101,6 +101,7 @@ public class Order {
 	private Date orderDate;
 	private Date closingDate;
 	private OrderStatus orderStatus;
+	private int closingAmount;
 
 	public Order(Brand brand, User user, OrderType orderType,OrderCondition orderCondition,
 			int orderAmount, int orderUnitPrice, Date orderDate){
@@ -114,7 +115,7 @@ public class Order {
 	}
 
 	public Order(long receptionNumber, Brand brand, User user, OrderType orderType,
-			OrderCondition orderCondition, int orderAmount, double orderUnitPrice,
+			OrderCondition orderCondition, int orderAmount,int closingAmount, double orderUnitPrice,
 			double closingUnitPrice, Date orderDate, Date closingDate, OrderStatus orderStatus) {
 		super();
 		this.receptionNumber = receptionNumber;
@@ -123,6 +124,7 @@ public class Order {
 		this.orderType = orderType;
 		this.orderCondition = orderCondition;
 		this.orderAmount = orderAmount;
+		this.closingAmount = closingAmount;
 		this.orderUnitPrice = orderUnitPrice;
 		this.closingUnitPrice = closingUnitPrice;
 		this.orderDate = orderDate;
@@ -158,6 +160,10 @@ public class Order {
 		return orderAmount;
 	}
 
+	public int getClosingAmount() {
+		return closingAmount;
+	}
+
 	public double getOrderUnitPrice() {
 		return orderUnitPrice;
 	}
@@ -177,4 +183,5 @@ public class Order {
 	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
+
 }
