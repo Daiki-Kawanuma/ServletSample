@@ -27,12 +27,9 @@ public class BrandInfoServlet extends BaseServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-
-		// セッションがありますよ〜何も取得はしないけど、あとで注文入力画面遷移前にユーザー情報と銘柄情報を引き渡すので！
-		//HttpSession session = request.getSession();
-		//Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 
 		String currentPage = (String) request.getParameter(PARAM_CURRENT_PAGE);
 		if(currentPage == null)
@@ -40,7 +37,6 @@ public class BrandInfoServlet extends BaseServlet {
 		String nextPage = null;
 
 		switch (currentPage) {
-
 		// [銘柄検索画面]のとき；
 		case ServletConstants.BRAND_SEARCH:
 
@@ -54,10 +50,12 @@ public class BrandInfoServlet extends BaseServlet {
 				ArrayList<Brand> brandList = new ArrayList<Brand>();
 
 				if (searchType.equals("brandcode")) {
-					// TODO テストコード
-					//brandList = BrandDao.getBrandByBrandCode(searchCondition);
+					//* Debug
 					brandList.add(new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
 							0, 0, 0, 0, 0, 0, 0, 0));
+					/*/
+					brandList = BrandDao.getBrandByBrandCode(searchCondition);
+					//*/
 				} else {
 					brandList = BrandDao.getBrandListByBrandName(searchCondition);
 				}
@@ -76,23 +74,27 @@ public class BrandInfoServlet extends BaseServlet {
 
 			// [詳細閲覧]ボタンで[銘柄詳細画面]に遷移し、[買い注文]ボタンなら[買い注文画面]に遷移する
 			if (brandCodeforDetail != null) {
-				nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
-				//Brand brand = BrandDao.getBrandByBrandCode(brandCodeforDetail).get(0);
 
-				// TODO テストコード
-				System.out.println("BrandCode: " + brandCodeforDetail );
+				nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
+
+				//* Debug
 				Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
 						0, 0, 0, 0, 0, 0, 0, 0);
+				/*/
+				Brand brand = BrandDao.getBrandByBrandCode(brandCodeforDetail).get(0);
+				//*/
 
 				request.getSession().setAttribute(SessionConstants.PARAM_BRAND, brand);
 			} else if(brandCodeforOrder != null){
-				nextPage = ServletConstants.ORDERS;
-				//Brand brand = BrandDao.getBrandByBrandCode(brandCodeforOrder).get(0);
 
-				// TODO テストコード
-				System.out.println("BrandCode: " + brandCodeforDetail );
+				nextPage = ServletConstants.ORDERS;
+
+				//* Debug
 				Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
 						0, 0, 0, 0, 0, 0, 0, 0);
+				/*/
+				Brand brand = BrandDao.getBrandByBrandCode(brandCodeforOrder).get(0);
+				//*/
 
 				request.getSession().setAttribute(SessionConstants.PARAM_BRAND, brand);
 			}
@@ -129,8 +131,6 @@ public class BrandInfoServlet extends BaseServlet {
 				} catch (NumberFormatException e) {
 					return false;
 				}
-
-				// TODO: handle exception
 			}
 		} else{
 			return true;
