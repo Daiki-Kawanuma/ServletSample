@@ -20,6 +20,7 @@ import com.ibm.jp.icw.model.User;
  */
 @WebServlet("/OrderedInfoServlet")
 public class OrderedInfoServlet extends BaseServlet {
+	// 色々定義しときます
 	private static final long serialVersionUID = 1L;
 
     /**
@@ -42,9 +43,10 @@ public class OrderedInfoServlet extends BaseServlet {
 
 		if(size == 0){
 			request.setAttribute("message", "注文情報がありません。");
-		}else{
-			request.setAttribute("orderList",orderList );
 		}
+
+		request.setAttribute("orderList",orderList );
+
 		request.getRequestDispatcher("orderdinfo.jsp").forward(request, response);
 
 
