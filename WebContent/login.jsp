@@ -20,16 +20,14 @@ if(message == null){
 <table border="0">
 <form method="POST" action="LoginServlet">
 <h2>ログイン画面</h2>
-
 <p><font color="red"><%=message%></p></font>
-
 <tr>
 <th>口座番号</th>
 <td><input type="text" name="account_number" value="" size="24"></td>
 </tr>
 <tr>
 <th>ログインパスワード</th>
-<td><input type="text" name="login_pass" value="" size="24"></td>
+<td><input type="password" name="login_pass" value="" size="24"></td>
 </tr>
 <tr>
 <td colspan="2">

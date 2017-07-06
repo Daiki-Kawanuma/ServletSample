@@ -9,7 +9,18 @@
 <title>マイページ｜TS長谷川証券</title>
 </head>
 <body>
-<h1>マイページ</h1>
+<header id ="hasegawa">
+<nav>
+<ul>
+<h1>長谷川証券トレーディングシステム</h1>
+<li><a href="logout.jsp">ログアウト</a></li>
+<li><a href="mypage.jsp">マイページ</a></li>
+<hr>
+</ul>
+</nav>
+</header>
+}
+<h2>マイページ</h2>
 <br>
 <p>ようこそ <%= session.getAttribute(SessionConstants.PARAM_USER) %>  さん </p>
 <br>
