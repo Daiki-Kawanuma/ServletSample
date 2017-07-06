@@ -2,56 +2,55 @@ package com.ibm.jp.icw.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.SessionConstants;
-import com.ibm.jp.icw.dao.OrderDao;
+import com.ibm.jp.icw.model.Brand;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
 
 /**
  * Servlet implementation class OrderedInfoServlet
  */
-@WebServlet("/OrderedInfoServlet")
+@WebServlet("/orderedinfo")
 public class OrderedInfoServlet extends BaseServlet {
 	// 色々定義しときます
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public OrderedInfoServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		User user = (User) request.getSession().getAttribute(SessionConstants.PARAM_USER);
+
+		//* Debug
+		ArrayList<Order> orderList = new ArrayList<Order>();
+		Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
+				0, 0, 0, 0, 0, 0, 0, 0);
+		for(int i = 1; i <= 10; i++){
+			Order order = new Order(brand, user, Order.OrderType.成行,
+					Order.OrderCondition.無条件,
+					100, 100, new Date());
+			orderList.add(order);
+		}
+		/*/
 		ArrayList<Order> orderList = OrderDao.getOrderList(user.getAccountNumber());
-		int size = orderList.size();
+		//*/
 
-		if(size == 0){
+		if(orderList.size() == 0){
 			request.setAttribute("message", "注文情報がありません。");
 		}
 
-		request.setAttribute("orderList",orderList );
+		request.setAttribute("orderlist", orderList);
 
 		request.getRequestDispatcher("orderdinfo.jsp").forward(request, response);
-
-
-
-
 	}
-
 }

@@ -35,7 +35,7 @@
 		value="銘柄を検索/買い注文する">
 	<br>
 	<br>
-	<input type="button" onClick="location.href='orderdinfo.jsp'"
+	<input type="button" onClick="location.href='orderedinfo'"
 		value="注文状況を確認する">
 
 </body>
