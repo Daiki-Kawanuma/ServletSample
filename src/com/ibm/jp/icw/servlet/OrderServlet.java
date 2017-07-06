@@ -11,9 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
-import com.ibm.jp.icw.dao.MarketPriceDao;
 import com.ibm.jp.icw.model.Brand;
-import com.ibm.jp.icw.model.MarketPrice;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
 
@@ -29,7 +27,7 @@ public class OrderServlet extends BaseServlet {
 	private static final String PARAM_ORDER_CONDITION = "order_condition";
 	private static final String PARAM_ORDER_AMOUNT = "order_amount";
 	private static final String PARAM_ORDER_UNIT_PRICE = "order_unit_price";
-	private static final String PARAM_ERROR_MESSAGE = "error_message";
+	//private static final String PARAM_ERROR_MESSAGE = "error_message";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -42,21 +40,24 @@ public class OrderServlet extends BaseServlet {
 
 		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 		Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
+
+		// Testコード
+		brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
+				0, 0, 0, 0, 0, 0, 0, 0);
+
 		Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
 
 		String currentPage = request.getParameter(PARAM_CURRENT_PAGE);
-		// TODO Testコード
-		currentPage = ServletConstants.ORDER_ENTRY;
+		if(currentPage == null)
+			currentPage = ServletConstants.BRAND_LIST;
 		String nextPage = null;
 
 		switch (currentPage) {
 		case ServletConstants.BRAND_LIST:
 		case ServletConstants.BRAND_DETAIL:
-
-			MarketPrice price = MarketPriceDao.getMarketPrice(brand.getBrandCode());
-
-
-			nextPage = ServletConstants.ORDER_ENTRY;
+			// TODO テストコード
+			request.getSession().setAttribute(SessionConstants.PARAM_BRAND, brand);
+			nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
 			break;
 		case ServletConstants.ORDER_ENTRY:
 
@@ -73,7 +74,7 @@ public class OrderServlet extends BaseServlet {
 						Order.OrderCondition.getEnum(orderCondition),
 						Integer.parseInt(orderAmout), Integer.parseInt(orderUnitPrice), new Date());
 
-				session.setAttribute(SessionConstants.PARAM_ORDER, order);
+				request.setAttribute(SessionConstants.PARAM_ORDER, order);
 
 			} else {
 
@@ -87,10 +88,9 @@ public class OrderServlet extends BaseServlet {
 			nextPage = ServletConstants.MY_PAGE;
 			break;
 		default:
-			nextPage = ServletConstants.ORDER_ENTRY;
+			nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
 			break;
 		}
-
 		request.getRequestDispatcher("/" + nextPage).forward(request, response);
 	}
 
