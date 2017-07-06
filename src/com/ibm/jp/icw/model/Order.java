@@ -96,12 +96,12 @@ public class Order {
 	private OrderType orderType;
 	private OrderCondition orderCondition;
 	private int orderAmount;
+	private int closingAmount;
 	private double orderUnitPrice;
 	private double closingUnitPrice;
 	private Date orderDate;
 	private Date closingDate;
 	private OrderStatus orderStatus;
-	private int closingAmount;
 
 	public Order(Brand brand, User user, OrderType orderType,OrderCondition orderCondition,
 			int orderAmount, int orderUnitPrice, Date orderDate){

@@ -19,6 +19,7 @@ public class OrderDao extends BaseDao {
 	public static final String COLUMN_ORDER_TYPE = "ORDER_TYPE";
 	public static final String COLUMN_ORDER_CONDITION = "ORDER_CONDITION";
 	public static final String COLUMN_ORDER_AMOUNT = "ORDER_AMOUNT";
+	public static final String COLUMN_CLOSING_AMOUNT = "CLOSING_AMOUNT";
 	public static final String COLUMN_ORDER_UNIT_PRICE = "ORDER_UNIT_PRICE";
 	public static final String COLUMN_CLOSING_UNIT_PRICE = "CLOSING_UNIT_PRICE";
 	public static final String COLUMN_ORDER_DATE = "ORDER_DATE";
@@ -68,6 +69,7 @@ public class OrderDao extends BaseDao {
 						Order.OrderType.getEnum(resultSet.getString(COLUMN_ORDER_TYPE)),
 						Order.OrderCondition.getEnum(resultSet.getString(COLUMN_ORDER_CONDITION)),
 						resultSet.getInt(COLUMN_ORDER_AMOUNT),
+						resultSet.getInt(COLUMN_CLOSING_AMOUNT),
 						resultSet.getDouble(COLUMN_ORDER_UNIT_PRICE),
 						resultSet.getDouble(COLUMN_CLOSING_UNIT_PRICE),
 						resultSet.getDate(COLUMN_ORDER_DATE),
