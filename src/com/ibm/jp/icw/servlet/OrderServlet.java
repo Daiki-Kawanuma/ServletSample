@@ -44,8 +44,8 @@ public class OrderServlet extends BaseServlet {
 		Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 
 		// Testコード
-		brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
-				0, 0, 0, 0, 0, 0, 0, 0);
+		/*brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
+				0, 0, 0, 0, 0, 0, 0, 0);*/
 
 		Order order = (Order) request.getAttribute(SessionConstants.PARAM_ORDER);
 

@@ -21,42 +21,22 @@ table, td {
 </head>
 <body>
 	<h1>銘柄を検索</h1>
-	<form action="questionnaire" method="POST">
+	<form action="search" method="POST">
 		<!-- 	検索条件を入力してください：<br><br> -->
 		<!-- 	<select name="searchtype" style="font-size:72pt"> -->
 		<input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
-		<br>
-
-		<!-- 検索ボタンを大きくしたい
-
-例えば
-
-.button{
-height:30px;
-width:100px;
-}
-
-とCSSで設定したら
-
-html部分には
-
-<input type="submit" value="検索" class="button">
-
-と書けばよいだけだった。 -->
-
-
-
-		<input type="text" name="searchcondition"> <input
+		<br> <input type="text" name="searchcondition"> <input
 			type="submit" value="検索" style="font-size: 20pt" />
 	</form>
 	<br>
 	<br>
 
-<% ArrayList<Brand> list = (ArrayList<Brand>)request.getAttribute("list"); %>
+	<%
+		ArrayList<Brand> list = (ArrayList<Brand>) request.getAttribute("brandList");
+	%>
 
 	<!-- <h1>検索結果一覧</h1> -->
-<% for (Brand brand:list){ %>
 	<table border=1>
 		<tr>
 			<th>銘柄コード</th>
@@ -70,7 +50,9 @@ html部分には
 			<th>安値</th>
 			<th>アクション</th>
 		</tr>
-
+		<%
+			for (Brand brand : list) {
+		%>
 		<tr>
 			<td><%=brand.getBrandCode()%></td>
 			<td><%=brand.getBrandName()%></td>
@@ -81,12 +63,18 @@ html部分には
 			<td><%=brand.getOpeningPrice()%></td>
 			<td><%=brand.getHighPrice()%></td>
 			<td><%=brand.getLowPrice()%></td>
-			<td><button type="button" name="action" value="詳細閲覧">詳細閲覧</button>
-				<button type="button" name="action" value="買い注文">買い注文</button></td>
-				<%} %>
+			<td><form action="search" method="POST">
+					<input type="hidden" name="current_page" value="brandlist">
+					<button type="submit" name="detail"
+						value="<%=brand.getBrandCode()%>">詳細閲覧</button>
+					<button type="submit" name="order"
+						value="<%=brand.getBrandCode()%>">買い注文</button>
+				</form></td>
+			<%
+				}
+			%>
+
 	</table>
-
-
 	<br>
 </body>
 </html>

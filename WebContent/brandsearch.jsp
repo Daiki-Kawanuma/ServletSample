@@ -17,31 +17,10 @@
 </head>
 <body>
 <h1>銘柄を検索</h1>
-<form action="questionnaire" method="POST">
-<!-- 	検索条件を入力してください：<br><br> -->
-<!-- 	<select name="searchtype" style="font-size:72pt"> -->
+<form action="search" method="POST">
+	<input type="hidden" name="current_page" value="brandsearch">
 	<input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 	<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br><br>
-
-<!-- 検索ボタンを大きくしたい
-
-例えば
-
-.button{
-height:30px;
-width:100px;
-}
-
-とCSSで設定したら
-
-html部分には
-
-<input type="submit" value="検索" class="button">
-
-と書けばよいだけだった。 -->
-
-
-
 	<input type="text" name="searchcondition">
 	<input type="submit" value="検索"style="font-size:20pt"/>
 	</form>
