@@ -36,7 +36,7 @@
 	<input type="submit" value="銘柄詳細情報を表示する">
 	</form>
 	<%}%>
-	<p><a href="maypage.jsp">戻る</a></p>
+	<br><p><a href="maypage.jsp">戻る</a></p>
 
 </body>
 </html>
