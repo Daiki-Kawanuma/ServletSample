@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
+import com.ibm.jp.icw.dao.OrderDao;
 import com.ibm.jp.icw.model.Brand;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
@@ -27,6 +28,7 @@ public class OrderServlet extends BaseServlet {
 	private static final String PARAM_ORDER_CONDITION = "order_condition";
 	private static final String PARAM_ORDER_AMOUNT = "order_amount";
 	private static final String PARAM_ORDER_UNIT_PRICE = "order_unit_price";
+	private static final String PARAM_RECEPTION_NUMBER = "reception_number";
 	//private static final String PARAM_ERROR_MESSAGE = "error_message";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,7 +47,7 @@ public class OrderServlet extends BaseServlet {
 		brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
 				0, 0, 0, 0, 0, 0, 0, 0);
 
-		Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
+		Order order = (Order) request.getAttribute(SessionConstants.PARAM_ORDER);
 
 		String currentPage = request.getParameter(PARAM_CURRENT_PAGE);
 		if(currentPage == null)
@@ -82,7 +84,14 @@ public class OrderServlet extends BaseServlet {
 			}
 			break;
 		case ServletConstants.ORDER_CONFIRM:
-			nextPage = ServletConstants.ORDER_COMPLETE + ".jsp";
+
+			Order registeredOrder = OrderDao.registOrder(order);
+			if(registeredOrder != null){
+				nextPage = ServletConstants.ORDER_COMPLETE + ".jsp";
+				request.setAttribute(PARAM_RECEPTION_NUMBER, order);
+			} else {
+				// TODO Orderが登録できなかった場合
+			}
 			break;
 		case ServletConstants.ORDER_COMPLETE:
 			nextPage = ServletConstants.MY_PAGE;

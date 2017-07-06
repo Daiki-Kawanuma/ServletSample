@@ -36,7 +36,7 @@ table, td {
 		</tr>
 		<tr>
 			<td>注文の種類</td>
-			<td><%= order.getOrderKind().toString() %></td>
+			<td><%= order.getOrderType().toString() %></td>
 		</tr>
 		<tr>
 			<td>執行条件</td>

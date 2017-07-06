@@ -132,6 +132,10 @@ public class Order {
 		this.orderStatus = orderStatus;
 	}
 
+	public void setReceptionNumber(long receptionNumber){
+		this.receptionNumber = receptionNumber;
+	}
+
 	public long getReceptionNumber() {
 		return receptionNumber;
 	}
@@ -148,7 +152,7 @@ public class Order {
 		return tradingType;
 	}
 
-	public OrderType getOrderKind() {
+	public OrderType getOrderType() {
 		return orderType;
 	}
 
