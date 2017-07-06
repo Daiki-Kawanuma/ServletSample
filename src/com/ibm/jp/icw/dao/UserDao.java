@@ -14,7 +14,7 @@ public class UserDao extends BaseDao {
 	public static final String COLUMN_ACCOUNT_NUMBER = "ACCOUNT_NO";
 	public static final String COLUMN_USER_NAME = "USER_NAME";
 	public static final String COLUMN_LOGIN_PASS = "LOGIN_PASS";
-	public static final String COLUMN_CC_NO = "CC_NO";
+	public static final String COLUMN_CC_NUMBER = "CC_NUMBER";
 	public static final String COLUMN_CC_NAME = "CC_NAME";
 	public static final String COLUMN_CC_SEC = "CC_SEC";
 	public static final String COLUMN_CC_VALID = "CC_VALID";
@@ -32,14 +32,14 @@ public class UserDao extends BaseDao {
 			statement = connection.createStatement();
 
 			ResultSet resultSet = statement.executeQuery(
-					String.format("SELECT * FROM user WHERE accout_number = '%s'", accountNumber));
+					String.format("SELECT * FROM user WHERE account_no = '%s'", accountNumber));
 
 			if (resultSet.next()){
 				user = new User(resultSet.getString(COLUMN_ACCOUNT_NUMBER),
 						resultSet.getString(COLUMN_USER_NAME),
 						resultSet.getString(COLUMN_LOGIN_PASS),
 						resultSet.getString(COLUMN_CC_NAME),
-						resultSet.getString(COLUMN_CC_NO),
+						resultSet.getString(COLUMN_CC_NUMBER),
 						resultSet.getString(COLUMN_CC_SEC),
 						resultSet.getDate(COLUMN_CC_VALID));
 			}

@@ -19,9 +19,9 @@ public class BrandDao extends BaseDao{
 	public static final String COLUMN_TRADING_UNIT = "TRADING_UNIT";
 	public static final String COLUMN_BRAND_STATUS = "BRAND_STATUS";
 
-	public static Brand getBrandByBrandCode(String brandCode){
+	public static ArrayList<Brand> getBrandByBrandCode(String brandCode){
 
-		Brand brand = null;
+		ArrayList<Brand> brandList = new ArrayList<Brand>();
 		Connection connection = null;
 		Statement statement = null;
 
@@ -37,13 +37,15 @@ public class BrandDao extends BaseDao{
 
 			if (resultSet.next()){
 				// TODO 数字を ResultSet から入れる
-				brand = new Brand(resultSet.getString(COLUMN_BRAND_CODE),
+				Brand brand = new Brand(resultSet.getString(COLUMN_BRAND_CODE),
 						resultSet.getString(COLUMN_BRAND_NAME),
 						resultSet.getString(COLUMN_MARKET),
 						resultSet.getString(COLUMN_INDUSTRY),
 						resultSet.getInt(COLUMN_TRADING_UNIT),
 						resultSet.getString(COLUMN_BRAND_STATUS),
 						0,0,0,0,0,0,0,0);
+
+				brandList.add(brand);
 			}
 		} catch (SQLException e) {
 			System.err.println("エラー：BrandDao#DBデータ操作時にエラー発生");
@@ -66,7 +68,7 @@ public class BrandDao extends BaseDao{
 				}
 			}
 		}
-		return brand;
+		return brandList;
 	}
 
 	public static ArrayList<Brand> getBrandListByBrandName(String brandName){
