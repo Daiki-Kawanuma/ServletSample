@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>注文内容確認｜TS長谷川証券</title>
 </head>
 <body>
+<h1>ご注文内容の確認</h1>
+
+
+<br><br>
+<button type="button" onclick="alert('買い注文を実行します')">確認</button><br><br>
 
 </body>
 </html>

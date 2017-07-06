@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>買い注文｜TS長谷川証券</title>
+<title>注文内容確認｜TS長谷川証券</title>
 <style type="text/css">
 table, td {
 	border-style: solid;
@@ -15,23 +15,35 @@ table, td {
 </style>
 </head>
 <body>
-	<h1>買い注文</h1>
-	<form action="order" method="POST">
-		<input type="hidden" name="current_page" value="orderentry">
-		<h3>注文の種類</h3>
-		<input type="radio" name="order_type" value="成行">成行<br>
-		<input type="radio" name="order_type" value="指値">指値<br>
-		<br>
-		<h3>執行条件</h3>
-		<input type="radio" name=order_condition value="無条件">無条件<br>
-		<input type="radio" name=order_condition value="寄付">寄付<br>
-		<input type="radio" name=order_condition value="引け">引け<br>
-		<input type="radio" name=order_condition value="指成">指成<br>
-		<h3>注文数</h3>
-		<input type="text" name="order_amount"><br>
-		<h3>注文単価</h3>
-		<input type="text" name="order_unit_price"><br>
-		<input type="submit" value="注文確認へ進む" style="font-size: 20pt" />
-	</form>
+	<h1>ご注文内容の確認</h1>
+<br>
+<table>
+ <tr><th>三菱電気</th></tr>
+ <tr><td>銘柄コード</td><td>1234</td></tr>
+ <tr><td>銘柄名</td><td>三菱電気</td></tr>
+ <tr><td>注文の種類</td><td>指値</td></tr>
+ <tr><td>執行条件</td><td>指成</td></tr>
+ <tr><td>注文単価</td><td>125</td></tr>
+  <tr><td>注文数</td><td>1200</td></tr>
+</table>
+<br>
+
+
+
+ 	<%--
+		<% for (OrderDao brand: list) { %>
+		<tr>
+			<td><%= brand.getCode() %></td>
+			<td><%= brand.getName() %></td>
+			<td><%= brand.getOrderType() %></td>
+			<td><%= brand.getOrderCondition() %></td>
+			<td><%= brand.getOrderPrice() %></td>
+			<td><%= brand.getOrderAmount() %></td>
+		</tr>
+		<% } %>
+	 --%>
+
+<button type="button" onclick="alert('買い注文を実行します')">確認</button><br><br>
+
 </body>
 </html>
