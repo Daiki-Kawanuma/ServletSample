@@ -1,6 +1,7 @@
 package com.ibm.jp.icw.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
+import com.ibm.jp.icw.dao.BrandDao;
 import com.ibm.jp.icw.model.Brand;
-import com.ibm.jp.icw.model.User;
 
 public class BrandInfoServlet extends BaseServlet {
 
@@ -26,7 +27,6 @@ public class BrandInfoServlet extends BaseServlet {
 
 		// セッションがありますよ〜何も取得はしないけど、あとで注文入力画面遷移前にユーザー情報と銘柄情報を引き渡すので！
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 		Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 
 		String currentPage = (String) request.getAttribute(PARAM_CURRENT_PAGE);
@@ -44,9 +44,14 @@ public class BrandInfoServlet extends BaseServlet {
 			if (validateInputs(searchType, searchCondition)) {
 				nextPage = ServletConstants.BRAND_LIST + ".jsp";
 
+				ArrayList<Brand> brandList;
 
-
-
+				if (searchType.equals("brandcode")) {
+					brandList = BrandDao.getBrandByBrandCode(searchCondition);
+				} else {
+					brandList = BrandDao.getBrandListByBrandName(searchCondition);
+				}
+				request.setAttribute("sbrandlist", brandList);
 			} else {
 				nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
 				request.setAttribute(PARAM_ERROR_MESSAGE, "入力に不備があります。銘柄コードは半角数字4桁でご入力ください。");
@@ -55,7 +60,7 @@ public class BrandInfoServlet extends BaseServlet {
 
 		// [銘柄一覧画面]のとき；
 		case ServletConstants.BRAND_LIST:
-//			session.setAttribute(user, user1);
+			// session.setAttribute(user, user1);
 			String actionType = request.getParameter("action");
 
 			// [詳細閲覧]ボタンで[銘柄詳細画面]に遷移し、[買い注文]ボタンなら[買い注文画面]に遷移する
@@ -70,12 +75,14 @@ public class BrandInfoServlet extends BaseServlet {
 
 		// [銘柄詳細画面]のとき；
 		case ServletConstants.BRAND_DETAIL:
-			nextPage = ServletConstants.ORDER_ENTRY;
+			nextPage = ServletConstants.ORDERS;
 			break;
 
 		default:
+			request.setAttribute(PARAM_CURRENT_PAGE, ServletConstants.BRAND_SEARCH);
 			break;
 		}
+		request.getRequestDispatcher("/" + nextPage).forward(request, response);
 	}
 
 	private boolean validateInputs(String searchType, String searchCondition) {
@@ -88,7 +95,7 @@ public class BrandInfoServlet extends BaseServlet {
 				return false;
 			} else {
 				try {
-					int brandcode = Integer.parseInt(searchCondition);
+					Integer.parseInt(searchCondition);
 					return true;
 				} catch (NumberFormatException e) {
 					return false;
