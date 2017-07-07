@@ -1,26 +1,32 @@
 @CHARSET "UTF-8";
-.button {
-	display: inline-block;
-	width: 200px;
-	height: 54px;
-	text-align: center;
-	text-decoration: none;
-	line-height: 54px;
-	outline: none;
+h2{
+	position:absolute;
+	top:150px;
+	color:black;
+	font-size:200%
 }
-.button::before,
-.button::after {
-	position: absolute;
-	z-index: -1;
-	display: block;
-	content: '';
+
+
+.mypageNoHito{
+	color:black;
+	left:50px;
+	position:absolute;
+	top:200px;
+	font-size:200%
 }
-.button,
-.button::before,
-.button::after {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-transition: all .3s;
-	transition: all .3s;
+
+.mypageKensaku{
+	position:absolute;
+	top:350px;
+	left:500px;
+	color:white;
+	font-size:120%
+}
+
+.mypageKakunin{
+	position:absolute;
+	top:450px;
+	text-align:center;
+	color:white;
+	font-size:120%
 }
