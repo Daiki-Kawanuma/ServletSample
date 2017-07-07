@@ -12,6 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>マイページ｜TS長谷川証券</title>
+<link rel="stylesheet" href="Header.css" type="text/css">
 </head>
 <body>
 	<header id="hasegawa"> <nav>
