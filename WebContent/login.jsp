@@ -17,30 +17,29 @@
 <body>
 <header id="hasegawa"> <nav>
 	<ul>
-	<h1>長谷川証券トレーディングシステム</h1>
+	<h1>長谷川証券<br>トレーディングシステム</h1>
 </nav> </header>
-			<form method="POST" action="login">
-				<h2>ログイン画面</h2>
-				<hr>
 <div align="center">
 		<table border="0">
+		<form-wrapper>
+			<form method="POST" action="login">
+				<h2>ログイン画面</h2>
 				<p>
 					<font color="red"><%=message%>
 				</p>
 				</font>
 				<tr>
-					<th>口座番号</th>
-					<td><input type="text" name="account_number"
-						size="24"></td>
+					<th><input type="text" name="account_number" placeholder=口座番号を入力してください。
+						size="24"></th>
 				</tr>
 				<tr>
-					<th>ログインパスワード</th>
-					<td><input type="password" name="login_pass"
-						size="24"></td>
+					<th><input type="password" name="login_pass" placeholder=パスワードを入力してください。
+						size="24"></th>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="ログイン"></td>
 				</tr>
+				</form-wrapper>
 			</form>
 		</table>
 

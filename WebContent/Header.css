@@ -1,16 +1,16 @@
 @CHARSET "UTF-8";
 h1{
 	color:white;
-	font-size:2.5em;
+	font-size:2em;
 	f8ont:
 }
 h2{
-	font-size:2em;
+	font-size:1.5em;
 }
 header{
 	background-color:#009999;
-	top: 0px;                   /* 位置(上0px) */
+	top: 10px;                   /* 位置(上0px) */
     left: 0px;                  /* 位置(右0px) */
     width: 100%;                /* 横幅100%　*/
-    height: 140px;              /* 縦幅140px */
+    height: 90px;              /* 縦幅140px */
 }
