@@ -18,8 +18,10 @@
 	<header id="hasegawa"> <nav>
 	<ul>
 		<h1>長谷川証券トレーディングシステム</h1>
-		<li><a href="logout.jsp">ログアウト</a></li>
-		<li><a href="mypage.jsp">マイページ</a></li>
+		<p><%=user.getName()%>　さん</p>
+		<input type="button" onClick="location.href='logout.jsp'" value="ログアウト">
+		<br>
+		<input type="button" onClick="location.href='mypage.jsp'" value="マイページ">
 		<hr>
 	</ul>
 	</nav> </header>
