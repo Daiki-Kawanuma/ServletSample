@@ -6,6 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>ICW動作確認サンプル</title>
+		<link rel="stylesheet" href="Header.css" type="text/css">
 	</head>
 	<body>
 		<h1>検索ページ</h1>

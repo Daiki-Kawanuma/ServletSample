@@ -12,6 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>買い注文｜TS長谷川証券</title>
+<link rel="stylesheet" href="Header.css" type="text/css">
 <style type="text/css">
 table, td {
 	border-style: solid;
