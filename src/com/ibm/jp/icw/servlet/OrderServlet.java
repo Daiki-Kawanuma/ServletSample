@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
+import com.ibm.jp.icw.dao.UserDao;
 import com.ibm.jp.icw.model.Brand;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
@@ -54,6 +55,7 @@ public class OrderServlet extends BaseServlet {
 			request.getSession().setAttribute(SessionConstants.PARAM_BRAND, brand);
 			nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
 			break;
+			
 		case ServletConstants.ORDER_ENTRY:
 
 			String orderType = request.getParameter(PARAM_ORDER_TYPE);
@@ -72,10 +74,11 @@ public class OrderServlet extends BaseServlet {
 				session.setAttribute(SessionConstants.PARAM_ORDER, order);
 
 			} else {
-
 				nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
+				request.setAttribute(PARAM_ERROR_MESSAGE, "入力された項目に不備があります。");
 			}
 			break;
+			
 		case ServletConstants.ORDER_CONFIRM:
 
 			//* Debug
@@ -93,9 +96,11 @@ public class OrderServlet extends BaseServlet {
 				// TODO Orderが登録できなかった場合
 			}
 			break;
+			
 		case ServletConstants.ORDER_COMPLETE:
 			nextPage = ServletConstants.MY_PAGE;
 			break;
+			
 		default:
 			nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
 			break;
@@ -131,5 +136,12 @@ public class OrderServlet extends BaseServlet {
 		} catch (NumberFormatException e){
 			return false;
 		}
+	}
+	
+	public boolean checkAccountBalance(String accountNo, int orderPrice){
+		
+		User user = UserDao.getUser(accountNo);
+		
+		if(user.get)
 	}
 }
