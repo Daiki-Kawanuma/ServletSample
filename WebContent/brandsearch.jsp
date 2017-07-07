@@ -1,6 +1,14 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    %>
+
+    <%
+    String message = (String) request.getAttribute("message");
+	if (message == null) {
+		message = "";
+	}
+    %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,5 +33,6 @@
 	<input type="text" name="searchcondition">
 	<input type="submit" value="検索"style="font-size:20pt"/>
 	</form>
+	<p><font color="red"><%= message  %></p>
 </body>
 </html>

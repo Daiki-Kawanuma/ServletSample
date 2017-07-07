@@ -18,7 +18,7 @@ public class BrandInfoServlet extends BaseServlet {
 
 	// 色々定義しときます
 	private static final String PARAM_CURRENT_PAGE = "current_page";
-	private static final String PARAM_ERROR_MESSAGE = "error_message";
+	private static final String PARAM_ERROR_MESSAGE = "message";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -62,7 +62,7 @@ public class BrandInfoServlet extends BaseServlet {
 				request.setAttribute("brandList", brandList);
 			} else {
 				nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
-				request.setAttribute(PARAM_ERROR_MESSAGE, "入力に不備があります。銘柄コードは半角数字4桁でご入力ください。");
+				request.setAttribute("message", "入力に不備があります。銘柄コードは半角数字4桁でご入力ください。");
 			}
 			break;
 

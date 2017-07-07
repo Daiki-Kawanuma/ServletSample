@@ -13,7 +13,7 @@
 
 <title>銘柄検索結果｜TS長谷川証券</title>
 <link rel="stylesheet" href="Header.css" type="text/html">
-.tablebrandlist td {
+.tablebrandlist {
 	border-style: solid;
 	border-width: 1px;
 	border-color: black;
@@ -22,6 +22,10 @@
 .tablebrandlist th {
   background-color: #999999;
 }
+.tablebrandlist td {
+width: 700px;
+height: 70px;
+	}
 </style>
 </head>
 <body>
@@ -70,10 +74,10 @@
 			<td align="right"><%=brand.getLowPrice()%></td>
 			<td  align="center"><form action="search" method="POST">
 					<input type="hidden" name="current_page" value="brandlist">
-					<button type="submit" name="detail"
-						value="<%=brand.getBrandCode()%>">詳細閲覧</button><br>
+					<br><button type="submit" name="detail"
+						value="<%=brand.getBrandCode()%>" style="width:100px;height:30px">詳細閲覧</button><br><br>
 					<button type="submit" name="order"
-						value="<%=brand.getBrandCode()%>">買い注文</button>
+						value="<%=brand.getBrandCode()%>" style="width:100px;height:30px">買い注文</button><br>
 				</form></td>
 			<%
 				}
