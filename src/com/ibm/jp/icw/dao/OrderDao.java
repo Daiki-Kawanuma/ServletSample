@@ -15,7 +15,7 @@ import com.ibm.jp.icw.model.User;
 
 public class OrderDao extends BaseDao {
 
-	public static final String COLUMN_RECEPTION_NUMBER = "COLUMN_RECEPTION_NO";
+	public static final String COLUMN_RECEPTION_NUMBER = "RECEPTION_NO";
 	public static final String COLUMN_TRADING_TYPE = "TRADING_TYPE";
 	public static final String COLUMN_ORDER_TYPE = "ORDER_TYPE";
 	public static final String COLUMN_ORDER_CONDITION = "ORDER_CONDITION";
@@ -103,7 +103,7 @@ public class OrderDao extends BaseDao {
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
-			ResultSet maxResult = statement.executeQuery("SELECT MAX(reception_no) AS max_no FROM order");
+			ResultSet maxResult = statement.executeQuery("SELECT MAX(reception_no) AS " + COLUMN_RECEPTION_NUMBER + " FROM order");
 			int maxReceptionNo = 1;
 			if (maxResult.next()) {
 				maxReceptionNo = maxResult.getInt(COLUMN_RECEPTION_NUMBER) + 1;

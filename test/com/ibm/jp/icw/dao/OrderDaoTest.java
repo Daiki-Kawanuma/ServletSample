@@ -35,34 +35,30 @@ public class OrderDaoTest {
 	}
 
 	@Test
-	public void 口座番号0000000000000000を入力するとnullが返される() {
+	public void 口座番号0000000000000000を入力するとsize0が返される() {
 		accountNumber = "0000000000000000";
 		ArrayList<Order> list = OrderDao.getOrderList(accountNumber);
 		assertThat(list.size(), is(0));
 	}
 
 	@Test
-	public void 口座番号9999999999999を入力するとnullが返される() {
+	public void 口座番号9999999999999を入力するとsize0が返される() {
 		accountNumber = "99999999999999999";
 		ArrayList<Order> list = OrderDao.getOrderList(accountNumber);
 		assertThat(list.size(), is(0));
 	}
 
 	@Test
-	public void 口座番号を空欄にするとnullが返される() {
+	public void 口座番号を空欄にするとsize0が返される() {
 		accountNumber = "";
 		ArrayList<Order> list = OrderDao.getOrderList(accountNumber);
 		assertThat(list.size(), is(0));
 	}
 
 	//川沼がやれ
+	// 登録の話
 	@Test
-	public void () {
-
-		accountNumber = "1000000000000000";
-		brandCode = "1000";
-		Order order = OrderDao.registOrder(order);
-		assertThat(order.size(), is(0));
+	public void 注文を登録する() {
 	}
 }
 

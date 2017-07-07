@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import com.ibm.jp.icw.constant.DatabaseConstants;
 import com.ibm.jp.icw.model.Brand;
+import com.ibm.jp.icw.util.DateUtil;
 
 public class BrandDao extends BaseDao{
 	// TODO 不足しているカラムを足す
@@ -31,7 +32,11 @@ public class BrandDao extends BaseDao{
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
-			// TODO クエリを書く
+			String todayMinTime = DateUtil.getTodayMinTime();
+			String todayMaxTime = DateUtil.getTodayMaxTime();
+			String yesterdayMinTime = DateUtil.getYestedayMinTime();
+			String yesterdayMaxTime = DateUtil.getYesterdayMaxTime();
+
 			ResultSet resultSet = statement.executeQuery(
 					String.format("SELECT * FROM brand WHERE brand_code = '%s'", brandCode));
 
