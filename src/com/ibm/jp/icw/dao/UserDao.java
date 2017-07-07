@@ -14,6 +14,9 @@ public class UserDao extends BaseDao {
 	public static final String COLUMN_ACCOUNT_NUMBER = "ACCOUNT_NO";
 	public static final String COLUMN_USER_NAME = "USER_NAME";
 	public static final String COLUMN_LOGIN_PASS = "LOGIN_PASS";
+	public static final String COLUMN_BIRTH_DAY = "BIRTH_DAY";
+	public static final String COLUMN_MAIL = "MAIL";
+	public static final String COLUMN_ACCOUNT_BALANCE = "ACCOUNT_BALANCE";
 	public static final String COLUMN_CC_NUMBER = "CC_NUMBER";
 	public static final String COLUMN_CC_NAME = "CC_NAME";
 	public static final String COLUMN_CC_SEC = "CC_SEC";

@@ -7,6 +7,9 @@ public class User {
 	private String accountNumber;
 	private String name;
 	private String password;
+	private String mail;
+	private String birthday;
+	private int accountBalance;
 	private String creditCardNumber;
 	private String creditCardName;
 	private String creditCardSecurityCode;
