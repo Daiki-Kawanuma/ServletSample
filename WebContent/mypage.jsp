@@ -19,27 +19,27 @@
 	<header id="hasegawa"> <nav>
 	<ul>
 		<h1>長谷川証券<br>トレーディングシステム</h1>
-		<p style="position:absolute;top:15px;left:1230px;color:white;font-size:120%"><%=user.getName()%>　さん</p>
-		<input style="position:absolute;top:60px;left:1220px;width:150px;height:50px;font-size:5.0em" type="button" onClick="location.href='logout'" value="ログアウト">
+		<p style="position:absolute;top:15px;left:1255px;color:white;font-size:120%"><%=user.getName()%>　さん</p>
+		<input style="position:absolute;top:60px;left:1220px;width:200px;height:26px;font-size:1.0em" type="button" onClick="location.href='logout'" value="ログアウト">
 		<br>
-		<input style="position:absolute;top:90px;left:1220px;width:150px;height:50px;font-size:5.0em" type="button" onClick="location.href='mypage.jsp'" value="マイページ">
+		<input style="position:absolute;top:90px;left:1220px;width:200px;height:26px;font-size:1.0em" type="button" onClick="location.href='mypage.jsp'" value="マイページ">
 
 	</ul>
 	</nav> </header>
 	<h2>マイページ</h2>
 	<br>
-	<p>
+	<p class="mypageNoHito">
 		ようこそ
 		<%=user.getName()%>
 		さん
 	</p>
 	<br>
 
-	<input type="button" onClick="location.href='brandsearch.jsp'"
+	<input class="mypageKensaku" type="button" onClick="location.href='brandsearch.jsp'"
 		value="銘柄を検索/買い注文する">
 	<br>
 	<br>
-	<input type="button" onClick="location.href='orderedinfo'"
+	<input class="mypageKakunin" type="button" onClick="location.href='orderedinfo'"
 		value="注文状況を確認する">
 
 </body>

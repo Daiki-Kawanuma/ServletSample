@@ -1,4 +1,32 @@
 @CHARSET "UTF-8";
-h1{
-	
+h2{
+	position:absolute;
+	top:150px;
+	color:black;
+	font-size:200%
+}
+
+
+.mypageNoHito{
+	color:black;
+	left:50px;
+	position:absolute;
+	top:200px;
+	font-size:200%
+}
+
+.mypageKensaku{
+	position:absolute;
+	top:350px;
+	left:500px;
+	color:white;
+	font-size:120%
+}
+
+.mypageKakunin{
+	position:absolute;
+	top:450px;
+	text-align:center;
+	color:white;
+	font-size:120%
 }
