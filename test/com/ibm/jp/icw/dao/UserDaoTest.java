@@ -10,7 +10,7 @@ import org.junit.Test;
 import com.ibm.jp.icw.dao.util.UtilDAO;
 import com.ibm.jp.icw.dto.UserDTO;
 
-public class UserDAOTest {
+public class UserDaoTest {
 
 	UtilDAO utilDao = new UtilDAO();
 	String nonRegUserId = "nonRegUserId";
