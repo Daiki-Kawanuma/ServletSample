@@ -111,7 +111,7 @@ public class OrderServlet extends BaseServlet {
 	 * @param orderUnitPrice
 	 * @return
 	 */
-	private boolean validateInputs(String orderType, String orderCondition,
+	public boolean validateInputs(String orderType, String orderCondition,
 			String orderAmount, String orderUnitPrice){
 
 		if(orderType == null || orderCondition == null
