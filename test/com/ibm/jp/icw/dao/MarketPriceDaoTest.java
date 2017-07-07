@@ -28,28 +28,28 @@ public class MarketPriceDaoTest {
 	public void 銘柄コードに1000を入力すると最新の時価インスタンスが返される() {
 		brandCode = "1000";
 		MarketPrice price = MarketPriceDao.getMarketPrice(brandCode);
-		assertNotNull(0);
+		assertNotNull(price);
     }
 
 	@Test
 	public void 銘柄コードに0000を入力するとnullが返される() {
 		brandCode = "0000";
 		MarketPrice price = MarketPriceDao.getMarketPrice(brandCode);
-		assertNull(0);
+		assertNull(price);
     }
 
 	@Test
 	public void 銘柄コードに99999を入力するとnullが返される() {
 		brandCode = "99999";
 		MarketPrice price = MarketPriceDao.getMarketPrice(brandCode);
-		assertNull(0);
+		assertNull(price);
     }
 
 	@Test
 	public void 銘柄コードに空文字を入力するとnullが返される() {
 		brandCode = "";
 		MarketPrice price = MarketPriceDao.getMarketPrice(brandCode);
-		assertNull(0);
+		assertNull(price);
 	}
 }
 
