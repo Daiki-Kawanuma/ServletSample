@@ -112,7 +112,7 @@ public class BrandInfoServlet extends BaseServlet {
 		request.getRequestDispatcher("/" + nextPage).forward(request, response);
 	}
 
-	private boolean validateInputs(String searchType, String searchCondition) {
+	public boolean validateInputs(String searchType, String searchCondition) {
 
 		System.out.println("Type: " + searchType);
 		System.out.println("Condition: " + searchCondition);

@@ -8,20 +8,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>銘柄検索結果｜TS長谷川証券</title>
-<link rel="stylesheet" href="Header.css" type="text/css">
-<style type="text/css">
-table, td {
+<link rel="stylesheet" href="Header.css" type="text/html">
+.tablebrandlist td {
 	border-style: solid;
 	border-width: 1px;
 	border-color: black;
+	}
+
+.tablebrandlist th {
+  background-color: #999999;
 }
 </style>
 </head>
 <body>
-	<h1>銘柄を検索</h1>
+	<h2>銘柄を検索</h2>
 	<form action="search" method="POST">
 		<!-- 	検索条件を入力してください：<br><br> -->
 		<!-- 	<select name="searchtype" style="font-size:72pt"> -->
@@ -38,8 +42,8 @@ table, td {
 	%>
 
 	<!-- <h1>検索結果一覧</h1> -->
-	<table border=1>
-		<tr>
+	<table class="tablebrandlist" border=1>
+		<tr style="color:#FFFFFF">
 			<th>銘柄コード</th>
 			<th>銘柄名</th>
 			<th>市場</th>
@@ -55,19 +59,19 @@ table, td {
 			for (Brand brand : list) {
 		%>
 		<tr>
-			<td><%=brand.getBrandCode()%></td>
+			<td align="center"><%=brand.getBrandCode()%></td>
 			<td><%=brand.getBrandName()%></td>
 			<td><%=brand.getMarket()%></td>
 			<td><%=brand.getIndustry()%></td>
-			<td><%=brand.getTradingUnit()%></td>
-			<td><%=brand.getMarketPrice()%></td>
-			<td><%=brand.getOpeningPrice()%></td>
-			<td><%=brand.getHighPrice()%></td>
-			<td><%=brand.getLowPrice()%></td>
-			<td><form action="search" method="POST">
+			<td align="center"><%=brand.getTradingUnit()%></td>
+			<td align="right"><%=brand.getMarketPrice()%></td>
+			<td align="right"><%=brand.getOpeningPrice()%></td>
+			<td align="right"><%=brand.getHighPrice()%></td>
+			<td align="right"><%=brand.getLowPrice()%></td>
+			<td  align="center"><form action="search" method="POST">
 					<input type="hidden" name="current_page" value="brandlist">
 					<button type="submit" name="detail"
-						value="<%=brand.getBrandCode()%>">詳細閲覧</button>
+						value="<%=brand.getBrandCode()%>">詳細閲覧</button><br>
 					<button type="submit" name="order"
 						value="<%=brand.getBrandCode()%>">買い注文</button>
 				</form></td>
