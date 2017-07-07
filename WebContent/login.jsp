@@ -29,14 +29,12 @@
 				</p>
 				</font>
 				<tr>
-					<th>口座番号</th>
-					<td><input type="text" name="account_number"
-						size="24"></td>
+					<th><input type="text" name="account_number" placeholder=口座番号を入力してください。
+						size="24"></th>
 				</tr>
 				<tr>
-					<th>ログインパスワード</th>
-					<td><input type="password" name="login_pass"
-						size="24"></td>
+					<th><input type="password" name="login_pass" placeholder=パスワードを入力してください。
+						size="24"></th>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="ログイン"></td>
