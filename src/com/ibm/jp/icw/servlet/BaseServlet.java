@@ -1,19 +1,18 @@
 package com.ibm.jp.icw.servlet;
 
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
 
-public abstract class BaseServlet extends HttpServlet {
+public abstract class BaseServlet extends HttpServlet implements HttpSessionBindingListener {
 
-	public void doLogout(HttpServletRequest request, HttpServletResponse response){
+	/** セッション開始時の処理 **/
+	public void valueBound(HttpSessionBindingEvent event) {
+		System.out.println("valueBound");
+	}
 
-		try{
-			request.getSession().invalidate();
-			response.sendRedirect("login.jsp");
-		} catch(Exception e){
-			System.err.println("エラー：BaseServlet#ログアウト失敗");
-			e.printStackTrace();
-		}
+	/** セッション終了時の処理 **/
+	public void valueUnbound(HttpSessionBindingEvent event) {
+
 	}
 }

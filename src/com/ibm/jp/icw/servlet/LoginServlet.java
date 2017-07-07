@@ -40,12 +40,24 @@ public class LoginServlet extends HttpServlet {
 		User user = UserDao.getUser(accountNumber);
 		//*/
 
-		if (user.getPassword().equals(loginPass)){
+		if (checkPass(loginPass, user.getPassword())){
 			session.setAttribute(SessionConstants.PARAM_USER, user);
 			response.sendRedirect("mypage.jsp");
 		} else {
 			request.setAttribute("message", "エラーメッセージ:正しいアカウントナンバー・ログインパスワードを入力してください。");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
+		}
+	}
+
+	public boolean checkPass(String input, String loginPass){
+
+		if(input == null || loginPass == null)
+			return false;
+
+		if(loginPass.equals(input)){
+			return true;
+		} else {
+			return false;
 		}
 	}
 }
