@@ -17,13 +17,13 @@
 <body>
 <header id="hasegawa"> <nav>
 	<ul>
-	<h1>長谷川証券トレーディングシステム</h1>
+	<h1>長谷川証券<br>トレーディングシステム</h1>
 </nav> </header>
-			<form method="POST" action="login">
-				<h2>ログイン画面</h2>
-				<hr>
 <div align="center">
 		<table border="0">
+		<form-wrapper>
+			<form method="POST" action="login">
+				<h2>ログイン画面</h2>
 				<p>
 					<font color="red"><%=message%>
 				</p>
@@ -39,6 +39,7 @@
 				<tr>
 					<td colspan="2"><input type="submit" value="ログイン"></td>
 				</tr>
+				</form-wrapper>
 			</form>
 		</table>
 
