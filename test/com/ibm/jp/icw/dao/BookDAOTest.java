@@ -1,20 +1,7 @@
 package com.ibm.jp.icw.dao;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.ibm.jp.icw.dao.util.UtilDAO;
-import com.ibm.jp.icw.dto.BookDTO;
-
-
 public class BookDAOTest {
-
+/*
 	UtilDAO utilDao = new UtilDAO();
 	String testUserid = "junituser";
 	String testBookid = "DUMMY";
@@ -85,5 +72,5 @@ public class BookDAOTest {
 
 		utilDao.executeUpdate("alter table BOOK_LIST rename column BOOKNAME to BOOK_NAME");
 	}
-
+*/
 }
