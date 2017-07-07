@@ -1,4 +1,12 @@
 @CHARSET "UTF-8";
 h1{
-	color:blue;
+	color:white;
+	font-size:16pix;
+	font:
+}
+h2{
+	font-size:12pix;
+}
+header{
+	background-color:#009999;
 }
