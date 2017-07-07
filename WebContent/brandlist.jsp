@@ -21,7 +21,7 @@ table, td {
 </style>
 </head>
 <body>
-	<h1>銘柄を検索</h1>
+	<h2>銘柄を検索</h2>
 	<form action="search" method="POST">
 		<!-- 	検索条件を入力してください：<br><br> -->
 		<!-- 	<select name="searchtype" style="font-size:72pt"> -->

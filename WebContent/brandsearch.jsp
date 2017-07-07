@@ -17,7 +17,7 @@
 </style>
 </head>
 <body>
-<h1>銘柄を検索</h1>
+<h2>銘柄を検索</h2>
 <form action="search" method="POST">
 	<input type="hidden" name="current_page" value="brandsearch">
 	<input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>

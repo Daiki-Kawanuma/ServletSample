@@ -21,6 +21,8 @@ table, td {
 </style>
 </head>
 <body>
+<h2><%=brand.getBrandName()%>詳細情報</h2>
+
 	<br>
 	<br>
 	<table class="table2" border=1>
