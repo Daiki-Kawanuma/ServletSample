@@ -33,6 +33,7 @@ height: 70px;
 	<form action="search" method="POST">
 		<!-- 	検索条件を入力してください：<br><br> -->
 		<!-- 	<select name="searchtype" style="font-size:72pt"> -->
+		<input type="hidden" name="current_page" value="brandlist">
 		<input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
 		<br> <input type="text" name="searchcondition"> <input
