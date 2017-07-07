@@ -18,11 +18,10 @@
 	<header id="hasegawa"> <nav>
 	<ul>
 		<h1>長谷川証券トレーディングシステム</h1>
-		<p><%=user.getName()%>　さん</p>
-		<input type="button" onClick="location.href='logout.jsp'" value="ログアウト">
+		<p style="position:absolute;top:10px;left:900px;"><%=user.getName()%>　さん</p>
+		<input style="position:absolute;top:50px;left:950px;" type="button" onClick="location.href='logout.jsp'" value="ログアウト">
 		<br>
-		<input type="button" onClick="location.href='mypage.jsp'" value="マイページ">
-		<hr>
+		<input style="position:absolute;top:70px;left:950px;" type="button" onClick="location.href='mypage.jsp'" value="マイページ">
 	</ul>
 	</nav> </header>
 	<h2>マイページ</h2>
