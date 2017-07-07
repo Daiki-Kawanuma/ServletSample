@@ -15,12 +15,15 @@
 <link rel="stylesheet" href="Header.css" type="text/css">
 </head>
 <body>
+<header id="hasegawa"> <nav>
+	<ul>
 	<h1>長谷川証券トレーディングシステム</h1>
-	<hr>
-	<div align="center">
-		<table border="0">
+</nav> </header>
 			<form method="POST" action="login">
 				<h2>ログイン画面</h2>
+				<hr>
+<div align="center">
+		<table border="0">
 				<p>
 					<font color="red"><%=message%>
 				</p>
