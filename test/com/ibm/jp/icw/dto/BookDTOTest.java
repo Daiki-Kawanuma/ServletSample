@@ -1,12 +1,7 @@
 package com.ibm.jp.icw.dto;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 public class BookDTOTest {
-
+/*
 	@Test
 	public void nameにsetした値がgetで取得できる() {
 		String stringToSet = "English Name";
@@ -42,5 +37,5 @@ public class BookDTOTest {
 
 		assertThat(actual, is(expected));
 	}
-
+*/
 }

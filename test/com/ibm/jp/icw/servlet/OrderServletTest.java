@@ -7,17 +7,17 @@ import org.junit.Test;
 
 public class OrderServletTest {
 
-	@Test
-	public void testValidateInputs() {
-		// 事前準備
-		OrderServlet servlet = new OrderServlet();
-		String orderType;
-		String orderCondition;
-		String orderAmount;
-		String orderUnitPrice;
-		boolean result;
+	OrderServlet servlet = new OrderServlet();
+	String orderType;
+	String orderCondition;
+	String orderAmount;
+	String orderUnitPrice;
+	boolean result;
 
-		// ユースケース１のパターン
+	@Test
+	public void 成行ー無条件ー100ー100でTRUEを返す() {
+
+		// ユーザの入力
 		orderType = "成行";
 		orderCondition = "無条件";
 		orderAmount = "100";
@@ -26,10 +26,14 @@ public class OrderServletTest {
 		result = servlet.validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice);
 		// 検証
 		assertThat(result, is(true));
+	}
+
+	@Test
+	public void 成行ー寄付ー100ー100でTRUEを返す() {
 
 		// ユースケース２のパターン
 		orderType = "成行";
-		orderCondition = "無条件";
+		orderCondition = "寄付";
 		orderAmount = "100";
 		orderUnitPrice = "100";
 		// 実行
