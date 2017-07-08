@@ -22,6 +22,24 @@
 		border-width: 1px;
 		border-color: black;
 	}
+
+	h2 {
+  position: relative;
+  padding: 0.6em;
+  background: #e0edff;
+}
+
+h2:after {
+position: absolute;
+content: '';
+top: 100%;
+left: 30px;
+border: 15px solid transparent;
+border-top: 15px solid #e0edff;
+width: 0;
+height: 0;
+}
+
 </style>
 </head>
 <body>

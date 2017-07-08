@@ -5,6 +5,10 @@
 <%
     request.setCharacterEncoding("UTF-8");
     Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
+	String message = (String)request.getAttribute("message");
+	if(message==null){
+		message="";
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -41,5 +45,6 @@ table, td {
 		<input type="text" name="order_unit_price"><br>
 		<input type="submit" value="注文確認へ進む" style="font-size: 20pt" />
 	</form>
+	<p><font color="red"><%=message %></p>
 </body>
 </html>

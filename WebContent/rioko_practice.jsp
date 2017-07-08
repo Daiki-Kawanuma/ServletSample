@@ -1,55 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>注文状況一覧</title>
+<link rel="stylesheet" href="Header.css" type="text/css">
 </head>
 <body>
-<style type="text/css">
-.table4 {
-  border-collapse: collapse;
+	<h1>注文状況一覧</h1>
+	<form method="POST" action="search">
 
-}
-.table4 th {
+<style>
+.tablechumonjokyo th {
   background-color: #999999;
   width: 700px;
 　height: 200px;
 }
 </style>
-<table class="table4" border=1>
- <tr style="color:#FFFFFF">
-			<th>銘柄コード</th>
-			<th>銘柄名</th>
-			<th>市場</th>
-			<th>業種</th>
-			<th>売買単位</th>
-			<th>株価</th>
-			<th>始値</th>
-			<th>高値</th>
-			<th>安値</th>
-			<th>アクション</th>
-		</tr>
 
-		<tr>
-			<td>7150</td>
-			<td>MS&ADインシュアランスグループホールディングス</td>
-			<td>東証一部</td>
-			<td>保険業</td>
-			<td>100</td>
-			<td>3896</td>
-			<td>3877</td>
-			<td>3899</td>
-			<td>3781</td>
-			<td><form action="search" method="POST">
-					<input type="hidden" name="current_page" value="brandlist">
-					<button type="submit" name="detail"
-						value="branddetail">詳細閲覧</button>
-					<button type="submit" name="order"
-						value="purchase">買い注文</button>
-				</form></td>
+		<table class = chumonjokyo border=1>
+<%-- 			<%
+				for (Order o : orderList) {
+			%> --%>
+			<tr style="color:#FFFFFF">
+				<th>受付番号</th>
+				<th>銘柄名</th>
+				<th>銘柄コード</th>
+				<th>現在値</th>
+				<th>注文状況</th>
+				<th>売買区分</th>
+				<th>注文の種類</th>
+				<th>執行条件</th>
+				<th>注文日時</th>
+				<th>注文数</th>
+				<th>注文単価</th>
+				<th>注文合計金額</th>
+				<th>成約日時</th>
+				<th>成約数</th>
+				<th>成約単価</th>
+				<th>成約合計金額</th>
+			</tr>
+		<%-- 	<tr>
+				<td><%=o.getReceptionNumber()%></td>
+				<td><%=o.getBrand().getBrandStatus() + o.getBrand().getBrandName()%></td>
+				<td><%=o.getBrand().getBrandCode()%></td>
+				<td><%=o.getBrand().getMarketPrice()%></td>
+				<td><%=o.getOrderStatus()%></td>
+				<td><%=o.getTradingType()%></td>
+				<td><%=o.getOrderType()%></td>
+				<td><%=o.getOrderConditions()%></td>
+				<td><%=o.getOrderDate()%></td>
+				<td><%=o.getOrderAmount()%></td>
+				<td><%=o.getOrderUnitPrice()%></td>
+				<td><%=o.getOrderAmount() * o.getOrderUnitPrice()%></td>
+				<td><%=o.getClosingDate()%></td>
+				<td><%=o.getClosingAmount()%></td>
+				<td><%=o.getClosingUnitPrice()%></td>
+				<td><%=o.getClosingAmount() * o.getClosingUnitPrice()%></td>
+			</tr> --%>
+	<%-- 		<%
+				}
+			%> --%>
+		</table>
+		<input type="submit" value="銘柄詳細情報を表示する">
+	</form>
+	<input type="button" onClick="location.href='mypage.jsp'" value="戻る">
 
-</table>
 </body>
 </html>

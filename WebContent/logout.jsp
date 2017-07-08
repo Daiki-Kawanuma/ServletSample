@@ -12,9 +12,9 @@
 	<hr>
 	<div align="center">
 		<h2>
-			ログアウトができました。
+			ログアウトしました。
 			<h2>
-				<a href="login">ログイン画面に戻る。</a>
+				<a href="login">ログイン画面に戻る</a>
 	</div>
 </body>
 </html>
