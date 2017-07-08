@@ -4,15 +4,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="com.ibm.jp.icw.constant.SessionConstants"%>
+<%@ page import="com.ibm.jp.icw.model.User"%>
+<%
+	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
+	String message = (String) request.getAttribute("message");
+	if (message == null) {
+		message = "";
+	}
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>銘柄検索一覧｜TS長谷川証券</title>
+<link rel="stylesheet" href="Header.css" type="text/css">
 <style>
-<
-meta http-equiv ="Content-Type" content ="text/html; charset =UTF-8"> <title>銘柄検索結果｜TS長谷川証券
-	</title> <link rel ="stylesheet" href ="Header.css " type ="text/html">.tablebrandlist
-	{
+.tablebrandlist {
 	border-style: solid;
 	border-width: 1px;
 	border-color: black;
@@ -29,6 +38,25 @@ meta http-equiv ="Content-Type" content ="text/html; charset =UTF-8"> <title>銘
 </style>
 </head>
 <body>
+	<!-- ヘッダー部分 -->
+	<div style="overflow: auto; background-color: #009999">
+		<div style="float: left;">
+			<h1>
+				長谷川証券<br>トレーディングシステム
+			</h1>
+		</div>
+		<div style="float: right;">
+			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
+			</p>
+			<input class="square_btn"
+				style="width: 125px; margin: 8px 10px 0px 0px; font-size: 100%"
+				type="button" onClick="location.href='mypage.jsp'" value="マイページ">
+			<br> <input class="square_btn"
+				style="width: 125px; margin: 8px 10px 10px 0px; font-size: 100%;"
+				type="button" onClick="location.href='logout'" value="ログアウト">
+		</div>
+	</div>
+	<!-- ヘッダー部分 -->
 	<h2>銘柄を検索</h2>
 	<form action="search" method="POST">
 		<!-- 	検索条件を入力してください：<br><br> -->
@@ -36,7 +64,7 @@ meta http-equiv ="Content-Type" content ="text/html; charset =UTF-8"> <title>銘
 		<input type="hidden" name="current_page" value="brandlist"> <input
 			type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
-		<br> <input type="text" name="searchcondition"> <input
+		<br> <input type="text" name="searchcondition"> <input class="square_btn"
 			type="submit" value="検索" style="font-size: 20pt" />
 	</form>
 	<br>
@@ -69,16 +97,12 @@ meta http-equiv ="Content-Type" content ="text/html; charset =UTF-8"> <title>銘
 			<td align="right"><%=brand.getMarketPrice()%></td>
 			<td align="center"><form action="search" method="POST">
 					<input type="hidden" name="current_page" value="brandlist">
-					<br>
-					<button type="submit" name="detail"
+					<button class="square_btn" type="submit" name="detail"
 						value="<%=brand.getBrandCode()%>"
-						style="width: 100px; height: 30px">詳細閲覧</button>
-					<br>
-					<br>
-					<button type="submit" name="order"
+						style="width: 100%; height: 100%; font-size: 100%">詳細閲覧</button>
+					<button class="square_btn" type="submit" name="order"
 						value="<%=brand.getBrandCode()%>"
-						style="width: 100px; height: 30px">買い注文</button>
-					<br>
+						style="width: 100%; height: 100%; font-size: 100%">買い注文</button>
 				</form></td>
 			<%
 				}

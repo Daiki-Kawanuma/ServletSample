@@ -142,9 +142,6 @@ public class BrandInfoServlet extends BaseServlet {
 
 	public boolean validateInputs(String searchType, String searchCondition) {
 
-		System.out.println("Type: " + searchType);
-		System.out.println("Condition: " + searchCondition);
-
 		if (searchType == null || searchCondition == null)
 			return false;
 
