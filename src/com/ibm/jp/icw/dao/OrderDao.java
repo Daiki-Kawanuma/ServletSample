@@ -105,17 +105,27 @@ public class OrderDao extends BaseDao {
 			statement = connection.createStatement();
 
 			ResultSet maxResult = statement.executeQuery("SELECT MAX(reception_no) AS " + COLUMN_RECEPTION_NUMBER + " FROM order");
-			int maxReceptionNo = 1;
+			long maxReceptionNo = 1;
 			if (maxResult.next()) {
-				maxReceptionNo = maxResult.getInt(COLUMN_RECEPTION_NUMBER) + 1;
+				maxReceptionNo = maxResult.getLong(COLUMN_RECEPTION_NUMBER) + 1;
 			}
 
-			statement.executeQuery(String.format(
-					"INSERT INTO order VALUES (%d,'%s', '%s', '%s', '%s', '%s', %d, null, %d, to_date('%S','yyyy/mm/dd'), null, '%s');",
-					maxReceptionNo, order.getBrand().getBrandCode(), order.getUser().getAccountNumber(),
-					order.getTradingType(), order.getOrderType().toString(), order.getOrderConditions().toString(),
-					order.getOrderAmount(), order.getOrderUnitPrice(),
-					new SimpleDateFormat("yyyy/MM/dd").format(order.getOrderDate()), "注文中"));
+			String query = String.format(
+					"INSERT INTO order VALUES (%d,'%s', '%s', '%s', '%s', '%s', %d, null, %d, null, to_date('%S','yyyy/mm/dd'), null, '%s');",
+					maxReceptionNo,
+					order.getBrand().getBrandCode(),
+					order.getUser().getAccountNumber(),
+					"B",
+					order.getOrderType().toString(),
+					order.getOrderConditions().toString(),
+					order.getOrderAmount(),
+					(int)order.getOrderUnitPrice(),
+					new SimpleDateFormat("yyyy/MM/dd").format(order.getOrderDate()),
+					"注文中");
+
+			System.err.println(query);
+
+			statement.executeUpdate(query);
 			order.setReceptionNumber(maxReceptionNo);
 			return order;
 

@@ -2,7 +2,6 @@ package com.ibm.jp.icw.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ibm.jp.icw.constant.SessionConstants;
-import com.ibm.jp.icw.model.Brand;
+import com.ibm.jp.icw.dao.OrderDao;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
 
@@ -31,7 +30,7 @@ public class OrderedInfoServlet extends BaseServlet {
 
 		User user = (User) request.getSession().getAttribute(SessionConstants.PARAM_USER);
 
-		//* Debug
+		/* Debug
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
 				0, 0, 0, 0, 0, 0, 0, 0, 0);

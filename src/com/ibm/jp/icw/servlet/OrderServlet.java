@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
+import com.ibm.jp.icw.dao.OrderDao;
 import com.ibm.jp.icw.dao.UserDao;
 import com.ibm.jp.icw.model.Brand;
 import com.ibm.jp.icw.model.Order;
@@ -81,7 +82,7 @@ public class OrderServlet extends BaseServlet {
 
 		case ServletConstants.ORDER_CONFIRM:
 
-			//* Debug
+			/* Debug
 			order.setReceptionNumber(123456789);
 			Order registeredOrder = order;
 			/*/

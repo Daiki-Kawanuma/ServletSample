@@ -21,7 +21,7 @@ public class BrandDao extends BaseDao{
 	public static final String COLUMN_BRAND_STATUS = "BRAND_STATUS";
 	public static final String COLUMN_MARKET_PRICE = "MARKET_PRICE";
 	public static final String COLUMN_OPENING_PRICE = "OPEN_PRICE";
-	public static final String COLUMN_CLOSE_PRICE = "CLOSE_PRICE";
+	public static final String COLUMN_CLOSE_PRICE = "END_PRICE";
 	public static final String COLUMN_HIGH_PRICE = "HIGH_PRICE";
 	public static final String COLUMN_LOW_PRICE = "LOW_PRICE";
 	public static final String COLUMN_OFFER_PRICE = "OFFER_PRICE";
@@ -41,9 +41,9 @@ public class BrandDao extends BaseDao{
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
-			String query = "WITH now_price AS (SELECT * FROM market_price WHERE brand_code = '" + brandCode
-					+ "' ORDER BY date DESC FETCH FIRST 1 ROWS ONLY) "
-					+ "SELECT brand.*, now_price.price FROM brand, now_price WHERE brand_code = '" + brandCode + "';";
+			String query = "WITH now_price AS (SELECT price FROM market_price WHERE brand_code = '" + brandCode
+					+ "' ORDER BY date_time DESC FETCH FIRST 1 ROWS ONLY) "
+					+ "SELECT brand.*, now_price.price FROM brand, now_price WHERE brand.brand_code = '" + brandCode + "';";
 
 			ResultSet resultSet = statement.executeQuery(query);
 
@@ -95,9 +95,9 @@ public class BrandDao extends BaseDao{
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
-			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date = '" + DateUtil.getNowTime() +"')"
+			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date_time = '" + DateUtil.getNowTime() +"') "
 					+ "SELECT brand.*, now_price.price FROM brand, now_price WHERE brand_name LIKE '" + brandName
-					+ "%' AND brand.brand_code = now_price.brand_code;";
+					+ "%' AND brand.brand_code = now_price.brand_code ORDER BY brand_code ASC;";
 
 			ResultSet resultSet = statement.executeQuery(query);
 
@@ -149,6 +149,7 @@ public class BrandDao extends BaseDao{
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
+			String todayDate = DateUtil.getTodayDate();
 			String todayMinTime = DateUtil.getTodayMinTime();
 			String todayMaxTime = DateUtil.getTodayMaxTime();
 			String yesterdayMaxTime = DateUtil.getYesterdayMaxTime();
@@ -156,14 +157,14 @@ public class BrandDao extends BaseDao{
 			String yearMaxTime = DateUtil.getYearMaxTime();
 
 			String query = "WITH brand_values AS (SELECT * FROM market_price WHERE brand_code = '"+ brandCode + "'), "
-					+ String.format("year_values AS (SELECT MAX(price) AS year_high, MIN(price) AS year_low FROM brand_values WHERE date > '%s' AND date < '%s'), ", yearMinTime, yearMaxTime)
-					+ String.format("today_values AS (SELECT MAX(price) AS high_price, MIN(price) AS low_price FROM brand_values WHERE date > '%s' AND date < '%s'), ", yearMinTime, yearMaxTime)
-					+ String.format("end_value AS (SELECT price AS end_price FROM brand_values WHERE brand_values.date = '%s'), ", yesterdayMaxTime)
-					+ String.format("open_value AS (SELECT price AS opne_price FROM brand_values WHERE brand_values.date = '%s'), ", todayMinTime)
-					+ String.format("offer_value AS (SELECT order_unit_price AS offer_price FROM order WHERE order_date > '%s' AND order_date < '%s' AND trading_type = 'S' GROUP BY order_unit_price ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY), ", todayMinTime, todayMaxTime)
-					+ String.format("bid_value AS (SELECT order_unit_price AS bid_price FROM order WHERE order_date > '%s' AND order_date < '%s' AND trading_type = 'B' GROUP BY order_unit_price ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY) ", todayMinTime, todayMaxTime)
-					+ String.format("WITH now_value AS (SELECT price AS market_price FROM market_price WHERE brand_code = '%s' ORDER BY date DESC FETCH FIRST 1 ROWS ONLY) ", brandCode)
-					+ "SELECT * FROM brand, year_values, today_values, end_value, open_value, offer_value, bid_value, now_value;";
+					+ String.format("year_values AS (SELECT MAX(price) AS year_high, MIN(price) AS year_low FROM brand_values WHERE date_time > '%s' AND date_time < '%s'), ", yearMinTime, yearMaxTime)
+					+ String.format("today_values AS (SELECT MAX(price) AS high_price, MIN(price) AS low_price FROM brand_values WHERE date_time >= '%s' AND date_time <= '%s'), ", todayMinTime, todayMaxTime)
+					+ String.format("end_value AS (SELECT price AS end_price FROM brand_values WHERE date_time = '%s'), ", yesterdayMaxTime)
+					+ String.format("open_value AS (SELECT price AS open_price FROM brand_values WHERE date_time = '%s'), ", todayMinTime)
+					+ String.format("offer_value AS (SELECT order_unit_price AS offer_price FROM order WHERE order_date = '%s' AND trading_type = 'S' GROUP BY order_unit_price ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY), ", todayDate)
+					+ String.format("bid_value AS (SELECT order_unit_price AS bid_price FROM order WHERE order_date = '%s' AND trading_type = 'B' GROUP BY order_unit_price ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY), ", todayDate)
+					+ String.format("now_value AS (SELECT price AS market_price FROM market_price WHERE brand_code = '%s' ORDER BY date_time DESC FETCH FIRST 1 ROWS ONLY) ", brandCode)
+					+ "SELECT * FROM brand, year_values, today_values, end_value, open_value, offer_value, bid_value, now_value WHERE brand_code = '" + brandCode + "';";
 
 			ResultSet resultSet = statement.executeQuery(query);
 

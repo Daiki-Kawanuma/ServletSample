@@ -1,7 +1,6 @@
 package com.ibm.jp.icw.servlet;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ibm.jp.icw.constant.SessionConstants;
+import com.ibm.jp.icw.dao.UserDao;
 import com.ibm.jp.icw.model.User;
 
 /**
@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		String accountNumber = request.getParameter("account_number");
 		String loginPass = request.getParameter("login_pass");
 
-		//*
+		/*
 		User user = new User("1234123412341234", "Kawanuma", "password", "customer@example.com", new Date(),
 				12345678, "1234123412341234", "DAIKI KAWANUM", "123", new Date());
 		/*/
