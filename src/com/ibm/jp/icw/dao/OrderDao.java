@@ -51,6 +51,8 @@ public class OrderDao extends BaseDao {
 
 				User user = new User(resultSet.getString(UserDao.COLUMN_ACCOUNT_NUMBER),
 						resultSet.getString(UserDao.COLUMN_USER_NAME), resultSet.getString(UserDao.COLUMN_LOGIN_PASS),
+						resultSet.getString(UserDao.COLUMN_MAIL), resultSet.getDate(UserDao.COLUMN_BIRTH_DAY),
+						resultSet.getInt(UserDao.COLUMN_ACCOUNT_BALANCE),
 						resultSet.getString(UserDao.COLUMN_CC_NAME), resultSet.getString(UserDao.COLUMN_CC_NUMBER),
 						resultSet.getString(UserDao.COLUMN_CC_SEC), resultSet.getDate(UserDao.COLUMN_CC_VALID));
 

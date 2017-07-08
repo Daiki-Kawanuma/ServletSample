@@ -34,8 +34,8 @@ public class LoginServlet extends HttpServlet {
 		String loginPass = request.getParameter("login_pass");
 
 		//*
-		User user = new User("1234123412341234", "Kawanuma", "password",
-				"1234123412341234", "DAIKI KAWANUM", "123", new Date());
+		User user = new User("1234123412341234", "Kawanuma", "password", "customer@example.com", new Date(),
+				12345678, "1234123412341234", "DAIKI KAWANUM", "123", new Date());
 		/*/
 		User user = UserDao.getUser(accountNumber);
 		//*/

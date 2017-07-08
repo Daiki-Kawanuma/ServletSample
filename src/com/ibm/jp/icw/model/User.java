@@ -8,19 +8,22 @@ public class User {
 	private String name;
 	private String password;
 	private String mail;
-	private String birthday;
+	private Date birthday;
 	private int accountBalance;
 	private String creditCardNumber;
 	private String creditCardName;
 	private String creditCardSecurityCode;
 	private Date creditCardValidatedDate;
 
-	public User(String accountNumber, String name, String password, String creditCardNumber, String creditCardName,
+	public User(String accountNumber, String name, String password, String mail, Date birthday, int accountBalance, String creditCardNumber, String creditCardName,
 			String creditCardSecurityCode, Date creditCardValidatedDate) {
 		super();
 		this.accountNumber = accountNumber;
 		this.name = name;
 		this.password = password;
+		this.mail = mail;
+		this.birthday = birthday;
+		this.accountBalance = accountBalance;
 		this.creditCardNumber = creditCardNumber;
 		this.creditCardName = creditCardName;
 		this.creditCardSecurityCode = creditCardSecurityCode;
@@ -37,6 +40,18 @@ public class User {
 
 	public String getPassword(){
 		return password;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public int getAccountBalance() {
+		return accountBalance;
 	}
 
 	public String getCreditCardNumber() {
