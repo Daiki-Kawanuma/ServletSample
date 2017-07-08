@@ -9,24 +9,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>銘柄詳細｜TS長谷川証券</title>
-<link rel="stylesheet" href="Header.css" type="text/css">
-<style type="text/css">
-table, td {
+<style>
+<
+meta http-equiv ="Content-Type" content ="text/html; charset =UTF-8"> <title>銘柄検索結果｜TS長谷川証券
+	</title> <link rel ="stylesheet" href ="Header.css " type ="text/html">.tablebrandlist
+	{
 	border-style: solid;
 	border-width: 1px;
 	border-color: black;
 }
+
+.tablebrandlist th {
+	background-color: #999999;
+}
+
+.tablebrandlist td {
+	width: 700px;
+	height: 70px;
+}
 </style>
 </head>
 <body>
-<h2><%=brand.getBrandName()%>詳細情報</h2>
+	<h2><%=brand.getBrandName()%>詳細情報
+	</h2>
 
 	<br>
 	<br>
-	<table class="table2" border=1>
-		<tr>
+	<table class="tablebrandlist" border=1>
+		<tr style="color: #FFFFFF">
 			<th>銘柄コード</th>
 			<th>銘柄名</th>
 			<th>市場</th>

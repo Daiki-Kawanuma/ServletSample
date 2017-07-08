@@ -10,6 +10,7 @@ public class Brand {
 	private String brandStatus;
 	private double marketPrice;
 	private double openingPrice;
+	private double closePrice;
 	private double highPrice;
 	private double lowPrice;
 	private double offerPrice;
@@ -18,7 +19,18 @@ public class Brand {
 	private double yearToDateLows;
 
 	public Brand(String brandCode, String brandName, String market, String industry, int tradingUnit, String brandStatus,
-			double marketPrice, double openingPrice, double highPrice, double lowPrice, double offerPrice, double bidPrice,
+			double marketPrice){
+		this.brandCode = brandCode;
+		this.brandName = brandName;
+		this.market = market;
+		this.industry = industry;
+		this.tradingUnit = tradingUnit;
+		this.brandStatus = brandStatus;
+		this.marketPrice = marketPrice;
+	}
+
+	public Brand(String brandCode, String brandName, String market, String industry, int tradingUnit, String brandStatus,
+			double marketPrice, double openingPrice, double closePrice, double highPrice, double lowPrice, double offerPrice, double bidPrice,
 			double yearToDateHighs, double yearToDateLows) {
 		super();
 		this.brandCode = brandCode;
@@ -29,6 +41,7 @@ public class Brand {
 		this.brandStatus = brandStatus;
 		this.marketPrice = marketPrice;
 		this.openingPrice = openingPrice;
+		this.closePrice = closePrice;
 		this.highPrice = highPrice;
 		this.lowPrice = lowPrice;
 		this.offerPrice = offerPrice;
@@ -67,6 +80,10 @@ public class Brand {
 
 	public double getOpeningPrice() {
 		return openingPrice;
+	}
+
+	public double getClosePrice() {
+		return closePrice;
 	}
 
 	public double getHighPrice() {

@@ -55,7 +55,7 @@ public class BrandInfoServlet extends BaseServlet {
 
 				if (searchType.equals("brandcode")) {
 					// * Debug
-					brandList.add(new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0));
+					brandList.add(new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0, 0));
 					/*
 					 * / brandList =
 					 * BrandDao.getBrandByBrandCode(searchCondition); //
@@ -88,7 +88,7 @@ public class BrandInfoServlet extends BaseServlet {
 
 					if (searchType.equals("brandcode")) {
 						// * Debug
-						brandList.add(new Brand("2520", "三菱", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0));
+						brandList.add(new Brand("2520", "三菱", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0, 0));
 						/*
 						 * / brandList = BrandDao.getBrandByBrandCode(searchCondition); //
 						 */
@@ -106,7 +106,7 @@ public class BrandInfoServlet extends BaseServlet {
 				nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
 
 				// * Debug
-				Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0);
+				Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0, 0);
 				/*
 				 * / Brand brand =
 				 * BrandDao.getBrandByBrandCode(brandCodeforDetail).get(0); //
@@ -118,7 +118,7 @@ public class BrandInfoServlet extends BaseServlet {
 				nextPage = ServletConstants.ORDERS;
 
 				// * Debug
-				Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0);
+				Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0, 0);
 				/*
 				 * / Brand brand =
 				 * BrandDao.getBrandByBrandCode(brandCodeforOrder).get(0); //

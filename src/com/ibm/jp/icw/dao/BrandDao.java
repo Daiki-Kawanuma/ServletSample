@@ -19,6 +19,15 @@ public class BrandDao extends BaseDao{
 	public static final String COLUMN_INDUSTRY = "INDUSTRY";
 	public static final String COLUMN_TRADING_UNIT = "TRADING_UNIT";
 	public static final String COLUMN_BRAND_STATUS = "BRAND_STATUS";
+	public static final String COLUMN_MARKET_PRICE = "MARKET_PRICE";
+	public static final String COLUMN_OPENING_PRICE = "OPEN_PRICE";
+	public static final String COLUMN_CLOSE_PRICE = "CLOSE_PRICE";
+	public static final String COLUMN_HIGH_PRICE = "HIGH_PRICE";
+	public static final String COLUMN_LOW_PRICE = "LOW_PRICE";
+	public static final String COLUMN_OFFER_PRICE = "OFFER_PRICE";
+	public static final String COLUMN_BID_PRICE = "BID_PRICE";
+	public static final String COLUMN_YEAR_HIGH = "YEAR_HIGH";
+	public static final String COLUMN_YEAR_LOW = "YEAR_LOW";
 
 	public static ArrayList<Brand> getBrandByBrandCode(String brandCode){
 
@@ -32,23 +41,21 @@ public class BrandDao extends BaseDao{
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
-			String todayMinTime = DateUtil.getTodayMinTime();
-			String todayMaxTime = DateUtil.getTodayMaxTime();
-			String yesterdayMinTime = DateUtil.getYestedayMinTime();
-			String yesterdayMaxTime = DateUtil.getYesterdayMaxTime();
+			String query = "WITH now_price AS (SELECT * FROM market_price WHERE brand_code = '" + brandCode
+					+ "' ORDER BY date DESC FETCH FIRST 1 ROWS ONLY) "
+					+ "SELECT brand.*, now_price.price FROM brand, now_price WHERE brand_code = '" + brandCode + "';";
 
-			ResultSet resultSet = statement.executeQuery(
-					String.format("SELECT * FROM brand WHERE brand_code = '%s'", brandCode));
+			ResultSet resultSet = statement.executeQuery(query);
 
 			if (resultSet.next()){
-				// TODO 数字を ResultSet から入れる
+
 				Brand brand = new Brand(resultSet.getString(COLUMN_BRAND_CODE),
 						resultSet.getString(COLUMN_BRAND_NAME),
 						resultSet.getString(COLUMN_MARKET),
 						resultSet.getString(COLUMN_INDUSTRY),
 						resultSet.getInt(COLUMN_TRADING_UNIT),
 						resultSet.getString(COLUMN_BRAND_STATUS),
-						0,0,0,0,0,0,0,0);
+						resultSet.getInt(MarketPriceDao.COLUMN_PRICE));
 
 				brandList.add(brand);
 			}
@@ -88,19 +95,22 @@ public class BrandDao extends BaseDao{
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
-			// TODO クエリを書く
-			ResultSet resultSet = statement.executeQuery(
-					String.format("SELECT * FROM brand WHERE brand_name = '%s'", brandName));
+			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date = '" + DateUtil.getNowTime() +"')"
+					+ "SELECT brand.*, now_price.price FROM brand, now_price WHERE brand_name LIKE '" + brandName
+					+ "%' AND brand.brand_code = now_price.brand_code;";
+
+			ResultSet resultSet = statement.executeQuery(query);
 
 			while (resultSet.next()){
-				// TODO 数字を ResultSet から入れる
+
 				Brand brand = new Brand(resultSet.getString(COLUMN_BRAND_CODE),
 						resultSet.getString(COLUMN_BRAND_NAME),
 						resultSet.getString(COLUMN_MARKET),
 						resultSet.getString(COLUMN_INDUSTRY),
 						resultSet.getInt(COLUMN_TRADING_UNIT),
 						resultSet.getString(COLUMN_BRAND_STATUS),
-						0,0,0,0,0,0,0,0);
+						resultSet.getInt(MarketPriceDao.COLUMN_PRICE));
+
 				brandList.add(brand);
 			}
 		} catch (SQLException e) {
@@ -125,5 +135,77 @@ public class BrandDao extends BaseDao{
 			}
 		}
 		return brandList;
+	}
+
+	public static Brand getBrandDetailByBrandCode(String brandCode){
+
+		Brand brand = null;
+		Connection connection = null;
+		Statement statement = null;
+
+		try {
+			connection = DriverManager.getConnection(DatabaseConstants.URL,
+					DatabaseConstants.USER,
+					DatabaseConstants.PASSWORD);
+			statement = connection.createStatement();
+
+			String todayMinTime = DateUtil.getTodayMinTime();
+			String todayMaxTime = DateUtil.getTodayMaxTime();
+			String yesterdayMaxTime = DateUtil.getYesterdayMaxTime();
+			String yearMinTime = DateUtil.getYearMinTime();
+			String yearMaxTime = DateUtil.getYearMaxTime();
+
+			String query = "WITH brand_values AS (SELECT * FROM market_price WHERE brand_code = '"+ brandCode + "'), "
+					+ String.format("year_values AS (SELECT MAX(price) AS year_high, MIN(price) AS year_low FROM brand_values WHERE date > '%s' AND date < '%s'), ", yearMinTime, yearMaxTime)
+					+ String.format("today_values AS (SELECT MAX(price) AS high_price, MIN(price) AS low_price FROM brand_values WHERE date > '%s' AND date < '%s'), ", yearMinTime, yearMaxTime)
+					+ String.format("end_value AS (SELECT price AS end_price FROM brand_values WHERE brand_values.date = '%s'), ", yesterdayMaxTime)
+					+ String.format("open_value AS (SELECT price AS opne_price FROM brand_values WHERE brand_values.date = '%s'), ", todayMinTime)
+					+ String.format("offer_value AS (SELECT order_unit_price AS offer_price FROM order WHERE order_date > '%s' AND order_date < '%s' AND trading_type = 'S' GROUP BY order_unit_price ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY), ", todayMinTime, todayMaxTime)
+					+ String.format("bid_value AS (SELECT order_unit_price AS bid_price FROM order WHERE order_date > '%s' AND order_date < '%s' AND trading_type = 'B' GROUP BY order_unit_price ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY) ", todayMinTime, todayMaxTime)
+					+ String.format("WITH now_value AS (SELECT price AS market_price FROM market_price WHERE brand_code = '%s' ORDER BY date DESC FETCH FIRST 1 ROWS ONLY) ", brandCode)
+					+ "SELECT * FROM brand, year_values, today_values, end_value, open_value, offer_value, bid_value, now_value;";
+
+			ResultSet resultSet = statement.executeQuery(query);
+
+			if (resultSet.next()){
+
+				brand = new Brand(resultSet.getString(COLUMN_BRAND_CODE),
+						resultSet.getString(COLUMN_BRAND_NAME),
+						resultSet.getString(COLUMN_MARKET),
+						resultSet.getString(COLUMN_INDUSTRY),
+						resultSet.getInt(COLUMN_TRADING_UNIT),
+						resultSet.getString(COLUMN_BRAND_STATUS),
+						resultSet.getInt(COLUMN_MARKET_PRICE),
+						resultSet.getInt(COLUMN_OPENING_PRICE),
+						resultSet.getInt(COLUMN_CLOSE_PRICE),
+						resultSet.getInt(COLUMN_HIGH_PRICE),
+						resultSet.getInt(COLUMN_LOW_PRICE),
+						resultSet.getInt(COLUMN_OFFER_PRICE),
+						resultSet.getInt(COLUMN_BID_PRICE),
+						resultSet.getInt(COLUMN_YEAR_HIGH),
+						resultSet.getInt(COLUMN_YEAR_LOW));
+			}
+		} catch (SQLException e) {
+			System.err.println("エラー：BrandDao#DBデータ操作時にエラー発生");
+			e.printStackTrace();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					System.err.println("エラー：BrandDao#Statementのクローズ処理時にエラー発生");
+					e.printStackTrace();
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					System.err.println("エラー：BrandDao#connectionのクローズ処理時にエラー発生");
+					e.printStackTrace();
+				}
+			}
+		}
+		return brand;
 	}
 }

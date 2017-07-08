@@ -9,23 +9,23 @@
 <html>
 <head>
 <style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>銘柄検索結果｜TS長谷川証券</title>
-<link rel="stylesheet" href="Header.css" type="text/html">
-.tablebrandlist {
+<
+meta http-equiv ="Content-Type" content ="text/html; charset =UTF-8"> <title>銘柄検索結果｜TS長谷川証券
+	</title> <link rel ="stylesheet" href ="Header.css " type ="text/html">.tablebrandlist
+	{
 	border-style: solid;
 	border-width: 1px;
 	border-color: black;
-	}
+}
 
 .tablebrandlist th {
-  background-color: #999999;
+	background-color: #999999;
 }
+
 .tablebrandlist td {
-width: 700px;
-height: 70px;
-	}
+	width: 700px;
+	height: 70px;
+}
 </style>
 </head>
 <body>
@@ -33,8 +33,8 @@ height: 70px;
 	<form action="search" method="POST">
 		<!-- 	検索条件を入力してください：<br><br> -->
 		<!-- 	<select name="searchtype" style="font-size:72pt"> -->
-		<input type="hidden" name="current_page" value="brandlist">
-		<input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
+		<input type="hidden" name="current_page" value="brandlist"> <input
+			type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
 		<br> <input type="text" name="searchcondition"> <input
 			type="submit" value="検索" style="font-size: 20pt" />
@@ -48,16 +48,13 @@ height: 70px;
 
 	<!-- <h1>検索結果一覧</h1> -->
 	<table class="tablebrandlist" border=1>
-		<tr style="color:#FFFFFF">
+		<tr style="color: #FFFFFF">
 			<th>銘柄コード</th>
 			<th>銘柄名</th>
 			<th>市場</th>
 			<th>業種</th>
 			<th>売買単位</th>
 			<th>株価</th>
-			<th>始値</th>
-			<th>高値</th>
-			<th>安値</th>
 			<th>アクション</th>
 		</tr>
 		<%
@@ -70,15 +67,18 @@ height: 70px;
 			<td><%=brand.getIndustry()%></td>
 			<td align="center"><%=brand.getTradingUnit()%></td>
 			<td align="right"><%=brand.getMarketPrice()%></td>
-			<td align="right"><%=brand.getOpeningPrice()%></td>
-			<td align="right"><%=brand.getHighPrice()%></td>
-			<td align="right"><%=brand.getLowPrice()%></td>
-			<td  align="center"><form action="search" method="POST">
+			<td align="center"><form action="search" method="POST">
 					<input type="hidden" name="current_page" value="brandlist">
-					<br><button type="submit" name="detail"
-						value="<%=brand.getBrandCode()%>" style="width:100px;height:30px">詳細閲覧</button><br><br>
+					<br>
+					<button type="submit" name="detail"
+						value="<%=brand.getBrandCode()%>"
+						style="width: 100px; height: 30px">詳細閲覧</button>
+					<br>
+					<br>
 					<button type="submit" name="order"
-						value="<%=brand.getBrandCode()%>" style="width:100px;height:30px">買い注文</button><br>
+						value="<%=brand.getBrandCode()%>"
+						style="width: 100px; height: 30px">買い注文</button>
+					<br>
 				</form></td>
 			<%
 				}

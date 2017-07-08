@@ -34,7 +34,7 @@ public class OrderedInfoServlet extends BaseServlet {
 		//* Debug
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
-				0, 0, 0, 0, 0, 0, 0, 0);
+				0, 0, 0, 0, 0, 0, 0, 0, 0);
 		for(int i = 1; i <= 10; i++){
 			Order order = new Order(brand, user, Order.OrderType.成行,
 					Order.OrderCondition.無条件,
