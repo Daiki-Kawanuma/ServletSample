@@ -26,9 +26,6 @@
 			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
 			</p>
 			<input class="square_btn"
-				style="width: 125px; margin: 8px 10px 0px 0px; font-size: 100%"
-				type="button" onClick="location.href='mypage.jsp'" value="マイページ">
-			<br> <input class="square_btn"
 				style="width: 125px; margin:8px 10px 10px 0px; font-size: 100%;"
 				type="button" onClick="location.href='logout'" value="ログアウト">
 		</div>
