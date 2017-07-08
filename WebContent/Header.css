@@ -35,6 +35,11 @@ input[type=text] {
 	font-size: 1.2em
 }
 
+input{
+	font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,
+		Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+}
+
 input[type=password] {
 	width: 400px;
 	height: 60px;
