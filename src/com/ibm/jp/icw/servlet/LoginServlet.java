@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 
 		if (checkPass(loginPass, user.getPassword())){
 			session.setAttribute(SessionConstants.PARAM_USER, user);
-			response.sendRedirect("mypage.jsp");
+			response.sendRedirect("mypage");
 		} else {
 			request.setAttribute("message", "エラーメッセージ:正しいアカウントナンバー・ログインパスワードを入力してください。");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);

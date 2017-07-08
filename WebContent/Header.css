@@ -5,7 +5,7 @@ h1 {
 	font-size: 2em;
 	font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,
 		Osaka, 'MS PGothic', arial, helvetica, sans-serif;
-	f8ont:
+	margin: 10px 10px 10px 10px;
 }
 
 h2 {
@@ -41,14 +41,25 @@ input[type=password] {
 	font-size: 1.2em
 }
 
-input[type=button] {
-	width: 400px;
-	height: 60px;
-}
-
 input#submit_button {
 	width: 300px;
 	height: 30px;
+}
+
+.square_btn {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+    background: white;
+}
+
+.square_btn:hover {
+    background: #67c5ff;
+    color: white;
 }
 
 .mb1 {

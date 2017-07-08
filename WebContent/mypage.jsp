@@ -13,19 +13,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>マイページ｜TS長谷川証券</title>
 <link rel="stylesheet" href="Header.css" type="text/css">
-<link rel="stylesheet" href="watai.css" type="text/css">
 </head>
 <body>
-	<header id="hasegawa"> <nav>
-	<ul>
-		<h1>長谷川証券<br>トレーディングシステム</h1>
-		<p style="position:absolute;top:15px;left:1255px;color:white;font-size:120%"><%=user.getName()%>　さん</p>
-		<input style="position:absolute;top:60px;left:1220px;width:200px;height:26px;font-size:1.0em" type="button" onClick="location.href='logout'" value="ログアウト">
-		<br>
-		<input style="position:absolute;top:90px;left:1220px;width:200px;height:26px;font-size:1.0em" type="button" onClick="location.href='mypage.jsp'" value="マイページ">
-
-	</ul>
-	</nav> </header>
+	<!-- ヘッダー部分 -->
+	<div style="overflow:auto; background-color: #009999">
+		<div style="float: left;">
+			<h1>
+				長谷川証券<br>トレーディングシステム
+			</h1>
+		</div>
+		<div style="float: right;">
+			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
+			</p>
+			<input class="square_btn"
+				style="width: 125px; margin: 8px 10px 0px 0px; font-size: 100%"
+				type="button" onClick="location.href='mypage.jsp'" value="マイページ">
+			<br> <input class="square_btn"
+				style="width: 125px; margin:8px 10px 10px 0px; font-size: 100%;"
+				type="button" onClick="location.href='logout'" value="ログアウト">
+		</div>
+	</div>
+	<!-- ヘッダー部分 -->
 	<h2>マイページ</h2>
 	<br>
 	<p class="mypageNoHito">
@@ -34,13 +42,13 @@
 		さん
 	</p>
 	<br>
-
-	<input class="mypageKensaku" type="button" onClick="location.href='brandsearch.jsp'"
-		value="銘柄を検索/買い注文する">
+	<input class="square_btn" type="button"
+		style="width: 300px; font-size: 120%;"
+		onClick="location.href='search'" value="銘柄を検索/買い注文する">
 	<br>
 	<br>
-	<input class="mypageKakunin" type="button" onClick="location.href='orderedinfo'"
-		value="注文状況を確認する">
-
+	<input class="square_btn" type="button"
+		style="width: 300px; font-size: 120%;"
+		onClick="location.href='orderedinfo'" value="注文状況を確認する">
 </body>
 </html>
