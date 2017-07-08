@@ -12,6 +12,7 @@ import com.ibm.jp.icw.constant.DatabaseConstants;
 import com.ibm.jp.icw.model.Brand;
 import com.ibm.jp.icw.model.Order;
 import com.ibm.jp.icw.model.User;
+import com.ibm.jp.icw.util.DateUtil;
 
 public class OrderDao extends BaseDao {
 
@@ -44,22 +45,20 @@ public class OrderDao extends BaseDao {
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
+			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date = '" + DateUtil.getNowTime() +"')"
+					+ "SELECT order.*, brand.brand_name, now_price.price FROM order, brand, now_price WHERE order.account_no = " + accountNumber + " "
+					+ "AND order.brand_code = brand.brand_code "
+					+ "AND order.brand_code = now_price.brand_code;";
+
 			ResultSet resultSet = statement
-					.executeQuery(String.format("SELECT * FROM user WHERE accout_number = '%s'", accountNumber));
+					.executeQuery(query);
 
 			while (resultSet.next()) {
 
-				User user = new User(resultSet.getString(UserDao.COLUMN_ACCOUNT_NUMBER),
-						resultSet.getString(UserDao.COLUMN_USER_NAME), resultSet.getString(UserDao.COLUMN_LOGIN_PASS),
-						resultSet.getString(UserDao.COLUMN_MAIL), resultSet.getDate(UserDao.COLUMN_BIRTH_DAY),
-						resultSet.getInt(UserDao.COLUMN_ACCOUNT_BALANCE),
-						resultSet.getString(UserDao.COLUMN_CC_NAME), resultSet.getString(UserDao.COLUMN_CC_NUMBER),
-						resultSet.getString(UserDao.COLUMN_CC_SEC), resultSet.getDate(UserDao.COLUMN_CC_VALID));
+				User user = new User(resultSet.getString(UserDao.COLUMN_ACCOUNT_NUMBER));
 
 				Brand brand = new Brand(resultSet.getString(BrandDao.COLUMN_BRAND_CODE),
-						resultSet.getString(BrandDao.COLUMN_BRAND_NAME), resultSet.getString(BrandDao.COLUMN_MARKET),
-						resultSet.getString(BrandDao.COLUMN_INDUSTRY), resultSet.getInt(BrandDao.COLUMN_TRADING_UNIT),
-						resultSet.getString(BrandDao.COLUMN_BRAND_STATUS), 0, 0, 0, 0, 0, 0, 0, 0, 0);
+						resultSet.getString(BrandDao.COLUMN_BRAND_NAME), resultSet.getInt(BrandDao.COLUMN_MARKET_PRICE));
 
 				Order order = new Order(resultSet.getLong(COLUMN_RECEPTION_NUMBER), brand, user,
 						Order.OrderType.getEnum(resultSet.getString(COLUMN_ORDER_TYPE)),

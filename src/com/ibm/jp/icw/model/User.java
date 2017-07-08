@@ -15,6 +15,10 @@ public class User {
 	private String creditCardSecurityCode;
 	private Date creditCardValidatedDate;
 
+	public User(String accoutNumber){
+		this.accountNumber = accoutNumber;
+	}
+
 	public User(String accountNumber, String name, String password, String mail, Date birthday, int accountBalance, String creditCardNumber, String creditCardName,
 			String creditCardSecurityCode, Date creditCardValidatedDate) {
 		super();
