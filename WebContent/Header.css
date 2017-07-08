@@ -1,72 +1,78 @@
 @CHARSET "UTF-8";
-h1{
-	color:white;
-	font-size:2em;
+
+h1 {
+	color: white;
+	font-size: 2em;
+	font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,
+		Osaka, 'MS PGothic', arial, helvetica, sans-serif;
 	f8ont:
 }
-h2{
-	font-size:1.8em;
-}
-header{
-	background-color:#009999;
-	top: 10px;                   /* 位置(上0px) */
-    left: 0px;                  /* 位置(右0px) */
-    width: 100%;                /* 横幅100%　*/
-    height: 90px;              /* 縦幅140px */
+
+h2 {
+	font-size: 1.8em;
+	font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,
+		Osaka, 'MS PGothic', arial, helvetica, sans-serif;
 }
 
-.form-wrapping{
+header {
+	background-color: #009999;
+	top: 10px; /* 位置(上0px) */
+	left: 0px; /* 位置(右0px) */
+	width: 100%; /* 横幅100%　*/
+	height: 90px; /* 縦幅140px */
+}
+
+.form-wrapping {
 	background: #e0ffff;
 	margin: 3em auto;
-    padding: 0 1em;
+	padding: 0 1em;
 	max-width: 600px;
 }
 
-input[type=text]{
-width:400px;
-height:60px;
+input[type=text] {
+	width: 400px;
+	height: 60px;
+	font-size: 1.2em
 }
 
-input[type=password]{
-width:400px;
-height:60px;
+input[type=password] {
+	width: 400px;
+	height: 60px;
+	font-size: 1.2em
 }
 
-input[type=button]{
-width:400px;
-height:60px;
+input[type=button] {
+	width: 400px;
+	height: 60px;
 }
 
 input#submit_button {
-width:300px;
-height:30px;
-	}
+	width: 300px;
+	height: 30px;
+}
 
-
-.mb1{
-   margin-bottom: 3em;
+.mb1 {
+	margin-bottom: 3em;
 }
 
 p.a {
-font-family: "fantasy";
+	font-family: "fantasy";
 }
 
 .button {
-  background: #11BFAF;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  height: 50px;
-  font-family: 'Open Sans', Microsoft Sans Serif;
-  font-size: 1.2em;
-  letter-spacing: 0.05em;
-  text-align: center;
-  text-transform: uppercase;
-  transition: background 0.3s ease-in-out;
+	background: #11BFAF;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	height: 50px;
+	font-family: 'Open Sans', Microsoft Sans Serif;
+	font-size: 1.2em;
+	letter-spacing: 0.05em;
+	text-align: center;
+	text-transform: uppercase;
+	transition: background 0.3s ease-in-out;
 }
 
-.hako{
+.hako {
 	background: #e6e6fa;
-
 }
-
