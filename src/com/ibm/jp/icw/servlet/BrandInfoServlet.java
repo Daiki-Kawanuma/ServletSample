@@ -86,7 +86,7 @@ public class BrandInfoServlet extends BaseServlet {
 
 					if (searchType.equals("brandcode")) {
 						// Debug
-						brandList.add(new Brand("2520", "三菱", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0, 0));
+						brandList.add(new Brand("2520", "三菱", "東１", "自動車", 100, "正常銘柄", 0, 0, 0, 0, 0, 0, 0, 0, 0));
 						// brandList = BrandDao.getBrandByBrandCode(searchCondition);
 					} else {
 						brandList = BrandDao.getBrandListByBrandName(searchCondition);
@@ -102,7 +102,7 @@ public class BrandInfoServlet extends BaseServlet {
 				nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
 
 				// Debug
-				Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+				Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "管理銘柄", 0, 0, 0, 0, 0, 0, 0, 0, 0);
 				// Brand brand = BrandDao.getBrandDetailByBrandCode(brandCodeforDetail);
 
 				request.getSession().setAttribute(SessionConstants.PARAM_BRAND, brand);
