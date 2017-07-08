@@ -42,7 +42,7 @@ table, td {
 		<h3>注文数</h3>
 		<input type="text" name="order_amount"><br>
 		<h3>注文単価</h3>
-		<input type="text" name="order_unit_price"><br>
+		<input type="text" name="order_unit_price"><br><br>
 		<input type="submit" value="注文確認へ進む" style="font-size: 20pt" />
 	</form>
 	<p><font color="red"><%=message %></p>
