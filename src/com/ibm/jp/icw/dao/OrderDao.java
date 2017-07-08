@@ -45,10 +45,12 @@ public class OrderDao extends BaseDao {
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
-			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date = '" + DateUtil.getNowTime() +"')"
-					+ "SELECT order.*, brand.brand_name, now_price.price FROM order, brand, now_price WHERE order.account_no = " + accountNumber + " "
+			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date_time = '" + DateUtil.getNowTime() +"') "
+					+ "SELECT order.*, brand.brand_name, now_price.price FROM order, brand, now_price WHERE order.account_no = '" + accountNumber + "' "
 					+ "AND order.brand_code = brand.brand_code "
 					+ "AND order.brand_code = now_price.brand_code;";
+
+			System.err.println(query);
 
 			ResultSet resultSet = statement
 					.executeQuery(query);
@@ -58,7 +60,7 @@ public class OrderDao extends BaseDao {
 				User user = new User(resultSet.getString(UserDao.COLUMN_ACCOUNT_NUMBER));
 
 				Brand brand = new Brand(resultSet.getString(BrandDao.COLUMN_BRAND_CODE),
-						resultSet.getString(BrandDao.COLUMN_BRAND_NAME), resultSet.getInt(BrandDao.COLUMN_MARKET_PRICE));
+						resultSet.getString(BrandDao.COLUMN_BRAND_NAME), resultSet.getInt(MarketPriceDao.COLUMN_PRICE));
 
 				Order order = new Order(resultSet.getLong(COLUMN_RECEPTION_NUMBER), brand, user,
 						Order.OrderType.getEnum(resultSet.getString(COLUMN_ORDER_TYPE)),
@@ -122,8 +124,6 @@ public class OrderDao extends BaseDao {
 					(int)order.getOrderUnitPrice(),
 					new SimpleDateFormat("yyyy/MM/dd").format(order.getOrderDate()),
 					"注文中");
-
-			System.err.println(query);
 
 			statement.executeUpdate(query);
 			order.setReceptionNumber(maxReceptionNo);
