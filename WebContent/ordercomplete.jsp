@@ -2,8 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.ibm.jp.icw.model.Order"%>
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants"%>
+<%@ page import="com.ibm.jp.icw.model.User"%>
 <%
 	request.setCharacterEncoding("UTF-8");
+	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 	long number = Long.parseLong(String.valueOf(request.getAttribute(SessionConstants.PARAM_RECEPTION_NUMBER)));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,15 +16,34 @@
 <link rel="stylesheet" href="Header.css" type="text/css">
 </head>
 <body>
-	<h1>ご注文完了</h1>
-	<h2>
+	<!-- ヘッダー部分 -->
+	<div style="overflow: auto; background-color: #009999">
+		<div style="float: left;">
+			<h1>
+				長谷川証券<br>トレーディングシステム
+			</h1>
+		</div>
+		<div style="float: right;">
+			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
+			</p>
+			<input class="square_btn"
+				style="width: 125px; margin: 8px 10px 0px 0px; font-size: 100%"
+				type="button" onClick="location.href='mypage.jsp'" value="マイページ">
+			<br> <input class="square_btn"
+				style="width: 125px; margin: 8px 10px 10px 0px; font-size: 100%;"
+				type="button" onClick="location.href='logout'" value="ログアウト">
+		</div>
+	</div>
+	<!-- ヘッダー部分 -->
+	<h2>ご注文完了</h2>
+	<h3>
 		注文番号<%= number %>で承りました。
-	</h2>
-	<h2>またのご注文をお待ちしております。</h2>
+	</h3>
+	<h3>またのご注文をお待ちしております。</h3>
 	<br>
 	<br>
 	<form action="mypage.jsp" method="GET">
-		<input type="submit" value="マイページに戻る" style="font-size: 20pt" />
+		<input class="square_btn" type="submit" value="マイページに戻る" style="font-size: 100%;" />
 	</form>
 </body>
 </html>
