@@ -28,7 +28,7 @@ public class OrderServlet extends BaseServlet {
 	private static final String PARAM_ORDER_CONDITION = "order_condition";
 	private static final String PARAM_ORDER_AMOUNT = "order_amount";
 	private static final String PARAM_ORDER_UNIT_PRICE = "order_unit_price";
-	private static final String PARAM_ERROR_MESSAGE = "error_message";
+	private static final String PARAM_ERROR_MESSAGE = "message";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -75,7 +75,7 @@ public class OrderServlet extends BaseServlet {
 
 			} else {
 				nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
-				request.setAttribute(PARAM_ERROR_MESSAGE, "入力された項目に不備があります。");
+				request.setAttribute("message", "入力された項目に不備があります。");
 			}
 			break;
 
