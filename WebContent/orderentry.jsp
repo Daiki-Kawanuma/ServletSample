@@ -13,6 +13,8 @@
 	Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 	String brandStatus = brand.getBrandStatus().equals("正常銘柄") ? "" : "【" + brand.getBrandStatus() + "】";
 	String color = brand.getBrandStatus().equals("正常銘柄") ? "black" : "red";
+	String nowPrice = NumberFormat.getNumberInstance().format(brand.getMarketPrice());
+
 	String message = (String) request.getAttribute("message");
 	if (message == null) {
 		message = "";
@@ -57,6 +59,7 @@ table, td {
 	<h3>お客様の取引余力：<%= tradingMargin %> 円</h3>
 	<h2 style="color: <%= color %>;"><%= brandStatus + brand.getBrandName()%></h2>
 	<h3>銘柄コード：<%= brand.getBrandCode()%></h3>
+	<h3>現在価格：<%= nowPrice %> 円</h3>
 	<form action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderentry">
 		<h3>注文の種類</h3>
