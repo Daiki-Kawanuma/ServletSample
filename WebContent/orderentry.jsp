@@ -35,6 +35,19 @@ table, td {
 }
 </style>
 </head>
+
+<script type="text/javascript">
+function checkfunc() {
+
+for(i=0; i<5; i++) {
+
+document.myform.rdo1[i].disabled = !(document.myform.yesno.checked);
+
+}
+
+}
+</script>
+
 <body>
 	<!-- ヘッダー部分 -->
 	<div style="overflow: auto; background-color: #009999">
