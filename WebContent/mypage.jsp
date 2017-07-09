@@ -23,7 +23,7 @@
 			</h1>
 		</div>
 		<div style="float: right;">
-			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
+			<p style="color: white; font-size: 120%; margin: 20px 10px 0px 0px"><%=user.getName()%>さん
 			</p>
 			<input class="square_btn"
 				style="width: 125px; margin:8px 10px 10px 0px; font-size: 100%;"
@@ -33,7 +33,7 @@
 	<!-- ヘッダー部分 -->
 	<h2>マイページ</h2>
 	<br>
-	<p class="mypageNoHito">
+	<p style="font-size: 150%">
 		ようこそ
 		<%=user.getName()%>
 		さん
