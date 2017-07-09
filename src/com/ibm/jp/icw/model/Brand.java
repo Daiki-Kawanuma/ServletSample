@@ -115,4 +115,23 @@ public class Brand {
 	public double getYearToDateLows() {
 		return yearToDateLows;
 	}
+
+	@Override
+	public String toString(){
+		return "銘柄コード:" + brandCode
+		+ ", 銘柄名: " + brandName
+		+ ", 市場: " + market
+		+ ", 業界: " + industry
+		+ ", 売買単位: " + tradingUnit
+		+ ", 銘柄状況: " + brandStatus
+		+ ", 時価: " + marketPrice
+		+ ", 始値: " + openingPrice
+		+ ", 終値: " + closePrice
+		+ ", 高値: " + highPrice
+		+ ", 安値: " + lowPrice
+		+ ", 売り気配値: " + offerPrice
+		+ ", 買い気配値: " +  bidPrice
+		+ ", 年初来高値: " + yearToDateHighs
+		+ ", 年初来安値: " + yearToDateLows;
+	}
 }
