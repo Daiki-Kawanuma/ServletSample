@@ -48,7 +48,8 @@ public class OrderDao extends BaseDao {
 			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date_time = '" + DateUtil.getNowTime() +"') "
 					+ "SELECT order.*, brand.brand_name, now_price.price FROM order, brand, now_price WHERE order.account_no = '" + accountNumber + "' "
 					+ "AND order.brand_code = brand.brand_code "
-					+ "AND order.brand_code = now_price.brand_code;";
+					+ "AND order.brand_code = now_price.brand_code "
+					+ "ORDER BY reception_no DESC;";
 
 			ResultSet resultSet = statement
 					.executeQuery(query);
