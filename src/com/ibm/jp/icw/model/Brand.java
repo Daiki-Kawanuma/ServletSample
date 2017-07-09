@@ -18,9 +18,10 @@ public class Brand {
 	private double yearToDateHighs;
 	private double yearToDateLows;
 
-	public Brand(String brandCode, String brandName, int marketPrice){
+	public Brand(String brandCode, String brandName, String brandStatus, int marketPrice){
 		this.brandCode = brandCode;
 		this.brandName = brandName;
+		this.brandStatus = brandStatus;
 		this.marketPrice = marketPrice;
 	}
 

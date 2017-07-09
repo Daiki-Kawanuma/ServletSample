@@ -62,7 +62,7 @@ public class OrderDaoTest {
 	public void 口座番号1000000000000001銘柄コード1332で注文を登録する() {
 
 		User user = new User("1000000000000001");
-		Brand brand = new Brand("1332", "日本水産", 682);
+		Brand brand = new Brand("1332", "日本水産", "正常銘柄", 682);
 
 		Order order = new Order(brand, user, Order.OrderType.getEnum("成行"),
 				Order.OrderCondition.getEnum("無条件"),
@@ -77,7 +77,7 @@ public class OrderDaoTest {
 	public void 口座番号99999999999999999銘柄コード99999で注文を登録する() {
 
 		User user = new User("99999999999999999");
-		Brand brand = new Brand("99999", "日本水産", 682);
+		Brand brand = new Brand("99999", "日本水産", "正常銘柄", 682);
 
 		Order order = new Order(brand, user, Order.OrderType.getEnum("成行"),
 				Order.OrderCondition.getEnum("無条件"),
@@ -92,7 +92,7 @@ public class OrderDaoTest {
 	public void 口座番号0000000000000000銘柄コード0000で注文を登録する() {
 
 		User user = new User("0000000000000000");
-		Brand brand = new Brand("0000", "日本水産", 682);
+		Brand brand = new Brand("0000", "日本水産", "正常銘柄", 682);
 
 		Order order = new Order(brand, user, Order.OrderType.getEnum("成行"),
 				Order.OrderCondition.getEnum("無条件"),

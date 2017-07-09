@@ -46,7 +46,7 @@ public class OrderDao extends BaseDao {
 			statement = connection.createStatement();
 
 			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date_time = '" + DateUtil.getNowTime() +"') "
-					+ "SELECT order.*, brand.brand_name, now_price.price FROM order, brand, now_price WHERE order.account_no = '" + accountNumber + "' "
+					+ "SELECT order.*, brand.brand_name, brand.brand_status, now_price.price FROM order, brand, now_price WHERE order.account_no = '" + accountNumber + "' "
 					+ "AND order.brand_code = brand.brand_code "
 					+ "AND order.brand_code = now_price.brand_code "
 					+ "ORDER BY reception_no DESC;";
@@ -59,7 +59,8 @@ public class OrderDao extends BaseDao {
 				User user = new User(resultSet.getString(UserDao.COLUMN_ACCOUNT_NUMBER));
 
 				Brand brand = new Brand(resultSet.getString(BrandDao.COLUMN_BRAND_CODE),
-						resultSet.getString(BrandDao.COLUMN_BRAND_NAME), resultSet.getInt(MarketPriceDao.COLUMN_PRICE));
+						resultSet.getString(BrandDao.COLUMN_BRAND_NAME), resultSet.getString(BrandDao.COLUMN_BRAND_STATUS),
+						resultSet.getInt(MarketPriceDao.COLUMN_PRICE));
 
 				Order order = new Order(resultSet.getLong(COLUMN_RECEPTION_NUMBER), brand, user,
 						resultSet.getString(COLUMN_TRADING_TYPE),
