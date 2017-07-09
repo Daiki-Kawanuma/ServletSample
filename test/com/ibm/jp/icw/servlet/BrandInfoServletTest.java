@@ -25,11 +25,11 @@ public class BrandInfoServletTest {
 	}
 
 	@Test
-	public void 銘柄コードー123でFALSEを返す() {
+	public void 銘柄コードー１２３４でFALSEを返す() {
 
 		// ユーザの入力
 		searchType = "brandcode";
-		searchCondition = "123";
+		searchCondition = "１２３４";
 		// 実行
 		result = servlet.validateInputs(searchType, searchCondition);
 		// 検証

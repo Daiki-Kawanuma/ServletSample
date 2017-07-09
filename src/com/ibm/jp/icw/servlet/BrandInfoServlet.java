@@ -146,16 +146,11 @@ public class BrandInfoServlet extends BaseServlet {
 			return false;
 
 		if (searchType.equals("brandcode")) {
-
-			if (searchCondition.length() != 4) {
-				return false;
+			// 文字長4と正規表現で半角数字をチェック
+			if (searchCondition.length() == 4 && searchCondition.matches("^-?[0-9]+$")) {
+				return true;
 			} else {
-				try {
-					Integer.parseInt(searchCondition);
-					return true;
-				} catch (NumberFormatException e) {
-					return false;
-				}
+				return false;
 			}
 		} else {
 			return true;
