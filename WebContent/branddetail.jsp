@@ -64,6 +64,8 @@
 			<th>市場</th>
 			<th>業種</th>
 			<th>売買単位</th>
+			<th>買い気配値</th>
+			<th>売り気配値</th>
 		</tr>
 		<tr>
 			<td><%=brand.getBrandCode()%></td>
@@ -84,8 +86,7 @@
 			<th>安値</th>
 			<th>年初来高値</th>
 			<th>年初来安値</th>
-			<th>買い気配値</th>
-			<th>売り気配値</th>
+
 		</tr>
 		<tr>
 			<td><%=brand.getMarketPrice()%></td>
