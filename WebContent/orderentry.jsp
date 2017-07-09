@@ -8,6 +8,8 @@
 	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 	request.setCharacterEncoding("UTF-8");
 	Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
+	String brandStatus = brand.getBrandStatus().equals("正常銘柄") ? "" : "【" + brand.getBrandStatus() + "】";
+	String color = brand.getBrandStatus().equals("正常銘柄") ? "black" : "red";
 	String message = (String) request.getAttribute("message");
 	if (message == null) {
 		message = "";
@@ -49,7 +51,8 @@ table, td {
 	</div>
 	<!-- ヘッダー部分 -->
 	<h2>買い注文</h2>
-	<h2><%=brand.getBrandName()%></h2>
+	<h2 style="color: <%= color %>;"><%= brandStatus + brand.getBrandName()%> 詳細情報
+	</h2>
 	<form action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderentry">
 		<h3>注文の種類</h3>
