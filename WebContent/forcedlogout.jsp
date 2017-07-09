@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>強制ログアウト画面</title>
+<title>強制ログアウト｜TS長谷川証券</title>
 <link rel="stylesheet" href="Header.css" type="text/css">
 </head>
 <body>

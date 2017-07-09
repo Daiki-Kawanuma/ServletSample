@@ -34,27 +34,35 @@ public class LoginServlet extends HttpServlet {
 		String loginPass = request.getParameter("login_pass");
 
 		/*
-		User user = new User("1234123412341234", "Kawanuma", "password", "customer@example.com", new Date(),
-				12345678, "1234123412341234", "DAIKI KAWANUM", "123", new Date());
-		/*/
+		 * User user = new User("1234123412341234", "Kawanuma", "password",
+		 * "customer@example.com", new Date(), 12345678, "1234123412341234",
+		 * "DAIKI KAWANUM", "123", new Date()); /
+		 */
 		User user = UserDao.getUser(accountNumber);
-		//*/
-
-		if (checkPass(loginPass, user.getPassword())){
-			session.setAttribute(SessionConstants.PARAM_USER, user);
-			response.sendRedirect("mypage");
-		} else {
-			request.setAttribute("message", "エラーメッセージ:正しいアカウントナンバー・ログインパスワードを入力してください。");
+		if (user == null) {
+			request.setAttribute("message", "エラーメッセージ:正しいアカウントナンバーを半角数字で入力してください。");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
+
+		} else {
+
+			// */
+
+			if (checkPass(loginPass, user.getPassword())) {
+				session.setAttribute(SessionConstants.PARAM_USER, user);
+				response.sendRedirect("mypage");
+			} else {
+				request.setAttribute("message", "エラーメッセージ:正しいログインパスワードを入力してください。");
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
+			}
 		}
 	}
 
-	public boolean checkPass(String input, String loginPass){
+	public boolean checkPass(String input, String loginPass) {
 
-		if(input == null || loginPass == null)
+		if (input == null || loginPass == null)
 			return false;
 
-		if(loginPass.equals(input)){
+		if (loginPass.equals(input)) {
 			return true;
 		} else {
 			return false;
