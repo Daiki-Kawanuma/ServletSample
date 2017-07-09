@@ -18,9 +18,10 @@
 <head>
 <style>
 <
-meta http-equiv ="Content-Type" content ="text/html; charset =UTF-8"> <title>注文状況一覧
-	</title> <link rel ="stylesheet" href ="Header.css " type ="text/html">.tablechumonjokyo
-	{
+meta http-equiv ="Content-Type " content ="text /html; charset =UTF-8 ">
+	<title>注文状況一覧
+	 </title> <link rel ="stylesheet " href ="Header.css " type ="text
+	/html">.tablechumonjokyo {
 	border-style: solid;
 	border-width: 1px;
 	border-color: black;
@@ -67,10 +68,10 @@ meta http-equiv ="Content-Type" content ="text/html; charset =UTF-8"> <title>注
 			<tr>
 				<td><%=o.getReceptionNumber()%></td>
 				<td
-					style="color: <%=o.getBrand().getBrandStatus().equals("正常銘柄") ? "black" : "red"%>;"><%=o.getBrand().getBrandStatus().equals("正常銘柄") ? ""
+					style="color: <%=o.getBrand().getBrandStatus().equals("正常銘柄") ? "black" : "red"%>;"><%=o.getBrand().getBrandStatus().equals("正常銘柄") ? o.getBrand().getBrandName()
 						: "【" + o.getBrand().getBrandStatus() + "】" + o.getBrand().getBrandName()%></td>
 				<td><%=o.getBrand().getBrandCode()%></td>
-				<td><%=o.getBrand().getMarketPrice()%></td>
+				<td><%=(int) o.getBrand().getMarketPrice()%> 円</td>
 
 				<td><%=o.getOrderStatus()%></td>
 				<td><%=o.getTradingType().equals("B") ? "買い注文" : "売り注文"%></td>
@@ -78,21 +79,20 @@ meta http-equiv ="Content-Type" content ="text/html; charset =UTF-8"> <title>注
 				<td><%=o.getOrderConditions()%></td>
 
 				<td><%=o.getOrderDate()%></td>
-				<td><%=o.getOrderAmount()%></td>
-				<td><%=o.getOrderUnitPrice()%></td>
-				<td><%=o.getOrderAmount() * o.getOrderUnitPrice()%></td>
+				<td><%=(int) o.getOrderAmount()%></td>
+				<td><%=(int) o.getOrderUnitPrice()%> 円</td>
+				<td><%=(int) (o.getOrderAmount() * o.getOrderUnitPrice())%> 円</td>
 
-				<td><%=o.getClosingDate() == null ? "" : new SimpleDateFormat("yyyy/MM/dd").format(o.getClosingDate())%></td>
-				<td><%=o.getClosingAmount()%></td>
-				<td><%=o.getClosingUnitPrice()%></td>
-				<td><%=o.getClosingAmount() * o.getClosingUnitPrice()%></td>
+				<td><%=o.getClosingDate() == null ? "-"
+						: new SimpleDateFormat("yyyy/MM/dd").format(o.getClosingDate())%></td>
+				<td><%=o.getClosingAmount() == 0 ? "-" : o.getClosingAmount()%></td>
+				<td><%=o.getClosingUnitPrice() == 0 ? "-" : o.getClosingAmount()%> 円</td>
+				<td><%=o.getClosingAmount() == 0 ? "-" : o.getClosingAmount() * o.getClosingUnitPrice()%> 円</td>
 				<td align="center">
 					<!-- <input type="submit" value="銘柄詳細情報を表示する"></td> --> <input
 					type="hidden" name="current_page" value="brandlist"> <br>
-				<button type="submit" name="detail"
-						value="<%=o.getBrand().getBrandCode()%>">詳細閲覧</button>
-					<br>
-				<br>
+					<button type="submit" name="detail"
+						value="<%=o.getBrand().getBrandCode()%>">詳細閲覧</button> <br> <br>
 			</tr>
 			<%
 				}
