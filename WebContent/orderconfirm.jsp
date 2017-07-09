@@ -89,7 +89,7 @@
 		</tr>
 		<tr>
 			<th style="color: white;">注文単価</th>
-			<td><%= order.getOrderUnitPrice() %></td>
+			<td><%= (int) order.getOrderUnitPrice() %> 円</td>
 		</tr>
 		<tr>
 			<th style="color: white;">注文数</th>
@@ -97,7 +97,7 @@
 		</tr>
 		<tr>
 			<th style="color: white;">注文金額合計</th>
-			<td><%= order.getOrderUnitPrice() * order.getOrderAmount() %></td>
+			<td><%= (int) (order.getOrderUnitPrice() * order.getOrderAmount() ) %> 円</td>
 		</tr>
 	</table>
 	<br>
