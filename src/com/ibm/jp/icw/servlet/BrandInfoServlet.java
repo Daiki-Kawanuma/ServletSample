@@ -56,7 +56,7 @@ public class BrandInfoServlet extends BaseServlet {
 
 					nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
 
-					request.setAttribute("message", "条件に一致する銘柄は0件です");
+					request.setAttribute("message", "条件に一致する銘柄は0件です。");
 				}else{
 
 				nextPage = ServletConstants.BRAND_LIST + ".jsp";
