@@ -86,7 +86,7 @@
 				<!-- <input type="submit" value="銘柄詳細情報を表示する"></td> -->
 					<input type="hidden" name="current_page" value="brandlist">
 					<br><button type="submit" name="detail"
-						value="<%-- <%=brand.getBrandCode()%> --%>" >詳細閲覧</button><br><br>
+						value="<%=o.getBrand().getBrandCode()%>" >詳細閲覧</button><br><br>
 
 
 			</tr>
