@@ -50,8 +50,13 @@ public class BrandInfoServlet extends BaseServlet {
 			// 検索条件の入力が正常である場合、[銘柄一覧画面]に遷移、そうでなければStay
 			if (validateInputs(searchType, searchCondition)) {
 				nextPage = ServletConstants.BRAND_LIST + ".jsp";
-
 				ArrayList<Brand> brandList = new ArrayList<Brand>();
+
+				if(brandList.size() == 0){
+					request.setAttribute("message", "条件に一致する銘柄は0件です");
+				}
+
+
 
 				if (searchType.equals("brandcode")) {
 					// * Debug
@@ -83,6 +88,10 @@ public class BrandInfoServlet extends BaseServlet {
 					nextPage = ServletConstants.BRAND_LIST + ".jsp";
 
 					ArrayList<Brand> brandList = new ArrayList<Brand>();
+
+					if(brandList.size() == 0){
+						request.setAttribute("message", "条件に一致する銘柄は0件です。");
+					}
 
 					if (searchType.equals("brandcode")) {
 						// Debug
