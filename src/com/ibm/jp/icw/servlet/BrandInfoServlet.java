@@ -49,14 +49,17 @@ public class BrandInfoServlet extends BaseServlet {
 
 			// 検索条件の入力が正常である場合、[銘柄一覧画面]に遷移、そうでなければStay
 			if (validateInputs(searchType, searchCondition)) {
-				nextPage = ServletConstants.BRAND_LIST + ".jsp";
+
 				ArrayList<Brand> brandList = new ArrayList<Brand>();
 
 				if(brandList.size() == 0){
+
+					nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
+
 					request.setAttribute("message", "条件に一致する銘柄は0件です");
-				}
+				}else{
 
-
+				nextPage = ServletConstants.BRAND_LIST + ".jsp";
 
 				if (searchType.equals("brandcode")) {
 					// * Debug
@@ -67,7 +70,7 @@ public class BrandInfoServlet extends BaseServlet {
 					brandList = BrandDao.getBrandListByBrandName(searchCondition);
 				}
 				request.setAttribute("brandList", brandList);
-			} else {
+			} }else {
 				nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
 				request.setAttribute("message", "入力に不備があります。銘柄コードは半角数字4桁でご入力ください。");
 			}
@@ -85,13 +88,17 @@ public class BrandInfoServlet extends BaseServlet {
 				searchCondition = request.getParameter("searchcondition");
 
 				if (validateInputs(searchType, searchCondition)) {
-					nextPage = ServletConstants.BRAND_LIST + ".jsp";
+
+
 
 					ArrayList<Brand> brandList = new ArrayList<Brand>();
 
 					if(brandList.size() == 0){
+						nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
 						request.setAttribute("message", "条件に一致する銘柄は0件です。");
-					}
+					}else {
+						nextPage = ServletConstants.BRAND_LIST + ".jsp";
+
 
 					if (searchType.equals("brandcode")) {
 						// Debug
@@ -101,7 +108,7 @@ public class BrandInfoServlet extends BaseServlet {
 						brandList = BrandDao.getBrandListByBrandName(searchCondition);
 					}
 					request.setAttribute("brandList", brandList);
-				} else {
+				}} else {
 					nextPage = ServletConstants.BRAND_SEARCH + ".jsp";
 					request.setAttribute("message", "入力に不備があります。銘柄コードは半角数字4桁でご入力ください。");
 				}
