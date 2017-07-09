@@ -61,40 +61,39 @@ public class OrderServlet extends BaseServlet {
 
 			String orderType = request.getParameter(PARAM_ORDER_TYPE);
 			String orderCondition = request.getParameter(PARAM_ORDER_CONDITION);
-			String orderAmout  = request.getParameter(PARAM_ORDER_AMOUNT);
+			String orderAmount  = request.getParameter(PARAM_ORDER_AMOUNT);
 			String orderUnitPrice = request.getParameter(PARAM_ORDER_UNIT_PRICE);
 
-			if(validateInputs(orderType, orderCondition, orderAmout,orderUnitPrice)){
+			if(validateInputs(orderType, orderCondition, orderAmount,orderUnitPrice)){
 
-				nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
+				if(checkAccountBalance(user.getAccountNumber(), Integer.parseInt(orderAmount) * Integer.parseInt(orderUnitPrice))){
+					nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
 
-				order = new Order(brand, user, Order.OrderType.getEnum(orderType),
-						Order.OrderCondition.getEnum(orderCondition),
-						Integer.parseInt(orderAmout), Integer.parseInt(orderUnitPrice), new Date());
+					order = new Order(brand, user, Order.OrderType.getEnum(orderType),
+							Order.OrderCondition.getEnum(orderCondition),
+							Integer.parseInt(orderAmount), Integer.parseInt(orderUnitPrice), new Date());
 
-				session.setAttribute(SessionConstants.PARAM_ORDER, order);
-
+					session.setAttribute(SessionConstants.PARAM_ORDER, order);
+				} else {
+					nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
+					request.setAttribute(PARAM_ERROR_MESSAGE, "購入金額が取引余力を超えています。");
+				}
 			} else {
 				nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
-				request.setAttribute("message", "入力された項目に不備があります。");
+				request.setAttribute(PARAM_ERROR_MESSAGE, "入力された項目に不備があります。");
 			}
 			break;
 
 		case ServletConstants.ORDER_CONFIRM:
 
-			/* Debug
-			order.setReceptionNumber(123456789);
-			Order registeredOrder = order;
-			/*/
 			Order registeredOrder = OrderDao.registOrder(order);
-			//*/
 
-			if(registeredOrder != null){
+			if(registeredOrder.getReceptionNumber() != -1){
 				nextPage = ServletConstants.ORDER_COMPLETE + ".jsp";
 				session.removeAttribute(SessionConstants.PARAM_ORDER);
 				request.setAttribute(SessionConstants.PARAM_RECEPTION_NUMBER, order.getReceptionNumber());
 			} else {
-				// TODO Orderが登録できなかった場合
+				// TODO 登録できなかった場合
 			}
 			break;
 
@@ -123,6 +122,14 @@ public class OrderServlet extends BaseServlet {
 		if(orderType == null || orderCondition == null
 				|| orderAmount == null || orderUnitPrice == null)
 			return false;
+
+		if(orderCondition.equals("指成")){
+			orderType = "指成";
+		}
+
+		if(orderType.equals("成行")){
+			orderUnitPrice = "0";
+		}
 
 		try{
 			int amount = Integer.parseInt(orderAmount);

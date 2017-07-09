@@ -37,14 +37,27 @@ table, td {
 </head>
 
 <script type="text/javascript">
-	function checkRadio() {
+	function checkOrderType() {
 
-		for (i = 0; i < 5; i++) {
-
-			document.myform.rdo1[i].disabled = !(document.myform.yesno.checked);
-
+		if(document.myForm.order_type[0].checked){
+			document.myForm.order_unit_price.disabled = true;
+			document.myForm.order_unit_price.value = ""
+		} else {
+			document.myForm.order_unit_price.disabled = false;
 		}
+	}
 
+	function checkOrderCondition() {
+
+		if(!document.myForm.order_condition[3].checked){
+			document.myForm.order_type[0].disabled = false;
+			document.myForm.order_type[1].disabled = false;
+		} else {
+			document.myForm.order_type[0].checked = false;
+			document.myForm.order_type[1].checked = false;
+			document.myForm.order_type[0].disabled = true;
+			document.myForm.order_type[1].disabled = true;
+		}
 	}
 </script>
 
@@ -80,16 +93,16 @@ table, td {
 		現在価格：<%=nowPrice%>
 		円
 	</h3>
-	<form action="order" method="POST">
+	<form name="myForm" action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderentry">
 		<h3>注文の種類</h3>
-		<input type="radio" name="order_type" value="成行">成行<br> <input
-			type="radio" name="order_type" value="指値">指値<br> <br>
+		<input type="radio" name="order_type" value="成行" onClick="checkOrderType();">成行<br> <input
+			type="radio" name="order_type" value="指値" onClick="checkOrderType();">指値<br> <br>
 		<h3>執行条件</h3>
-		<input type="radio" name=order_condition value="無条件">無条件<br>
-		<input type="radio" name=order_condition value="寄付">寄付<br>
-		<input type="radio" name=order_condition value="引け">引け<br>
-		<input type="radio" name=order_condition value="指成">指成<br>
+		<input type="radio" name=order_condition value="無条件" onClick="checkOrderCondition();">無条件<br>
+		<input type="radio" name=order_condition value="寄付" onClick="checkOrderCondition();">寄付<br>
+		<input type="radio" name=order_condition value="引け" onClick="checkOrderCondition();">引け<br>
+		<input type="radio" name=order_condition value="指成" onClick="checkOrderCondition();">指成<br>
 		<h3>注文数</h3>
 		<input type="text" name="order_amount"><br>
 		<h3>注文単価</h3>

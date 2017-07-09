@@ -89,7 +89,7 @@
 		</tr>
 		<tr>
 			<th style="color: white;">注文単価</th>
-			<td><%= (int) order.getOrderUnitPrice() %> 円</td>
+			<td><%= (int) order.getOrderUnitPrice() == 0 ? "ー" : order.getOrderUnitPrice() + " 円" %></td>
 		</tr>
 		<tr>
 			<th style="color: white;">注文数</th>
