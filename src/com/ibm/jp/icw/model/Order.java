@@ -114,13 +114,14 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
-	public Order(long receptionNumber, Brand brand, User user, OrderType orderType,
+	public Order(long receptionNumber, Brand brand, User user, String tradingType, OrderType orderType,
 			OrderCondition orderCondition, int orderAmount,int closingAmount, double orderUnitPrice,
 			double closingUnitPrice, Date orderDate, Date closingDate, OrderStatus orderStatus) {
 		super();
 		this.receptionNumber = receptionNumber;
 		this.brand = brand;
 		this.user = user;
+		this.tradingType = tradingType;
 		this.orderType = orderType;
 		this.orderCondition = orderCondition;
 		this.orderAmount = orderAmount;

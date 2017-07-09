@@ -62,6 +62,7 @@ public class OrderDao extends BaseDao {
 						resultSet.getString(BrandDao.COLUMN_BRAND_NAME), resultSet.getInt(MarketPriceDao.COLUMN_PRICE));
 
 				Order order = new Order(resultSet.getLong(COLUMN_RECEPTION_NUMBER), brand, user,
+						resultSet.getString(COLUMN_TRADING_TYPE),
 						Order.OrderType.getEnum(resultSet.getString(COLUMN_ORDER_TYPE)),
 						Order.OrderCondition.getEnum(resultSet.getString(COLUMN_ORDER_CONDITION)),
 						resultSet.getInt(COLUMN_ORDER_AMOUNT), resultSet.getInt(COLUMN_CLOSING_AMOUNT),

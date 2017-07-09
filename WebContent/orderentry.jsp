@@ -37,15 +37,15 @@ table, td {
 </head>
 
 <script type="text/javascript">
-function checkfunc() {
+	function checkRadio() {
 
-for(i=0; i<5; i++) {
+		for (i = 0; i < 5; i++) {
 
-document.myform.rdo1[i].disabled = !(document.myform.yesno.checked);
+			document.myform.rdo1[i].disabled = !(document.myform.yesno.checked);
 
-}
+		}
 
-}
+	}
 </script>
 
 <body>
@@ -69,10 +69,17 @@ document.myform.rdo1[i].disabled = !(document.myform.yesno.checked);
 	</div>
 	<!-- ヘッダー部分 -->
 	<h2>買い注文</h2>
-	<h3>お客様の取引余力：<%= tradingMargin %> 円</h3>
-	<h2 style="color: <%= color %>;"><%= brandStatus + brand.getBrandName()%></h2>
-	<h3>銘柄コード：<%= brand.getBrandCode()%></h3>
-	<h3>現在価格：<%= nowPrice %> 円</h3>
+	<h3>
+		お客様の取引余力：<%=tradingMargin%>
+		円
+	</h3>
+	<h2 style="color: <%=color%>;"><%=brandStatus + brand.getBrandName()%></h2>
+	<h3>
+		銘柄コード：<%=brand.getBrandCode()%></h3>
+	<h3>
+		現在価格：<%=nowPrice%>
+		円
+	</h3>
 	<form action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderentry">
 		<h3>注文の種類</h3>
@@ -86,8 +93,9 @@ document.myform.rdo1[i].disabled = !(document.myform.yesno.checked);
 		<h3>注文数</h3>
 		<input type="text" name="order_amount"><br>
 		<h3>注文単価</h3>
-		<input type="text" name="order_unit_price"><br>
-		<br> <input class="square_btn" type="submit" value="注文確認へ進む" style="font-size: 20pt" />
+		<input type="text" name="order_unit_price"><br> <br>
+		<input class="square_btn" type="submit" value="注文確認へ進む"
+			style="font-size: 20pt" />
 	</form>
 	<p>
 		<font color="red"><%=message%></font>
