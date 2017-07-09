@@ -91,7 +91,7 @@
 
 		<tr>
 			<td align="center"><%=brand.getBrandCode()%></td>
-			<td style="color:#FF0000"><%=brand.getBrandStatus()+brand.getBrandName()%></td>
+			<td style="color:#FF0000">【<%=brand.getBrandStatus()%>】<%=brand.getBrandName()%></td>
 			<td><%=brand.getMarket()%></td>
 			<td><%=brand.getIndustry()%></td>
 			<td align="center"><%=brand.getTradingUnit()%></td>
