@@ -7,7 +7,7 @@ public class Order {
 	public enum OrderType{
 		成行("成行"),
 		指値("指値"),
-		なし("指成");
+		指成("指成");
 
 		private String name;
         public String getName() {

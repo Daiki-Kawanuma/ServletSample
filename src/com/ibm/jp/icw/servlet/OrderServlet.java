@@ -64,6 +64,14 @@ public class OrderServlet extends BaseServlet {
 			String orderAmount  = request.getParameter(PARAM_ORDER_AMOUNT);
 			String orderUnitPrice = request.getParameter(PARAM_ORDER_UNIT_PRICE);
 
+			if(orderCondition != null && orderCondition.equals("指成")){
+				orderType = "指成";
+			}
+
+			if(orderType != null && orderType.equals("成行")){
+				orderUnitPrice = "0";
+			}
+
 			if(validateInputs(orderType, orderCondition, orderAmount,orderUnitPrice)){
 
 				if(checkAccountBalance(user.getAccountNumber(), Integer.parseInt(orderAmount) * Integer.parseInt(orderUnitPrice))){
@@ -118,14 +126,6 @@ public class OrderServlet extends BaseServlet {
 	 */
 	public boolean validateInputs(String orderType, String orderCondition,
 			String orderAmount, String orderUnitPrice){
-
-		if(orderCondition != null && orderCondition.equals("指成")){
-			orderType = "指成";
-		}
-
-		if(orderType != null && orderType.equals("成行")){
-			orderUnitPrice = "0";
-		}
 
 		if(orderType == null || orderCondition == null
 				|| orderAmount == null || orderUnitPrice == null)
