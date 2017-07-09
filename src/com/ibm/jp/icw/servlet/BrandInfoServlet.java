@@ -18,7 +18,6 @@ public class BrandInfoServlet extends BaseServlet {
 
 	// 色々定義しときます
 	private static final String PARAM_CURRENT_PAGE = "current_page";
-	private static final String PARAM_ERROR_MESSAGE = "message";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

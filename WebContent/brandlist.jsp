@@ -6,6 +6,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants"%>
 <%@ page import="com.ibm.jp.icw.model.User"%>
+<%@ page import="java.text.NumberFormat;"%>
 <%
 	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 	String message = (String) request.getAttribute("message");
@@ -64,8 +65,8 @@
 		<input type="hidden" name="current_page" value="brandlist"> <input
 			type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
-		<br> <input type="text" name="searchcondition"> <input class="square_btn"
-			type="submit" value="検索" style="font-size: 20pt" />
+		<br> <input type="text" name="searchcondition"> <input
+			class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
 	</form>
 	<br>
 	<br>
@@ -91,11 +92,13 @@
 
 		<tr>
 			<td align="center"><%=brand.getBrandCode()%></td>
-			<td style="color: #FF0000">【<%=brand.getBrandStatus()%>】<%=brand.getBrandName()%></td>
+			<td
+				style="color: <%=brand.getBrandStatus().equals("正常銘柄") ? "black" : "red"%>;"><%=brand.getBrandStatus().equals("正常銘柄") ? brand.getBrandName()
+						: "【" + brand.getBrandStatus() + "】" + brand.getBrandName()%></td>
 			<td><%=brand.getMarket()%></td>
 			<td><%=brand.getIndustry()%></td>
 			<td align="center"><%=brand.getTradingUnit()%></td>
-			<td align="right"><%=brand.getMarketPrice()%></td>
+			<td align="right"><%= NumberFormat.getNumberInstance().format(brand.getMarketPrice()) %> 円</td>
 			<td align="center"><form action="search" method="POST">
 					<input type="hidden" name="current_page" value="brandlist">
 					<button class="square_btn" type="submit" name="detail"
