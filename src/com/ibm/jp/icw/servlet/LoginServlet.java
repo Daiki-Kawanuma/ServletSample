@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 		 * "DAIKI KAWANUM", "123", new Date()); /
 		 */
 		User user = UserDao.getUser(accountNumber);
+		System.out.println(user);
 		if (user == null) {
 			request.setAttribute("message", "エラーメッセージ:正しいアカウントナンバーを半角数字で入力してください。");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);

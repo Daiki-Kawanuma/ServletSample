@@ -46,6 +46,7 @@ public class OrderServlet extends BaseServlet {
 		Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
 
 		String currentPage = request.getParameter(PARAM_CURRENT_PAGE);
+
 		if(currentPage == null)
 			currentPage = ServletConstants.BRAND_LIST;
 		String nextPage = null;
@@ -63,6 +64,7 @@ public class OrderServlet extends BaseServlet {
 			String orderCondition = request.getParameter(PARAM_ORDER_CONDITION);
 			String orderAmount  = request.getParameter(PARAM_ORDER_AMOUNT);
 			String orderUnitPrice = request.getParameter(PARAM_ORDER_UNIT_PRICE);
+
 
 			if(orderCondition != null && orderCondition.equals("指成")){
 				orderType = "指成";

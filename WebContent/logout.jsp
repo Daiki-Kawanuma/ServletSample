@@ -13,8 +13,10 @@
 	<div align="center">
 		<h2>
 			ログアウトしました。
-			<h2>
-				<a href="login">ログイン画面に戻る</a>
+			<h2 >
+			</div>
+			<div align="center">
+				<input type="button" class="button" onClick="location.href='login'" value="ログイン画面に戻る">
 	</div>
 </body>
 </html>

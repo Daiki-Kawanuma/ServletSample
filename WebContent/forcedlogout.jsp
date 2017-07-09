@@ -6,6 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>強制ログアウト｜TS長谷川証券</title>
 <link rel="stylesheet" href="Header.css" type="text/css">
+
+
+
 </head>
 <body>
 	<h1>長谷川証券トレーディングシステム</h1>
@@ -14,13 +17,19 @@
 		<h2>強制ログアウトされました。</h2>
 		<p>次のような場合、強制ログアウトとなります。</p>
 	</div>
-	<div
-		style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; background-color: #98fb98;">
-		<div>●10分以上操作が行われていなかった場合。</div>
+	<div align="center">
+	<div class ="hako2" >
+	<br>
+		<div align="left">●10分以上操作が行われていなかった場合。</div>
 		<br>
-		<div>●予期せぬトラブルが起きた場合。</div>
+		<div align="left">●予期せぬトラブルが起きた場合。</div>
 	</div>
-
-	<input type="button" onClick="location.href='login'" value="ログインに戻る">
+	</div>
+	<br>
+	<div align="center">
+				<input type="button" class="button" onClick="location.href='login'" value="ログイン画面に戻る">
+	</div>
 </body>
 </html>
+
+

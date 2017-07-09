@@ -27,11 +27,11 @@ header {
 	height: 90px; /* 縦幅140px */
 }
 
-.form-wrapping {
+.form-wrapper {
 	background: #e0ffff;
 	margin: 3em auto;
 	padding: 0 1em;
-	max-width: 600px;
+	max-width: 370px;
 }
 
 input[type=text] {
@@ -102,4 +102,11 @@ p.a {
 
 .hako {
 	background: #e6e6fa;
+	max-width: 500px;
 }
+
+.hako2 {
+	background: #e6e6fa;
+	max-width: 500px;
+	min-height: 100px;
+	style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;"}
