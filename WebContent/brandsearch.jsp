@@ -70,8 +70,8 @@ h2:after {
 		<input type="hidden" name="current_page" value="brandsearch">
 		<input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
-		<br> <input type="text" name="searchcondition" /> <input
-			class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
+		<br> <input type="text" name="searchcondition" /> <input class="square_btn"
+			type="submit" value="検索" style="font-size: 20pt" />
 	</form>
 	<p>
 		<font color="red"><%=message%></font>

@@ -34,7 +34,7 @@
 					<div class="form-item">
 						<label for="account_number"></label> <input type="text"
 							name="account_number" required="required "
-							placeholder=口座番号を入力してください。> </input>
+							placeholder=口座番号を入力してください。 style="ime-mode:disabled"> </input>
 					</div>
 					<div class="form-item">
 						<input type="password" name="login_pass" required="required"
