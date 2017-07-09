@@ -136,6 +136,9 @@ public class BrandInfoServlet extends BaseServlet {
 		if (searchType == null || searchCondition == null)
 			return false;
 
+		if(searchType.equals("") || searchCondition.equals(""))
+			return false;
+
 		if (searchType.equals("brandcode")) {
 
 			if (searchCondition.length() != 4) {
