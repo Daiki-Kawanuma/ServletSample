@@ -15,13 +15,13 @@ public class OrderServletTest {
 	boolean result;
 
 	@Test
-	public void 成行ー無条件ー100ー100でTRUEを返す() {
+	public void 成行ー無条件ー100ー空文字でTRUEを返す() {
 
 		// ユーザの入力
 		orderType = "成行";
 		orderCondition = "無条件";
 		orderAmount = "100";
-		orderUnitPrice = "100";
+		orderUnitPrice = "";
 		// 実行
 		result = servlet.validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice);
 		// 検証
@@ -29,13 +29,13 @@ public class OrderServletTest {
 	}
 
 	@Test
-	public void 成行ー寄付ー100ー100でTRUEを返す() {
+	public void 成行ー寄付ー100ー空文字でTRUEを返す() {
 
 		// ユースケース２のパターン
 		orderType = "成行";
 		orderCondition = "寄付";
 		orderAmount = "100";
-		orderUnitPrice = "100";
+		orderUnitPrice = "";
 		// 実行
 		result = servlet.validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice);
 		// 検証
@@ -43,13 +43,13 @@ public class OrderServletTest {
 	}
 
 	@Test
-	public void 成行ー引けー100ー100でTRUEを返す() {
+	public void 成行ー引けー100ー空文字でTRUEを返す() {
 
 		// ユースケース２のパターン
 		orderType = "成行";
 		orderCondition = "引け";
 		orderAmount = "100";
-		orderUnitPrice = "100";
+		orderUnitPrice = "";
 		// 実行
 		result = servlet.validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice);
 		// 検証
@@ -98,10 +98,10 @@ public class OrderServletTest {
 		assertThat(result, is(true));
 	}
 	@Test
-	public void 任意ー指成ー100ー100でTRUEを返す() {
+	public void nullー指成ー100ー100でTRUEを返す() {
 
 		// ユースケース２のパターン
-		orderType = "任意";
+		orderType = null;
 		orderCondition = "指成";
 		orderAmount = "100";
 		orderUnitPrice = "100";
@@ -112,17 +112,17 @@ public class OrderServletTest {
 	}
 
 	@Test
-	public void 成行ー無条件ー99999999ー100でFALSEを返す() {
+	public void 空文字ー指成ー100ー100でTRUEを返す() {
 
 		// ユースケース２のパターン
-		orderType = "成行";
-		orderCondition = "無条件";
-		orderAmount = "99999999";
+		orderType = "";
+		orderCondition = "指成";
+		orderAmount = "100";
 		orderUnitPrice = "100";
 		// 実行
 		result = servlet.validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice);
 		// 検証
-		assertThat(result, is(false));
+		assertThat(result, is(true));
 	}
 
 	@Test
@@ -154,31 +154,17 @@ public class OrderServletTest {
 	}
 
 	@Test
-	public void 成行ー無条件ー100ー99999999でFALSEを返す() {
+	public void 成行ー無条件ー100ー空文字でFALSEを返す() {
 
 		// ユースケース２のパターン
 		orderType = "成行";
 		orderCondition = "無条件";
 		orderAmount = "100";
-		orderUnitPrice = "99999999";
+		orderUnitPrice = "";
 		// 実行
 		result = servlet.validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice);
 		// 検証
-		assertThat(result, is(false));
-	}
-
-	@Test
-	public void 成行ー無条件ー100ーAAAでFALSEを返す() {
-
-		// ユースケース２のパターン
-		orderType = "成行";
-		orderCondition = "無条件";
-		orderAmount = "100";
-		orderUnitPrice = "AAA";
-		// 実行
-		result = servlet.validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice);
-		// 検証
-		assertThat(result, is(false));
+		assertThat(result, is(true));
 	}
 
 	@Test
@@ -192,7 +178,7 @@ public class OrderServletTest {
 		// 実行
 		result = servlet.validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice);
 		// 検証
-		assertThat(result, is(false));
+		assertThat(result, is(true));
 	}
 
 	//川沼クレジットカードのテストケースを書け

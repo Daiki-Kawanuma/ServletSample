@@ -119,17 +119,17 @@ public class OrderServlet extends BaseServlet {
 	public boolean validateInputs(String orderType, String orderCondition,
 			String orderAmount, String orderUnitPrice){
 
-		if(orderType == null || orderCondition == null
-				|| orderAmount == null || orderUnitPrice == null)
-			return false;
-
-		if(orderCondition.equals("指成")){
+		if(orderCondition != null && orderCondition.equals("指成")){
 			orderType = "指成";
 		}
 
-		if(orderType.equals("成行")){
+		if(orderType != null && orderType.equals("成行")){
 			orderUnitPrice = "0";
 		}
+
+		if(orderType == null || orderCondition == null
+				|| orderAmount == null || orderUnitPrice == null)
+			return false;
 
 		try{
 			int amount = Integer.parseInt(orderAmount);

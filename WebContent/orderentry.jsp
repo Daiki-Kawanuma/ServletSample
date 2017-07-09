@@ -53,6 +53,7 @@ table, td {
 			document.myForm.order_type[0].disabled = false;
 			document.myForm.order_type[1].disabled = false;
 		} else {
+			document.myForm.order_unit_price.disabled = false;
 			document.myForm.order_type[0].checked = false;
 			document.myForm.order_type[1].checked = false;
 			document.myForm.order_type[0].disabled = true;
