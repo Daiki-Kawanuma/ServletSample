@@ -3,11 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="com.ibm.jp.icw.model.Order"%>
 <%@ page import="com.ibm.jp.icw.model.User"%>
+<%@ page import="com.ibm.jp.icw.model.Brand"%>
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 	Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
+
+	Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
+	String brandStatus = brand.getBrandStatus().equals("正常銘柄") ? "" : "【" + brand.getBrandStatus() + "】";
+	String color = brand.getBrandStatus().equals("正常銘柄") ? "black" : "red";
 %>
 <html>
 <head>
@@ -66,7 +71,7 @@
 		</tr>
 		<tr>
 			<th style="color: white;">銘柄名</th>
-			<td><%= order.getBrand().getBrandName() %></td>
+			<td style="color: <%= color %>;"><%= brandStatus + brand.getBrandName()%></td>
 		</tr>
 		<tr>
 			<th style="color: white;">注文の種類</th>
