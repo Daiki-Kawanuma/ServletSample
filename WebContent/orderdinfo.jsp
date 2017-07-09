@@ -4,6 +4,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.ibm.jp.icw.model.Order"%>
 <%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.text.NumberFormat;"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -78,16 +79,16 @@ meta http-equiv ="Content-Type " content ="text /html; charset =UTF-8 ">
 				<td><%=o.getOrderType()%></td>
 				<td><%=o.getOrderConditions()%></td>
 
-				<td><%=o.getOrderDate()%></td>
-				<td><%=(int) o.getOrderAmount()%></td>
-				<td><%=(int) o.getOrderUnitPrice()%> 円</td>
-				<td><%=(int) (o.getOrderAmount() * o.getOrderUnitPrice())%> 円</td>
+				<td><%= new SimpleDateFormat("yyyy/MM/dd").format(o.getOrderDate())%></td>
+				<td><%= NumberFormat.getNumberInstance().format(o.getOrderAmount()) %></td>
+				<td><%= NumberFormat.getNumberInstance().format(o.getOrderUnitPrice()) %> 円</td>
+				<td><%= NumberFormat.getNumberInstance().format(o.getOrderAmount() * o.getOrderUnitPrice())%> 円</td>
 
 				<td><%=o.getClosingDate() == null ? "-"
 						: new SimpleDateFormat("yyyy/MM/dd").format(o.getClosingDate())%></td>
-				<td><%=o.getClosingAmount() == 0 ? "-" : o.getClosingAmount()%></td>
-				<td><%=o.getClosingUnitPrice() == 0 ? "-" : o.getClosingAmount()%> 円</td>
-				<td><%=o.getClosingAmount() == 0 ? "-" : o.getClosingAmount() * o.getClosingUnitPrice()%> 円</td>
+				<td><%=o.getClosingAmount() == 0 ? "-" : NumberFormat.getNumberInstance().format(o.getClosingAmount()) %></td>
+				<td><%=o.getClosingUnitPrice() == 0 ? "-" : NumberFormat.getNumberInstance().format(o.getClosingUnitPrice()) + " 円"%></td>
+				<td><%=o.getClosingAmount() == 0 ? "-" : NumberFormat.getNumberInstance().format(o.getClosingAmount() * o.getClosingUnitPrice()) + " 円"%></td>
 				<td align="center">
 					<!-- <input type="submit" value="銘柄詳細情報を表示する"></td> --> <input
 					type="hidden" name="current_page" value="brandlist"> <br>
