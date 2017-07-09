@@ -4,9 +4,12 @@
 <%@ page import="com.ibm.jp.icw.model.Brand"%>
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants"%>
 <%@ page import="com.ibm.jp.icw.model.User"%>
+<%@ page import="java.text.NumberFormat;"%>
 <%
-	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 	request.setCharacterEncoding("UTF-8");
+	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
+	String tradingMargin = NumberFormat.getNumberInstance().format(user.getAccountBalance());
+
 	Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 	String brandStatus = brand.getBrandStatus().equals("正常銘柄") ? "" : "【" + brand.getBrandStatus() + "】";
 	String color = brand.getBrandStatus().equals("正常銘柄") ? "black" : "red";
@@ -51,8 +54,9 @@ table, td {
 	</div>
 	<!-- ヘッダー部分 -->
 	<h2>買い注文</h2>
-	<h2 style="color: <%= color %>;"><%= brandStatus + brand.getBrandName()%> 詳細情報
-	</h2>
+	<h3>お客様の取引余力：<%= tradingMargin %> 円</h3>
+	<h2 style="color: <%= color %>;"><%= brandStatus + brand.getBrandName()%></h2>
+	<h3>銘柄コード：<%= brand.getBrandCode()%></h3>
 	<form action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderentry">
 		<h3>注文の種類</h3>
