@@ -71,6 +71,10 @@
 			<td><%=brand.getMarket()%></td>
 			<td><%=brand.getIndustry()%></td>
 			<td><%=brand.getTradingUnit()%></td>
+			<td><%=brand.getBidPrice()%></td>
+			<td><%=brand.getOfferPrice()%></td>
+
+
 		</tr>
 		<tr style="color: #FFFFFF">
 			<th>株価</th>
@@ -80,6 +84,8 @@
 			<th>安値</th>
 			<th>年初来高値</th>
 			<th>年初来安値</th>
+			<th>買い気配値</th>
+			<th>売り気配値</th>
 		</tr>
 		<tr>
 			<td><%=brand.getMarketPrice()%></td>
