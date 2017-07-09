@@ -12,7 +12,7 @@ import com.ibm.jp.icw.model.MarketPrice;
 public class MarketPriceDao extends BaseDao {
 
 	public static final String COLUMN_BRAND_CODE = "BRAND_CODE";
-	public static final String COLUMN_DATE = "DATE";
+	public static final String COLUMN_DATE_TIME = "DATE_TIME";
 	public static final String COLUMN_PRICE = "PRICE";
 
 	public static MarketPrice getMarketPrice(String brandCode){
@@ -27,13 +27,12 @@ public class MarketPriceDao extends BaseDao {
 					DatabaseConstants.PASSWORD);
 			statement = connection.createStatement();
 
-			// TODO クエリを書く
 			ResultSet resultSet = statement.executeQuery(
-					String.format("SELECT * FROM user WHERE accout_number = '%s'", brandCode));
+					String.format("SELECT * FROM market_price WHERE brand_code = '%s'", brandCode));
 
 			if (resultSet.next()){
 				price = new MarketPrice(resultSet.getString(COLUMN_BRAND_CODE),
-						resultSet.getDate(COLUMN_DATE),
+						resultSet.getDate(COLUMN_DATE_TIME),
 						resultSet.getInt(COLUMN_PRICE));
 			}
 		} catch (SQLException e) {

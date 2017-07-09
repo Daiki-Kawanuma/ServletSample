@@ -50,8 +50,6 @@ public class OrderDao extends BaseDao {
 					+ "AND order.brand_code = brand.brand_code "
 					+ "AND order.brand_code = now_price.brand_code;";
 
-			System.err.println(query);
-
 			ResultSet resultSet = statement
 					.executeQuery(query);
 
@@ -125,13 +123,20 @@ public class OrderDao extends BaseDao {
 					new SimpleDateFormat("yyyy/MM/dd").format(order.getOrderDate()),
 					"注文中");
 
-			statement.executeUpdate(query);
-			order.setReceptionNumber(maxReceptionNo);
+			int resultRegister = statement.executeUpdate(query);
+
+			if(resultRegister == 1){
+				order.setReceptionNumber(maxReceptionNo);
+			} else {
+				order.setReceptionNumber(-1);
+			}
 			return order;
 
 		} catch (SQLException e) {
 			System.err.println("エラー：OrderDao#DBデータ操作時にエラー発生");
 			e.printStackTrace();
+			order.setReceptionNumber(-1);
+			return order;
 		} finally {
 			if (statement != null) {
 				try {
@@ -150,6 +155,5 @@ public class OrderDao extends BaseDao {
 				}
 			}
 		}
-		return null;
 	}
 }

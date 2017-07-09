@@ -28,8 +28,8 @@ public class BrandDaoTest {
 	}
 
 	@Test
-	public void getBrandbyBrandCode1000で正常に返る() {
-		brandCode = "1000";
+	public void getBrandbyBrandCode1332で正常に返る() {
+		brandCode = "1332";
 		ArrayList<Brand> list = BrandDao.getBrandByBrandCode(brandCode);
 		assertThat(list.size(), not(0));
 	}

@@ -83,7 +83,7 @@ public class BrandInfoServletTest {
 	public void nullー1332でFALSEを返す() {
 
 		// ユーザの入力
-		searchType = "null";
+		searchType = null;
 		searchCondition = "1332";
 		// 実行
 		result = servlet.validateInputs(searchType, searchCondition);

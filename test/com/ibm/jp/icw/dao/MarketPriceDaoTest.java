@@ -25,8 +25,8 @@ public class MarketPriceDaoTest {
 	}
 
 	@Test
-	public void 銘柄コードに1000を入力すると最新の時価インスタンスが返される() {
-		brandCode = "1000";
+	public void 銘柄コードに1332を入力すると最新の時価インスタンスが返される() {
+		brandCode = "1332";
 		MarketPrice price = MarketPriceDao.getMarketPrice(brandCode);
 		assertNotNull(price);
     }

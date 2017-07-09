@@ -25,10 +25,10 @@ public class UserDaoTest {
 	}
 
 	@Test
-    public void 正しい口座番号が入力された場合は取得結果は() {
+    public void 正しい口座番号が入力された場合は取得結果はNullでない() {
         accountNumber = "1000000000000001";
         User user = UserDao.getUser(accountNumber);
-        assertNull(user);
+        assertNotNull(user);
     }
 
 	@Test
