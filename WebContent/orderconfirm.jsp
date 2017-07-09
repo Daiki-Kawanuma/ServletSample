@@ -8,7 +8,9 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
+
 	Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
+	String buyOrSell = order.getTradingType().equals("B") ? "買い注文" : "売り注文";
 
 	Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
 	String brandStatus = brand.getBrandStatus().equals("正常銘柄") ? "" : "【" + brand.getBrandStatus() + "】";
@@ -72,6 +74,10 @@
 		<tr>
 			<th style="color: white;">銘柄名</th>
 			<td style="color: <%= color %>;"><%= brandStatus + brand.getBrandName()%></td>
+		</tr>
+		<tr>
+			<th style="color: white;">売買区分</th>
+			<td><%= buyOrSell %></td>
 		</tr>
 		<tr>
 			<th style="color: white;">注文の種類</th>
