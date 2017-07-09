@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
 import com.ibm.jp.icw.dao.OrderDao;
 import com.ibm.jp.icw.model.Order;
@@ -29,7 +30,7 @@ public class OrderedInfoServlet extends BaseServlet {
 			throws ServletException, IOException {
 
 		User user = (User) request.getSession().getAttribute(SessionConstants.PARAM_USER);
-
+		String nextPage = null;
 		/* Debug
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
@@ -43,6 +44,7 @@ public class OrderedInfoServlet extends BaseServlet {
 		/*/
 		ArrayList<Order> orderList = OrderDao.getOrderList(user.getAccountNumber());
 		//*/
+		nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
 
 		if(orderList.size() == 0){
 			request.setAttribute("message", "注文情報がありません。");
