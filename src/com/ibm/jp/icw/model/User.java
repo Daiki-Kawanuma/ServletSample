@@ -73,4 +73,19 @@ public class User {
 	public Date getCreditCardValidatedDate() {
 		return creditCardValidatedDate;
 	}
+
+	@Override
+	public String toString(){
+		return "口座番号:" + accountNumber
+		+ ", 名前: " + name
+		+ ", パスワード: " + password
+		+ ", メール: " + mail
+		+ ", 誕生日: " + birthday
+		+ ", 口座残高: " + accountBalance
+		+ ", クレジットカード番号: " + creditCardNumber
+		+ ", クレジットカード名義: " + creditCardName
+		+ ", クレジットカード暗証番号: " + creditCardSecurityCode
+		+ ", クレジットカード有効期限: " + creditCardValidatedDate;
+	}
+
 }

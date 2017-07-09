@@ -189,4 +189,21 @@ public class Order {
 		return orderStatus;
 	}
 
+	@Override
+	public String toString(){
+		return "受付番号:" + receptionNumber
+		+ ", 銘柄: " + brand
+		+ ", ユーザー: " + user
+		+ ", 売買区分: " + tradingType
+		+ ", 注文の種類: " + orderType
+		+ ", 注文状況: " + orderCondition
+		+ ", 注文数: " + orderAmount
+		+ ", 成約数: " + closingAmount
+		+ ", 注文単価: " + orderUnitPrice
+		+ ", 成約単価: " + closingUnitPrice
+		+ ", 注文日: " + orderDate
+		+ ", 成約日: " + closingDate
+		+ ", 銘柄状態: " +  orderStatus;
+	}
+
 }

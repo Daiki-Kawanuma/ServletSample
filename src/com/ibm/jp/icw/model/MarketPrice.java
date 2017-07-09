@@ -26,4 +26,11 @@ public class MarketPrice {
 	public double getPrice() {
 		return price;
 	}
+
+	@Override
+	public String toString(){
+		return "銘柄コード:" + brandCode
+		+ ", 日時: " + date
+		+ ", 時価: " + price;
+	}
 }
