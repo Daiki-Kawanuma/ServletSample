@@ -41,7 +41,7 @@ public class OrderedInfoServlet extends BaseServlet {
 		if (searchReceptNo != null) {
 			nextPage = ServletConstants.ORDEREDINFOS + ".jsp";
 			orderList = OrderDao.getOrderByReceptionNumber(user.getAccountNumber(), searchReceptNo);
-			request.setAttribute("list", orderList);
+			request.setAttribute("orderlist", orderList);
 
 			if (orderList.size() == 0) {
 				request.setAttribute("message", "ご入力された受付番号に一致する注文情報がありません。");
