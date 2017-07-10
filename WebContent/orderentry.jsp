@@ -116,7 +116,7 @@ table, td {
 		現在価格：<%=nowPrice%>
 		円
 	</h3>
-	<h3>単元株：<%= brand.getTradingUnit() %>></h3>
+	<h3>単元株：<%= brand.getTradingUnit() %></h3>
 	<form name="myForm" action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderentry">
 		<h3>注文の種類</h3>

@@ -86,7 +86,7 @@ public class OrderServlet extends BaseServlet {
 				if (validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice)) {
 
 					int unitPrice = Integer.parseInt(orderUnitPrice);
-					int amount = Integer.parseInt(orderUnitPrice);
+					int amount = Integer.parseInt(orderAmount);
 
 					if (!checkAccountBalance(user.getAccountNumber(),
 							amount * unitPrice)) {
@@ -94,7 +94,7 @@ public class OrderServlet extends BaseServlet {
 						request.setAttribute(PARAM_ERROR_MESSAGE, "購入金額が取引余力を超えています。");
 					} else if(!checkOrderTotal(user.getAccountNumber(), amount, unitPrice)) {
 						nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
-						request.setAttribute(PARAM_ERROR_MESSAGE, "1日の取引上限額3,000万円を超えています。");
+						request.setAttribute(PARAM_ERROR_MESSAGE, "1日の取引上限額 3,000万円を超えています。");
 					} else {
 						nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
 
