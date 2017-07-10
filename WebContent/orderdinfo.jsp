@@ -5,7 +5,7 @@
 <%@ page import="com.ibm.jp.icw.model.Order"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.text.NumberFormat"%>
-<%@ page import="com.ibm.jp.icw.constant.SessionConstants" %>
+<%@ page import="com.ibm.jp.icw.constant.SessionConstants"%>
 <%@ page import="com.ibm.jp.icw.model.User"%>
 
 <%
@@ -21,8 +21,24 @@
 %>
 <html>
 <head>
+<meta http-equiv="Content-Type " content="text /html; charset =UTF-8 ">
+<title>注文状況一覧</title>
+<link rel="stylesheet " href="Header.css " type="text/html">
 <style>
-<!-- ヘッダー部分 -->
+.tablechumonjokyo {
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+}
+
+.tablechumonjokyo th {
+	background-color: #999999;
+}
+</style>
+
+</head>
+<body>
+	<!-- ヘッダー部分 -->
 	<div style="overflow: auto; background-color: #009999">
 		<div style="float: left;">
 			<h1>
@@ -41,31 +57,10 @@
 		</div>
 	</div>
 	<!-- ヘッダー部分 -->
-
-
-<
-meta http-equiv ="Content-Type " content ="text /html; charset =UTF-8 ">
-	<title>注文状況一覧
-	 </title> <link rel ="stylesheet " href ="Header.css " type ="text
-	/html">.tablechumonjokyo {
-	border-style: solid;
-	border-width: 1px;
-	border-color: black;
-}
-
-.tablechumonjokyo th {
-	background-color: #999999;
-}
-</style>
-
-
-
-</head>
-<body>
-	<h1>注文状況一覧</h1>
+	<h2>注文状況一覧</h2>
 	<p><%=message%></p>
 	<form method="POST" action="search">
-		<table  border=1>
+		<table border=1>
 			<tr>
 				<th>受付番号</th>
 				<th>銘柄名</th>
@@ -104,16 +99,22 @@ meta http-equiv ="Content-Type " content ="text /html; charset =UTF-8 ">
 				<td><%=o.getOrderType()%></td>
 				<td><%=o.getOrderConditions()%></td>
 
-				<td><%= new SimpleDateFormat("yyyy/MM/dd").format(o.getOrderDate())%></td>
-				<td><%= NumberFormat.getNumberInstance().format(o.getOrderAmount()) %></td>
-				<td><%= NumberFormat.getNumberInstance().format(o.getOrderUnitPrice()) %> 円</td>
-				<td><%= NumberFormat.getNumberInstance().format(o.getOrderAmount() * o.getOrderUnitPrice())%> 円</td>
+				<td><%=new SimpleDateFormat("yyyy/MM/dd").format(o.getOrderDate())%></td>
+				<td><%=NumberFormat.getNumberInstance().format(o.getOrderAmount())%></td>
+				<td><%=NumberFormat.getNumberInstance().format(o.getOrderUnitPrice())%>
+					円</td>
+				<td><%=NumberFormat.getNumberInstance().format(o.getOrderAmount() * o.getOrderUnitPrice())%>
+					円</td>
 
 				<td><%=o.getClosingDate() == null ? "-"
 						: new SimpleDateFormat("yyyy/MM/dd").format(o.getClosingDate())%></td>
-				<td><%=o.getClosingAmount() == 0 ? "-" : NumberFormat.getNumberInstance().format(o.getClosingAmount()) %></td>
-				<td><%=o.getClosingUnitPrice() == 0 ? "-" : NumberFormat.getNumberInstance().format(o.getClosingUnitPrice()) + " 円"%></td>
-				<td><%=o.getClosingAmount() == 0 ? "-" : NumberFormat.getNumberInstance().format(o.getClosingAmount() * o.getClosingUnitPrice()) + " 円"%></td>
+				<td><%=o.getClosingAmount() == 0 ? "-"
+						: NumberFormat.getNumberInstance().format(o.getClosingAmount())%></td>
+				<td><%=o.getClosingUnitPrice() == 0 ? "-"
+						: NumberFormat.getNumberInstance().format(o.getClosingUnitPrice()) + " 円"%></td>
+				<td><%=o.getClosingAmount() == 0 ? "-"
+						: NumberFormat.getNumberInstance().format(o.getClosingAmount() * o.getClosingUnitPrice())
+								+ " 円"%></td>
 				<td align="center">
 					<!-- <input type="submit" value="銘柄詳細情報を表示する"></td> --> <input
 					type="hidden" name="current_page" value="brandlist"> <br>
