@@ -60,6 +60,19 @@ table, td {
 			document.myForm.order_type[1].disabled = true;
 		}
 	}
+
+	function checkInputText() {
+
+		document.myForm.order_amount = document.myForm.order_amount.value.replace(/,/g, "");
+		document.myForm.order_unit_price = document.myForm.order_unit_price.value.replace(/,/g, "");
+
+		document.myForm.order_sum.value = document.myForm.order_amount.value
+			* document.myForm.order_unit_price.value;
+
+		document.myForm.order_sum.value = document.myForm.order_sum.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+		document.myForm.order_amount.value = document.myForm.order_amount.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+		document.myForm.order_unit_price.value = document.myForm.order_unit_price.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+	}
 </script>
 
 <body>
@@ -105,11 +118,14 @@ table, td {
 		<input type="radio" name=order_condition value="引け" onClick="checkOrderCondition();">引け<br>
 		<input type="radio" name=order_condition value="指成" onClick="checkOrderCondition();">指成<br>
 		<h3>注文数</h3>
-		<input type="text" name="order_amount"><br>
+		<input type="text" name="order_amount" onkeyup="checkInputText();"><br>
 		<h3>注文単価</h3>
-		<input type="text" name="order_unit_price"><br> <br>
+		<input type="text" name="order_unit_price" onkeyup="checkInputText();"><br>
+		<h3>注文合計</h3>
+		<input type="text" name="order_sum" readonly="readonly"><br>
 		<input class="square_btn" type="submit" value="注文確認へ進む"
 			style="font-size: 20pt" />
+		<h3>注文合計</h3>
 	</form>
 	<p>
 		<font color="red"><%=message%></font>

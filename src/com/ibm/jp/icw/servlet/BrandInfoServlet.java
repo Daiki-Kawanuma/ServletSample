@@ -112,10 +112,10 @@ public class BrandInfoServlet extends BaseServlet {
 
 				nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
 
-				// Debug
-				// Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100,
-				// "管理銘柄", 0, 0, 0, 0, 0, 0, 0, 0, 0);
 				Brand brand = BrandDao.getBrandDetailByBrandCode(brandCodeforDetail);
+
+				// 結合テスト用のコンソール表示
+				System.out.println("BrandCode: " + brand.getBrandCode());
 
 				request.getSession().setAttribute(SessionConstants.PARAM_BRAND, brand);
 
@@ -124,6 +124,9 @@ public class BrandInfoServlet extends BaseServlet {
 				nextPage = ServletConstants.ORDERS;
 
 				Brand brand = BrandDao.getBrandDetailByBrandCode(brandCodeforOrder);
+
+				// 結合テスト用のコンソール表示
+				System.out.println("BrandCode: " + brand.getBrandCode());
 
 				request.getSession().setAttribute(SessionConstants.PARAM_BRAND, brand);
 			}
