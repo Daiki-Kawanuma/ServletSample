@@ -63,15 +63,15 @@ table, td {
 
 	function checkInputText() {
 
-		document.myForm.order_amount = document.myForm.order_amount.value.replace(/,/g, "");
-		document.myForm.order_unit_price = document.myForm.order_unit_price.value.replace(/,/g, "");
+		/*document.myForm.order_amount = document.myForm.order_amount.value.replace(/,/g, "");
+		document.myForm.order_unit_price = document.myForm.order_unit_price.value.replace(/,/g, "");*/
 
 		document.myForm.order_sum.value = document.myForm.order_amount.value
 			* document.myForm.order_unit_price.value;
 
-		document.myForm.order_sum.value = document.myForm.order_sum.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-		document.myForm.order_amount.value = document.myForm.order_amount.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-		document.myForm.order_unit_price.value = document.myForm.order_unit_price.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+		/*document.myForm.order_sum.value = document.myForm.order_sum.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		document.myForm.order_amount.value = document.myForm.order_amount.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		document.myForm.order_unit_price.value = document.myForm.order_unit_price.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');*/
 	}
 </script>
 
