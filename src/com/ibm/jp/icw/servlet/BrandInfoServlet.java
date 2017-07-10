@@ -57,6 +57,7 @@ public class BrandInfoServlet extends BaseServlet {
 					brandList = BrandDao.getBrandListByBrandName(searchCondition);
 				}
 
+
 				if(brandList.size() != 0){
 					nextPage = ServletConstants.BRAND_LIST + ".jsp";
 					request.setAttribute("brandList", brandList);
