@@ -22,7 +22,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type " content="text /html; charset =UTF-8 ">
-<title>注文状況一覧</title>
+<title>注文状況一覧｜TS長谷川証券</title>
 <link rel="stylesheet " href="Header.css " type="text/css">
 <style>
 .tablechumonjokyo {
