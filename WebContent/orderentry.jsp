@@ -122,10 +122,9 @@ table, td {
 		<h3>注文単価</h3>
 		<input type="text" name="order_unit_price" onkeyup="checkInputText();"><br>
 		<h3>注文合計</h3>
-		<input type="text" name="order_sum" readonly="readonly"><br>
+		<input type="text" name="order_sum" readonly="readonly"><br><br>
 		<input class="square_btn" type="submit" value="注文確認へ進む"
 			style="font-size: 20pt" />
-		<h3>注文合計</h3>
 	</form>
 	<p>
 		<font color="red"><%=message%></font>
