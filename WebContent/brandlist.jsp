@@ -6,7 +6,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants"%>
 <%@ page import="com.ibm.jp.icw.model.User"%>
-<%@ page import="java.text.NumberFormat;"%>
+<%@ page import="java.text.NumberFormat"%>
 <%
 	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 	String message = (String) request.getAttribute("message");

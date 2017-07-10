@@ -5,7 +5,7 @@
 <%@ page import="com.ibm.jp.icw.model.User"%>
 <%@ page import="com.ibm.jp.icw.model.Brand"%>
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants" %>
-<%@ page import="java.text.NumberFormat;"%>
+<%@ page import="java.text.NumberFormat"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);

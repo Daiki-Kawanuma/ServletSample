@@ -4,7 +4,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.ibm.jp.icw.model.Order"%>
 <%@ page import="java.text.SimpleDateFormat"%>
-<%@ page import="java.text.NumberFormat;"%>
+<%@ page import="java.text.NumberFormat"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
