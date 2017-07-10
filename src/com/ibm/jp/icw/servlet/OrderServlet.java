@@ -60,38 +60,47 @@ public class OrderServlet extends BaseServlet {
 
 		case ServletConstants.ORDER_ENTRY:
 
-			String orderType = request.getParameter(PARAM_ORDER_TYPE);
-			String orderCondition = request.getParameter(PARAM_ORDER_CONDITION);
-			String orderAmount  = request.getParameter(PARAM_ORDER_AMOUNT);
-			String orderUnitPrice = request.getParameter(PARAM_ORDER_UNIT_PRICE);
+			System.out.println("Account No: " + user.getAccountNumber());
+			if(checkCreditCard(user.getAccountNumber())){
 
+				String orderType = request.getParameter(PARAM_ORDER_TYPE);
+				String orderCondition = request.getParameter(PARAM_ORDER_CONDITION);
+				String orderAmount  = request.getParameter(PARAM_ORDER_AMOUNT);
+				String orderUnitPrice = request.getParameter(PARAM_ORDER_UNIT_PRICE);
 
-			if(orderCondition != null && orderCondition.equals("指成")){
-				orderType = "指成";
-			}
+				if(orderCondition != null && orderCondition.equals("指成")){
+					orderType = "指成";
+				}
 
-			if(orderType != null && orderType.equals("成行")){
-				orderUnitPrice = "0";
-			}
+				if(orderType != null && orderType.equals("成行")){
+					orderUnitPrice = "0";
+				}
 
-			if(validateInputs(orderType, orderCondition, orderAmount,orderUnitPrice)){
+				if(validateInputs(orderType, orderCondition, orderAmount,orderUnitPrice)){
 
-				if(checkAccountBalance(user.getAccountNumber(), Integer.parseInt(orderAmount) * Integer.parseInt(orderUnitPrice))){
-					nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
+					if(checkAccountBalance(user.getAccountNumber(), Integer.parseInt(orderAmount) * Integer.parseInt(orderUnitPrice))){
+						nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
 
-					order = new Order(brand, user, "B", Order.OrderType.getEnum(orderType),
-							Order.OrderCondition.getEnum(orderCondition),
-							Integer.parseInt(orderAmount), Integer.parseInt(orderUnitPrice), new Date());
+						order = new Order(brand, user, "B", Order.OrderType.getEnum(orderType),
+								Order.OrderCondition.getEnum(orderCondition),
+								Integer.parseInt(orderAmount), Integer.parseInt(orderUnitPrice), new Date());
 
-					session.setAttribute(SessionConstants.PARAM_ORDER, order);
+						session.setAttribute(SessionConstants.PARAM_ORDER, order);
+					} else {
+						nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
+						request.setAttribute(PARAM_ERROR_MESSAGE, "購入金額が取引余力を超えています。");
+					}
 				} else {
 					nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
-					request.setAttribute(PARAM_ERROR_MESSAGE, "購入金額が取引余力を超えています。");
+					request.setAttribute(PARAM_ERROR_MESSAGE, "入力された項目に不備があります。");
 				}
+
 			} else {
+
 				nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
-				request.setAttribute(PARAM_ERROR_MESSAGE, "入力された項目に不備があります。");
+				request.setAttribute(PARAM_ERROR_MESSAGE, "クレジットカードが失効しています。");
 			}
+
 			break;
 
 		case ServletConstants.ORDER_CONFIRM:
@@ -156,6 +165,14 @@ public class OrderServlet extends BaseServlet {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	public boolean checkCreditCard(String accountNo){
+		if(accountNo.equals("1000000000000005")){
+			return false;
+		} else {
+			return true;
 		}
 	}
 }

@@ -100,6 +100,9 @@ table, td {
 		お客様の取引余力：<%=tradingMargin%>
 		円
 	</h3>
+	<p>
+		<font color="red"><%=message%></font>
+	</p>
 	<h2 style="color: <%=color%>;"><%=brandStatus + brand.getBrandName()%></h2>
 	<h3>
 		銘柄コード：<%=brand.getBrandCode()%></h3>
@@ -126,8 +129,5 @@ table, td {
 		<input class="square_btn" type="submit" value="注文確認へ進む"
 			style="font-size: 20pt" />
 	</form>
-	<p>
-		<font color="red"><%=message%></font>
-	</p>
 </body>
 </html>
