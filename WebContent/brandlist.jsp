@@ -62,10 +62,14 @@
 	<form action="search" method="POST">
 		<!-- 	検索条件を入力してください：<br><br> -->
 		<!-- 	<select name="searchtype" style="font-size:72pt"> -->
-		<input type="hidden" name="current_page" value="brandlist"> <input
+		<input type="hidden" name="current_page" value="brandlist">
+		<p>1. 検索方法を選択してください。</p><br>
+		<input
 			type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
-		<br> <input type="text" name="searchcondition"> <input
+		<br> <input type="text" name="searchcondition">
+		<p>2. 検索条件を入力してください。</p><br>
+		<input
 			class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
 	</form>
 	<br>
