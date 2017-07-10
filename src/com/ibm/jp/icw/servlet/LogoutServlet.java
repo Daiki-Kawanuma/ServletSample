@@ -24,9 +24,9 @@ public class LogoutServlet extends HttpServlet {
 		session = request.getSession(false);
 
 	     if (session == null){
-	        System.out.println("セッションは破棄されました");
+	        System.err.println("セッションは破棄されました");
 	      }else{
-	        System.out.println("セッションが残っています");
+	        System.err.println("セッションが残っています");
 	      }//統合テスト用
 
 		request.getRequestDispatcher("/logout.jsp").forward(request, response);
