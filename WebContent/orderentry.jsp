@@ -66,8 +66,14 @@ table, td {
 		/*document.myForm.order_amount = document.myForm.order_amount.value.replace(/,/g, "");
 		document.myForm.order_unit_price = document.myForm.order_unit_price.value.replace(/,/g, "");*/
 
-		document.myForm.order_sum.value = document.myForm.order_amount.value
+		var value = document.myForm.order_amount.value * document.myForm.order_unit_price.value;
+
+		if(value > 0){
+			document.myForm.order_sum.value = document.myForm.order_amount.value
 			* document.myForm.order_unit_price.value;
+		} else {
+			document.myForm.order_sum.value = "";
+		}
 
 		/*document.myForm.order_sum.value = document.myForm.order_sum.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		document.myForm.order_amount.value = document.myForm.order_amount.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
