@@ -83,7 +83,7 @@ table, td {
 
 <body>
 	<!-- ヘッダー部分 -->
-	<div style="overflow: auto; background-color: #009999">
+	<div style="overflow: auto; background-color: #009999">//autoを変更して数字
 		<div style="float: left;">
 			<h1>
 				長谷川証券<br>トレーディングシステム
@@ -119,22 +119,40 @@ table, td {
 	<h3>単元株：<%= brand.getTradingUnit() %></h3>
 	<form name="myForm" action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderentry">
-		<h3>注文の種類</h3>
-		<input type="radio" name="order_type" value="成行" onClick="checkOrderType();">成行<br> <input
-			type="radio" name="order_type" value="指値" onClick="checkOrderType();">指値<br> <br>
-		<h3>執行条件</h3>
-		<input type="radio" name=order_condition value="無条件" onClick="checkOrderCondition();">無条件<br>
-		<input type="radio" name=order_condition value="寄付" onClick="checkOrderCondition();">寄付<br>
-		<input type="radio" name=order_condition value="引け" onClick="checkOrderCondition();">引け<br>
-		<input type="radio" name=order_condition value="指成" onClick="checkOrderCondition();">指成<br>
-		<h3>注文数</h3>
-		<input type="text" name="order_amount" onkeyup="checkInputText();"><br>
-		<h3>注文単価</h3>
-		<input type="text" name="order_unit_price" onkeyup="checkInputText();"><br>
-		<h3>注文合計</h3>
-		<input type="text" name="order_sum" readonly="readonly"><br><br>
-		<input class="square_btn" type="submit" value="注文確認へ進む"
-			style="font-size: 20pt" />
+
+		<div style="position:absolute;top:340px;left:300px;">
+			<h3>注文の種類</h3>
+			<input type="radio" name="order_type" value="成行" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">成行<br>
+			<input type="radio" name="order_type" value="指値" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">指値<br> <br>
+		</div>
+
+		<div style="position:absolute;top:340px;left:600px;">
+			<h3>執行条件</h3>
+			<input type="radio" name=order_condition value="無条件" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">無条件<br>
+			<input type="radio" name=order_condition value="寄付" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">寄付<br>
+			<input type="radio" name=order_condition value="引け" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">引け<br>
+			<input type="radio" name=order_condition value="指成" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">指成<br>
+		</div>
+
+		<div style="position:absolute;top:200px;left:950px;">
+			<h3>注文数</h3>
+			<input type="text" name="order_amount" onkeyup="checkInputText();"><br>
+		</div>
+
+		<div style="position:absolute;top:500px;left:950px;">
+			<h3>注文単価</h3>
+			<input type="text" name="order_unit_price" onkeyup="checkInputText();"><br>
+		</div>
+
+		<div style="position:absolute;top:600px;left:950px;">
+			<h3>注文合計</h3>
+			<input type="text" name="order_sum" readonly="readonly"><br><br>
+		</div>
+
+		<div style="position:absolute;top:700px;left:590px;">
+			<input class="square_btn" type="submit" value="注文確認へ進む" style="font-size: 20pt" />
+		</div>
+
 	</form>
 </body>
 </html>
