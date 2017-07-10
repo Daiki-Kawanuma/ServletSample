@@ -17,7 +17,7 @@
 </head>
 <body>
 	<!-- ヘッダー部分 -->
-	<div style="overflow: auto; background-color: #009999">
+	<div style="overflow: auto; background-color: #009999;background-clip:border-box;height: 130px;border: solid 0.4em transparent;">
 		<div style="float: left;">
 			<h1>
 				長谷川証券<br>トレーディングシステム

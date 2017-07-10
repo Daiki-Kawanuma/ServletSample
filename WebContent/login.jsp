@@ -15,11 +15,18 @@
 <link rel="stylesheet" href="Header.css" type="text/css">
 </head>
 <body>
-	<header id="hasegawa"> <nav>
-	<ul>
-		<h1 class="font1">
-			長谷川証券<br>トレーディングシステム
-		</h1>
+	<!-- ヘッダー部分 -->
+	<div style="overflow: auto; background-color: #009999;background-clip:border-box;height: 130px;border: solid 0.4em transparent;">
+		<div style="float: left;">
+			<h1>
+				長谷川証券<br>トレーディングシステム
+			</h1>
+		</div>
+	</div>
+	<!-- ヘッダー部分 -->
+
+
+
 	</nav> </header>
 	<div align="center">
 		<table border="0">
