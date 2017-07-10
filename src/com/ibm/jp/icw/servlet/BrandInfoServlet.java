@@ -85,6 +85,9 @@ public class BrandInfoServlet extends BaseServlet {
 
 				if (validateInputs(searchType, searchCondition)) {
 
+					// 結合テスト用のコンソール表示
+					System.out.println("BrandCode: " + searchCondition);
+
 					ArrayList<Brand> brandList = new ArrayList<Brand>();
 
 					if (searchType.equals("brandcode")) {
