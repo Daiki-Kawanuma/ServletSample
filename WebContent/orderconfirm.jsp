@@ -65,6 +65,7 @@
 	<!-- ヘッダー部分 -->
 	<h2>ご注文内容の確認</h2>
 	<br>
+	<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 	<table class="tableOrder" border="1">
 		<tr>
 		</tr>
@@ -101,6 +102,7 @@
 			<td><%= (int) order.getOrderUnitPrice() == 0 ? "ー" : NumberFormat.getNumberInstance().format(order.getOrderUnitPrice() * order.getOrderAmount() ) + "円" %></td>
 		</tr>
 	</table>
+	</div>
 	<br>
 	<br>
 	<input class="square_btn" style="font-size: 20pt" type="button" onClick="location.href='order'" value="注文を修正する">

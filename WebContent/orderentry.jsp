@@ -129,13 +129,13 @@ table, td {
 		<input type="hidden" name="trading_unit" value="<%= tradingUnit %>" >
 		<input type="hidden" name="current_page" value="orderentry">
 
-		<div style="position:absolute;top:340px;left:300px;">
+		<div style="position:absolute;top:340px;left:300px; font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 			<h3>注文の種類</h3>
 			<input type="radio" name="order_type" value="成行" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">成行<br>
 			<input type="radio" name="order_type" value="指値" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">指値<br> <br>
 		</div>
 
-		<div style="position:absolute;top:340px;left:600px;">
+		<div style="position:absolute;top:340px;left:600px; font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 			<h3>執行条件</h3>
 			<input type="radio" name=order_condition value="無条件" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">無条件<br>
 			<input type="radio" name=order_condition value="寄付" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">寄付<br>

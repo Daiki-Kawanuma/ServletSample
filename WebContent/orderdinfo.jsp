@@ -60,11 +60,12 @@
 	<h2>注文状況一覧</h2>
 	<p><%=message%></p>
 	<form method="POST" action="orderedinfo">
-		<p>受付番号から注文を検索することができます。</p>
+		<p style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">受付番号から注文を検索することができます。</p>
 		<br> <br> <input type="text" name="searchreceptno" /> <input
 			class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
 	</form>
 	<form method="POST" action="search">
+	<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 		<table border=1>
 			<tr>
 				<th>受付番号</th>
@@ -130,7 +131,7 @@
 				}
 			%>
 		</table>
-
+	</div>
 	</form>
 	<input type="button" onClick="location.href='mypage.jsp'" value="戻る">
 

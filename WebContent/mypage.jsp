@@ -35,11 +35,13 @@
 	<!-- ヘッダー部分 -->
 	<h2>マイページ</h2>
 	<br>
+	<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 	<p style="font-size: 150%">
 		ようこそ
 		<%=user.getName()%>
 		さん
 	</p>
+	</div>
 	<h3>
 		お客様の取引余力：<%=tradingMargin%>
 		円

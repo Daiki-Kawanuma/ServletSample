@@ -46,6 +46,7 @@ h2:after {
 </style>
 </head>
 <body>
+
 	<!-- ヘッダー部分 -->
 	<div style="overflow: auto; background-color: #009999; background-clip:border-box;height: 130px;border: solid 0.4em transparent;">
 		<div style="float: left;">
@@ -65,16 +66,19 @@ h2:after {
 		</div>
 	</div>
 	<!-- ヘッダー部分 -->
+
 	<h2>銘柄を検索</h2>
 	<form action="search" method="POST">
+	<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 		<input type="hidden" name="current_page" value="brandsearch">
 		<p>1. 検索方法を選択してください。</p>
 		<br> <input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
 		<br>
 		<p>2. 銘柄コード(４桁)または銘柄名を入力してください。</p>
-		<br> <input type="text" name="searchcondition" /> <input
-			class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
+		<br> <input type="text" name="searchcondition" />
+		<input class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
+	</div>
 	</form>
 	<p>
 		<font color="red"><%=message%></font>

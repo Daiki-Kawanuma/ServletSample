@@ -15,14 +15,18 @@
 	<hr>
 	<div align="center">
 		<h2>強制ログアウトされました。</h2>
-		<p>次のような場合、強制ログアウトとなります。</p>
+		<p style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
+			次のような場合、強制ログアウトとなります。
+		</p>
 	</div>
 	<div align="center">
 	<div class ="hako2" >
 	<br>
-		<div align="left">●10分以上操作が行われていなかった場合。</div>
+		<div align="left" style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
+		●10分以上操作が行われていなかった場合。</div>
 		<br>
-		<div align="left">●予期せぬトラブルが起きた場合。</div>
+		<div align="left" style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
+		●予期せぬトラブルが起きた場合。</div>
 	</div>
 	</div>
 	<br>
