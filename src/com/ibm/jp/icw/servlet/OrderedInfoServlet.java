@@ -22,7 +22,8 @@ public class OrderedInfoServlet extends BaseServlet {
 	// 色々定義しときます
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -31,27 +32,41 @@ public class OrderedInfoServlet extends BaseServlet {
 
 		User user = (User) request.getSession().getAttribute(SessionConstants.PARAM_USER);
 		String nextPage = null;
-		/* Debug
+
+		String searchReceptNo;
+		searchReceptNo = request.getParameter("searchreceptno");
+
 		ArrayList<Order> orderList = new ArrayList<Order>();
-		Brand brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常",
-				0, 0, 0, 0, 0, 0, 0, 0, 0);
-		for(int i = 1; i <= 10; i++){
-			Order order = new Order(brand, user, Order.OrderType.成行,
-					Order.OrderCondition.無条件,
-					100, 100, new Date());
-			orderList.add(order);
+
+		if (searchReceptNo != null) {
+			nextPage = ServletConstants.ORDEREDINFOS + ".jsp";
+			orderList = OrderDao.getOrderByReceptionNumber(user.getAccountNumber(), searchReceptNo);
+			request.setAttribute("list", orderList);
+
+			if (orderList.size() == 0) {
+				request.setAttribute("message", "ご入力された受付番号に一致する注文情報がありません。");
+			}
+			request.getRequestDispatcher("orderdinfo.jsp").forward(request, response);
+		} else {
+			/*
+			 * Debug ArrayList<Order> orderList = new ArrayList<Order>(); Brand
+			 * brand = new Brand("1234", "トヨタ", "東１", "自動車", 100, "正常", 0, 0, 0,
+			 * 0, 0, 0, 0, 0, 0); for(int i = 1; i <= 10; i++){ Order order =
+			 * new Order(brand, user, Order.OrderType.成行,
+			 * Order.OrderCondition.無条件, 100, 100, new Date());
+			 * orderList.add(order); } /
+			 */
+			orderList = OrderDao.getOrderList(user.getAccountNumber());
+			// */
+			nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
+
+			if (orderList.size() == 0) {
+				request.setAttribute("message", "注文情報がありません。");
+			}
+
+			request.setAttribute("orderlist", orderList);
+
+			request.getRequestDispatcher("orderdinfo.jsp").forward(request, response);
 		}
-		/*/
-		ArrayList<Order> orderList = OrderDao.getOrderList(user.getAccountNumber());
-		//*/
-		nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
-
-		if(orderList.size() == 0){
-			request.setAttribute("message", "注文情報がありません。");
-		}
-
-		request.setAttribute("orderlist", orderList);
-
-		request.getRequestDispatcher("orderdinfo.jsp").forward(request, response);
 	}
 }
