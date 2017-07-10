@@ -3,9 +3,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="com.ibm.jp.icw.model.User"%>
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants"%>
+<%@ page import="java.text.NumberFormat"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
+	String tradingMargin = NumberFormat.getNumberInstance().format(user.getAccountBalance());
 %>
 
 <html>
@@ -38,6 +40,11 @@
 		<%=user.getName()%>
 		さん
 	</p>
+	<h3>
+		お客様の取引余力：<%=tradingMargin%>
+		円
+	</h3>
+	<br>
 	<br>
 	<input class="square_btn" type="button"
 		style="width: 300px; font-size: 120%;"
