@@ -45,7 +45,7 @@
 				長谷川証券<br>トレーディングシステム
 			</h1>
 		</div>
-		<div style="float: right;">
+		<div style="float: right; color: white">
 			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
 			</p>
 			<input class="square_btn"
