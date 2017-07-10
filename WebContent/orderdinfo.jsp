@@ -40,8 +40,8 @@ meta http-equiv ="Content-Type " content ="text /html; charset =UTF-8 ">
 	<h1>注文状況一覧</h1>
 	<p><%=message%></p>
 	<form method="POST" action="search">
-		<table class="tablechumonjokyo" border=1>
-			<tr style="color: #FFFFFF">
+		<table  border=1>
+			<tr>
 				<th>受付番号</th>
 				<th>銘柄名</th>
 				<th>銘柄コード</th>
