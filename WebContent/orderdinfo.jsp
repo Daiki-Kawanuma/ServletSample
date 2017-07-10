@@ -5,9 +5,13 @@
 <%@ page import="com.ibm.jp.icw.model.Order"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.text.NumberFormat"%>
+<%@ page import="com.ibm.jp.icw.constant.SessionConstants" %>
+<%@ page import="com.ibm.jp.icw.model.User"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
+	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
+
 	ArrayList<Order> orderList = (ArrayList<Order>) request.getAttribute("orderlist");
 
 	String message = (String) request.getAttribute("message");
@@ -18,6 +22,27 @@
 <html>
 <head>
 <style>
+<!-- ヘッダー部分 -->
+	<div style="overflow: auto; background-color: #009999">
+		<div style="float: left;">
+			<h1>
+				長谷川証券<br>トレーディングシステム
+			</h1>
+		</div>
+		<div style="float: right;">
+			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
+			</p>
+			<input class="square_btn"
+				style="width: 125px; margin: 8px 10px 0px 0px; font-size: 100%"
+				type="button" onClick="location.href='mypage.jsp'" value="マイページ">
+			<br> <input class="square_btn"
+				style="width: 125px; margin: 8px 10px 10px 0px; font-size: 100%;"
+				type="button" onClick="location.href='logout'" value="ログアウト">
+		</div>
+	</div>
+	<!-- ヘッダー部分 -->
+
+
 <
 meta http-equiv ="Content-Type " content ="text /html; charset =UTF-8 ">
 	<title>注文状況一覧
