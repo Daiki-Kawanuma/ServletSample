@@ -42,7 +42,6 @@ public class OrderServlet extends BaseServlet {
 
 		User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
 		Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
-
 		Order order = (Order) session.getAttribute(SessionConstants.PARAM_ORDER);
 
 		String currentPage = request.getParameter(PARAM_CURRENT_PAGE);
