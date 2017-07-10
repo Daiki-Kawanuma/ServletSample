@@ -63,13 +63,12 @@
 		<!-- 	検索条件を入力してください：<br><br> -->
 		<!-- 	<select name="searchtype" style="font-size:72pt"> -->
 		<input type="hidden" name="current_page" value="brandlist">
-		<p>1. 検索方法を選択してください。</p><br>
-		<input
-			type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
+		<p>1. 検索方法を選択してください。</p>
+		<br> <input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
-		<br> <input type="text" name="searchcondition">
-		<p>2. 検索条件を入力してください。</p><br>
-		<input
+		<br>
+		<p>2. 検索条件を入力してください。</p>
+		<br> <input type="text" name="searchcondition"> <input
 			class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
 	</form>
 	<br>
@@ -102,7 +101,8 @@
 			<td><%=brand.getMarket()%></td>
 			<td><%=brand.getIndustry()%></td>
 			<td align="center"><%=brand.getTradingUnit()%></td>
-			<td align="right"><%= NumberFormat.getNumberInstance().format(brand.getMarketPrice()) %> 円</td>
+			<td align="right"><%=NumberFormat.getNumberInstance().format(brand.getMarketPrice())%>
+				円</td>
 			<td align="center"><form action="search" method="POST">
 					<input type="hidden" name="current_page" value="brandlist">
 					<button class="square_btn" type="submit" name="detail"

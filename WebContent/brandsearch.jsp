@@ -68,12 +68,13 @@ h2:after {
 	<h2>銘柄を検索</h2>
 	<form action="search" method="POST">
 		<input type="hidden" name="current_page" value="brandsearch">
-		<p>1. 検索方法を選択してください。</p><br>
-		<input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
+		<p>1. 検索方法を選択してください。</p>
+		<br> <input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
 		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
-		<p>2. 検索条件を入力してください。</p><br>
-		<br> <input type="text" name="searchcondition" /> <input class="square_btn"
-			type="submit" value="検索" style="font-size: 20pt" />
+		<br>
+		<p>2. 検索条件を入力してください。</p>
+		<br> <input type="text" name="searchcondition" /> <input
+			class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
 	</form>
 	<p>
 		<font color="red"><%=message%></font>
