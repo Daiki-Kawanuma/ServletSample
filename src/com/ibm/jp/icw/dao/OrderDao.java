@@ -161,6 +161,55 @@ public class OrderDao extends BaseDao {
 		return orderList;
 	}
 
+	public static int getTodayTotal(String accountNumber){
+
+		int sum = 0;
+		Connection connection = null;
+		Statement statement = null;
+
+		try {
+			connection = DriverManager.getConnection(DatabaseConstants.URL, DatabaseConstants.USER,
+					DatabaseConstants.PASSWORD);
+			statement = connection.createStatement();
+
+			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date_time = '" + DateUtil.getNowTime() +"') "
+					+ "SELECT order.*, brand.brand_name, brand.brand_status, now_price.price FROM order, brand, now_price WHERE order.account_no = '" + accountNumber + "' "
+					+ "AND order.brand_code = brand.brand_code "
+					+ "AND order.brand_code = now_price.brand_code;";
+
+			ResultSet resultSet = statement
+					.executeQuery(query);
+
+			while (resultSet.next()) {
+
+				sum += resultSet.getInt(COLUMN_ORDER_UNIT_PRICE) == 0 ?
+						resultSet.getInt(MarketPriceDao.COLUMN_PRICE) * resultSet.getInt(COLUMN_ORDER_AMOUNT)
+						: resultSet.getInt(COLUMN_ORDER_UNIT_PRICE) * resultSet.getInt(COLUMN_ORDER_AMOUNT);
+			}
+		} catch (SQLException e) {
+			System.err.println("エラー：OrderDao#DBデータ操作時にエラー発生");
+			e.printStackTrace();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					System.err.println("エラー：OrderDao#Statementのクローズ処理時にエラー発生");
+					e.printStackTrace();
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					System.err.println("エラー：OrderDao#connectionのクローズ処理時にエラー発生");
+					e.printStackTrace();
+				}
+			}
+		}
+		return sum;
+	}
+
 	public static Order registOrder(Order order) {
 
 		Connection connection = null;

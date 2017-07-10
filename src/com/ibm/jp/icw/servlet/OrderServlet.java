@@ -165,9 +165,11 @@ public class OrderServlet extends BaseServlet {
 		}
 	}
 
-	public boolean checkOrderTotal(String accoutNumber, int orderAmount, int orderUnitPrice) {
+	public boolean checkOrderTotal(String accountNumber, int orderAmount, int orderUnitPrice) {
 
-		if (orderAmount * orderUnitPrice > 30000000) {
+		int total = OrderDao.getTodayTotal(accountNumber);
+
+		if (total + orderAmount * orderUnitPrice > 30000000) {
 			return false;
 		} else {
 			return true;
