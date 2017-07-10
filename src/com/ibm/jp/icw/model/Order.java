@@ -64,7 +64,7 @@ public class Order {
 
 	public enum OrderStatus{
 		注文中("注文中"),
-		成約済み("注文済み"),
+		成約済み("成約済"),
 		不成立("不成立");
 
 		private String name;
