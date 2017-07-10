@@ -103,6 +103,9 @@
 	</table>
 	<br>
 	<br>
+	<input class="square_btn" style="font-size: 20pt" type="button" onClick="location.href='order'" value="注文を修正する">
+	<br>
+	<br>
 	<form action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderconfirm">
 		<input class="square_btn" type="submit" value="注文を確定する" style="font-size: 20pt" />
