@@ -41,6 +41,13 @@ public class LoginFilter implements Filter {
 					|| servletRequest.getRequestURI().equals(headerUrl)) {
 				chain.doFilter(servletRequest, servletResponse);
 			} else {
+
+			     if (session == null){
+				        System.out.println("セッションは破棄されました");
+				      }else{
+				        System.out.println("セッションが残っています");
+				      }//統合テスト用
+
 				servletResponse.sendRedirect(forcedLogoutUrl);
 			}
 		}
