@@ -20,6 +20,7 @@ public class LogoutServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.invalidate();
+		System.out.println(session);//統合テスト用
 
 		request.getRequestDispatcher("/logout.jsp").forward(request, response);
 	}
