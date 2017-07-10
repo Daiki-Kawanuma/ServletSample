@@ -97,6 +97,70 @@ public class OrderDao extends BaseDao {
 		return orderList;
 	}
 
+	public static ArrayList<Order> getOrderByReceptionNumber(String accountNumber, String receptionNumber) {
+
+		ArrayList<Order> orderList = new ArrayList<Order>();
+		Connection connection = null;
+		Statement statement = null;
+
+		try {
+			connection = DriverManager.getConnection(DatabaseConstants.URL, DatabaseConstants.USER,
+					DatabaseConstants.PASSWORD);
+			statement = connection.createStatement();
+
+			String query = "WITH now_price AS (SELECT * FROM market_price WHERE date_time = '" + DateUtil.getNowTime() +"') "
+					+ "SELECT order.*, brand.brand_name, brand.brand_status, now_price.price FROM order, brand, now_price WHERE order.account_no = '" + accountNumber + "' "
+					+ "AND order.brand_code = brand.brand_code "
+					+ "AND order.brand_code = now_price.brand_code "
+					+ "AND order.reception_no = " + receptionNumber + " "
+					+ "ORDER BY reception_no DESC;";
+
+			ResultSet resultSet = statement
+					.executeQuery(query);
+
+			while (resultSet.next()) {
+
+				User user = new User(resultSet.getString(UserDao.COLUMN_ACCOUNT_NUMBER));
+
+				Brand brand = new Brand(resultSet.getString(BrandDao.COLUMN_BRAND_CODE),
+						resultSet.getString(BrandDao.COLUMN_BRAND_NAME), resultSet.getString(BrandDao.COLUMN_BRAND_STATUS),
+						resultSet.getInt(MarketPriceDao.COLUMN_PRICE));
+
+				Order order = new Order(resultSet.getLong(COLUMN_RECEPTION_NUMBER), brand, user,
+						resultSet.getString(COLUMN_TRADING_TYPE),
+						Order.OrderType.getEnum(resultSet.getString(COLUMN_ORDER_TYPE)),
+						Order.OrderCondition.getEnum(resultSet.getString(COLUMN_ORDER_CONDITION)),
+						resultSet.getInt(COLUMN_ORDER_AMOUNT), resultSet.getInt(COLUMN_CLOSING_AMOUNT),
+						resultSet.getDouble(COLUMN_ORDER_UNIT_PRICE), resultSet.getDouble(COLUMN_CLOSING_UNIT_PRICE),
+						resultSet.getDate(COLUMN_ORDER_DATE), resultSet.getDate(COLUMN_CLOSING_DATE),
+						Order.OrderStatus.getEnum(resultSet.getString(COLUMN_ORDER_STATUS)));
+
+				orderList.add(order);
+			}
+		} catch (SQLException e) {
+			System.err.println("エラー：OrderDao#DBデータ操作時にエラー発生");
+			e.printStackTrace();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					System.err.println("エラー：OrderDao#Statementのクローズ処理時にエラー発生");
+					e.printStackTrace();
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					System.err.println("エラー：OrderDao#connectionのクローズ処理時にエラー発生");
+					e.printStackTrace();
+				}
+			}
+		}
+		return orderList;
+	}
+
 	public static Order registOrder(Order order) {
 
 		Connection connection = null;

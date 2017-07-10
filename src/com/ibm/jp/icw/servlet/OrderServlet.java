@@ -31,11 +31,13 @@ public class OrderServlet extends BaseServlet {
 	private static final String PARAM_ORDER_UNIT_PRICE = "order_unit_price";
 	private static final String PARAM_ERROR_MESSAGE = "message";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
@@ -52,7 +54,7 @@ public class OrderServlet extends BaseServlet {
 		System.out.println("Brand: " + brand);
 		System.out.println("Order:" + order);
 
-		if(currentPage == null)
+		if (currentPage == null)
 			currentPage = ServletConstants.BRAND_LIST;
 		String nextPage = null;
 
@@ -66,34 +68,41 @@ public class OrderServlet extends BaseServlet {
 		case ServletConstants.ORDER_ENTRY:
 
 			System.out.println("Account No: " + user.getAccountNumber());
-			if(checkCreditCard(user.getAccountNumber())){
+			if (checkCreditCard(user.getAccountNumber())) {
 
 				String orderType = request.getParameter(PARAM_ORDER_TYPE);
 				String orderCondition = request.getParameter(PARAM_ORDER_CONDITION);
-				String orderAmount  = request.getParameter(PARAM_ORDER_AMOUNT);
+				String orderAmount = request.getParameter(PARAM_ORDER_AMOUNT);
 				String orderUnitPrice = request.getParameter(PARAM_ORDER_UNIT_PRICE);
 
-				if(orderCondition != null && orderCondition.equals("指成")){
+				if (orderCondition != null && orderCondition.equals("指成")) {
 					orderType = "指成";
 				}
 
-				if(orderType != null && orderType.equals("成行")){
+				if (orderType != null && orderType.equals("成行")) {
 					orderUnitPrice = "0";
 				}
 
-				if(validateInputs(orderType, orderCondition, orderAmount,orderUnitPrice)){
+				if (validateInputs(orderType, orderCondition, orderAmount, orderUnitPrice)) {
 
-					if(checkAccountBalance(user.getAccountNumber(), Integer.parseInt(orderAmount) * Integer.parseInt(orderUnitPrice))){
+					int unitPrice = Integer.parseInt(orderUnitPrice);
+					int amount = Integer.parseInt(orderUnitPrice);
+
+					if (!checkAccountBalance(user.getAccountNumber(),
+							amount * unitPrice)) {
+						nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
+						request.setAttribute(PARAM_ERROR_MESSAGE, "購入金額が取引余力を超えています。");
+					} else if(!checkOrderTotal(user.getAccountNumber(), amount, unitPrice)) {
+						nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
+						request.setAttribute(PARAM_ERROR_MESSAGE, "1日の取引上限額3,000万円を超えています。");
+					} else {
 						nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
 
 						order = new Order(brand, user, "B", Order.OrderType.getEnum(orderType),
-								Order.OrderCondition.getEnum(orderCondition),
-								Integer.parseInt(orderAmount), Integer.parseInt(orderUnitPrice), new Date());
+								Order.OrderCondition.getEnum(orderCondition), Integer.parseInt(orderAmount),
+								Integer.parseInt(orderUnitPrice), new Date());
 
 						session.setAttribute(SessionConstants.PARAM_ORDER, order);
-					} else {
-						nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
-						request.setAttribute(PARAM_ERROR_MESSAGE, "購入金額が取引余力を超えています。");
 					}
 				} else {
 					nextPage = ServletConstants.ORDER_ENTRY + ".jsp";
@@ -112,7 +121,7 @@ public class OrderServlet extends BaseServlet {
 
 			Order registeredOrder = OrderDao.registOrder(order);
 
-			if(registeredOrder.getReceptionNumber() != -1){
+			if (registeredOrder.getReceptionNumber() != -1) {
 				nextPage = ServletConstants.ORDER_COMPLETE + ".jsp";
 				session.removeAttribute(SessionConstants.PARAM_ORDER);
 				request.setAttribute(SessionConstants.PARAM_RECEPTION_NUMBER, order.getReceptionNumber());
@@ -140,41 +149,44 @@ public class OrderServlet extends BaseServlet {
 	 * @param orderUnitPrice
 	 * @return
 	 */
-	public boolean validateInputs(String orderType, String orderCondition,
-			String orderAmount, String orderUnitPrice){
+	public boolean validateInputs(String orderType, String orderCondition, String orderAmount, String orderUnitPrice) {
 
-		if(orderType == null || orderCondition == null
-				|| orderAmount == null || orderUnitPrice == null)
+		if (orderType == null || orderCondition == null || orderAmount == null || orderUnitPrice == null)
 			return false;
 
-		try{
-			int amount = Integer.parseInt(orderAmount);
-			int unitPrice = Integer.parseInt(orderUnitPrice);
+		try {
+			Integer.parseInt(orderAmount);
+			Integer.parseInt(orderUnitPrice);
 
-			if(amount * unitPrice > 30000000){
-				return false;
-			} else {
-				return true;
-			}
+			return true;
 
-		} catch (NumberFormatException e){
+		} catch (NumberFormatException e) {
 			return false;
 		}
 	}
 
-	public boolean checkAccountBalance(String accountNo, int orderPrice){
+	public boolean checkOrderTotal(String accoutNumber, int orderAmount, int orderUnitPrice) {
+
+		if (orderAmount * orderUnitPrice > 30000000) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean checkAccountBalance(String accountNo, int orderPrice) {
 
 		User user = UserDao.getUser(accountNo);
 
-		if(user.getAccountBalance() >= orderPrice){
+		if (user.getAccountBalance() >= orderPrice) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public boolean checkCreditCard(String accountNo){
-		if(accountNo.equals("1000000000000005")){
+	public boolean checkCreditCard(String accountNo) {
+		if (accountNo.equals("1000000000000005")) {
 			return false;
 		} else {
 			return true;
