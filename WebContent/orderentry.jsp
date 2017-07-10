@@ -91,13 +91,13 @@ table, td {
 
 <body>
 	<!-- ヘッダー部分 -->
-	<div style="overflow: auto; background-color: #009999;background-clip:border-box;height: 130px;border: solid 0.4em transparent;">
+	<div style="overflow: auto; background-color: #009999;background-clip:border-box;height: 135px;border: solid 0.4em transparent;">
 		<div style="float: left;">
 			<h1>
 				長谷川証券<br>トレーディングシステム
 			</h1>
 		</div>
-		<div style="float: right;">
+		<div style="float: right; font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
 			</p>
 			<input class="square_btn"
@@ -114,6 +114,7 @@ table, td {
 		お客様の取引余力：<%=tradingMargin%>
 		円
 	</h3>
+	<div style="float: left;margin: 8px 50px 50px 0px">
 	<p>
 		<font color="red"><%=message%></font>
 	</p>
@@ -125,17 +126,18 @@ table, td {
 		円
 	</h3>
 	<h3>単元株：<%= brand.getTradingUnit() %></h3>
+	</div>
 	<form name="myForm" action="order" method="POST">
 		<input type="hidden" name="trading_unit" value="<%= tradingUnit %>" >
 		<input type="hidden" name="current_page" value="orderentry">
 
-		<div style="position:absolute;top:340px;left:300px; font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
+		<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;float: left;margin: 8px 50px 50px 0px">
 			<h3>注文の種類</h3>
 			<input type="radio" name="order_type" value="成行" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">成行<br>
 			<input type="radio" name="order_type" value="指値" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">指値<br> <br>
 		</div>
 
-		<div style="position:absolute;top:340px;left:600px; font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
+		<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;float: left;margin: 8px 50px 50px 0px">
 			<h3>執行条件</h3>
 			<input type="radio" name=order_condition value="無条件" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">無条件<br>
 			<input type="radio" name=order_condition value="寄付" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">寄付<br>
@@ -143,22 +145,22 @@ table, td {
 			<input type="radio" name=order_condition value="指成" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">指成<br>
 		</div>
 
-		<div style="position:absolute;top:200px;left:950px;">
+		<div float: left;margin: 800px 50px 50px 0px>
 			<h3>注文数</h3>
 			<input type="text" name="order_amount" onkeyup="checkInputText();" onchange="checkAmount();"><br>
 		</div>
 
-		<div style="position:absolute;top:500px;left:950px;">
+		<div float: left;margin: 8px 50px 50px 0px>
 			<h3>注文単価</h3>
 			<input type="text" name="order_unit_price" onkeyup="checkInputText();"><br>
 		</div>
 
-		<div style="position:absolute;top:600px;left:950px;">
+		<div float: left;margin: 8px 50px 50px 0px>
 			<h3>注文合計</h3>
 			<input type="text" name="order_sum" readonly="readonly"><br><br>
 		</div>
 
-		<div style="position:absolute;top:700px;left:590px;">
+		<div float: left;margin: 8px 50px 50px 0px>
 			<input class="square_btn" type="submit" value="注文確認へ進む" style="font-size: 20pt" />
 		</div>
 

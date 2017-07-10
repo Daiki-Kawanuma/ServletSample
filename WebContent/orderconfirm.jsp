@@ -45,13 +45,13 @@
 </head>
 <body>
 	<!-- ヘッダー部分 -->
-	<div style="overflow: auto; background-color: #009999;background-clip:border-box;height: 130px;border: solid 0.4em transparent;">
+	<div style="overflow: auto; background-color: #009999;background-clip:border-box;height: 135px;border: solid 0.4em transparent;">
 		<div style="float: left;">
 			<h1>
 				長谷川証券<br>トレーディングシステム
 			</h1>
 		</div>
-		<div style="float: right;">
+		<div style="float: right;font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
 			</p>
 			<input class="square_btn"

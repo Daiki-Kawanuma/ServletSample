@@ -40,13 +40,13 @@
 </head>
 <body>
 	<!-- ヘッダー部分 -->
-	<div style="overflow: auto; background-color: #009999;background-clip:border-box;height: 130px;border: solid 0.4em transparent;">
+	<div style="overflow: auto; background-color: #009999;background-clip:border-box;height: 135px;border: solid 0.4em transparent;">
 		<div style="float: left;">
 			<h1>
 				長谷川証券<br>トレーディングシステム
 			</h1>
 		</div>
-		<div style="float: right;">
+		<div style="float: right;font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 			<p style="color: white; font-size: 120%; margin: 0px 10px 0px 0px"><%=user.getName()%>さん
 			</p>
 			<input class="square_btn"
@@ -63,11 +63,14 @@
 		<!-- 	検索条件を入力してください：<br><br> -->
 		<!-- 	<select name="searchtype" style="font-size:72pt"> -->
 		<input type="hidden" name="current_page" value="brandlist">
-		<p>1. 検索方法を選択してください。</p>
-		<br> <input type="radio" name="searchtype" value="brandcode">銘柄コード(４桁)から検索<br>
-		<input type="radio" name="searchtype" value="brandname">銘柄名から検索<br>
+		<p style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">1. 検索方法を選択してください。</p>
 		<br>
-		<p>2. 銘柄コード(４桁)または銘柄名を入力してください。</p>
+		<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
+		<input type="radio" name="searchtype" value="brandcode" style="width:50px;height:50px;vertical-align:middle;">銘柄コード(４桁)から検索<br>
+		<input type="radio" name="searchtype" value="brandname" style="width:50px;height:50px;vertical-align:middle;">銘柄名から検索<br>
+		</div>
+		<br>
+		<p style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">2. 銘柄コード(４桁)または銘柄名を入力してください。</p>
 		<br> <input type="text" name="searchcondition"> <input
 			class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
 	</form>
@@ -79,6 +82,7 @@
 	%>
 
 	<!-- <h1>検索結果一覧</h1> -->
+	<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
 	<table class="tablebrandlist" border=1>
 		<tr style="color: #FFFFFF">
 			<th>銘柄コード</th>
@@ -117,6 +121,7 @@
 			%>
 
 	</table>
+	</div>
 	<br>
 </body>
 </html>
