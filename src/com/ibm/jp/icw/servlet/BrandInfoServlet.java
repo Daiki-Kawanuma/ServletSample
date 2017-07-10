@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.ibm.jp.icw.constant.ServletConstants;
 import com.ibm.jp.icw.constant.SessionConstants;
 import com.ibm.jp.icw.dao.BrandDao;
+import com.ibm.jp.icw.dao.MarketPriceDao;
 import com.ibm.jp.icw.model.Brand;
+import com.ibm.jp.icw.model.MarketPrice;
 
 @WebServlet("/search")
 public class BrandInfoServlet extends BaseServlet {
@@ -113,11 +115,14 @@ public class BrandInfoServlet extends BaseServlet {
 				nextPage = ServletConstants.BRAND_DETAIL + ".jsp";
 
 				Brand brand = BrandDao.getBrandDetailByBrandCode(brandCodeforDetail);
+				ArrayList<MarketPrice> priceList = MarketPriceDao.getMarketPriceList(brandCodeforDetail);
+				priceList.remove(0);
 
 				// 結合テスト用のコンソール表示
 				System.out.println("BrandCode: " + brand.getBrandCode());
 
 				request.getSession().setAttribute(SessionConstants.PARAM_BRAND, brand);
+				request.setAttribute("priceList", priceList);
 
 			} else if (brandCodeforOrder != null) {
 
