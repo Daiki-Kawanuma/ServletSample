@@ -47,6 +47,12 @@ public class OrderServlet extends BaseServlet {
 
 		String currentPage = request.getParameter(PARAM_CURRENT_PAGE);
 
+		// 結合テストコード
+		System.out.println("現在のページ：" + currentPage);
+		System.out.println("User: " + user);
+		System.out.println("Brand: " + brand);
+		System.out.println("Order:" + order);
+
 		if(currentPage == null)
 			currentPage = ServletConstants.BRAND_LIST;
 		String nextPage = null;
