@@ -11,6 +11,7 @@
 	String tradingMargin = NumberFormat.getNumberInstance().format(user.getAccountBalance());
 
 	Brand brand = (Brand) session.getAttribute(SessionConstants.PARAM_BRAND);
+	int tradingUnit = brand.getTradingUnit();
 	String brandStatus = brand.getBrandStatus().equals("正常銘柄") ? "" : "【" + brand.getBrandStatus() + "】";
 	String color = brand.getBrandStatus().equals("正常銘柄") ? "black" : "red";
 	String nowPrice = NumberFormat.getNumberInstance().format(brand.getMarketPrice());
@@ -79,6 +80,13 @@ table, td {
 		document.myForm.order_amount.value = document.myForm.order_amount.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		document.myForm.order_unit_price.value = document.myForm.order_unit_price.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');*/
 	}
+
+	function checkAmount() {
+
+		document.myForm.order_amount.value =
+			parseInt(document.myForm.order_amount.value / document.myForm.trading_unit.value) * parseInt(document.myForm.trading_unit.value);
+		checkInputText();
+	}
 </script>
 
 <body>
@@ -118,6 +126,7 @@ table, td {
 	</h3>
 	<h3>単元株：<%= brand.getTradingUnit() %></h3>
 	<form name="myForm" action="order" method="POST">
+		<input type="hidden" name="trading_unit" value="<%= tradingUnit %>" >
 		<input type="hidden" name="current_page" value="orderentry">
 
 		<div style="position:absolute;top:340px;left:300px;">
@@ -136,7 +145,7 @@ table, td {
 
 		<div style="position:absolute;top:200px;left:950px;">
 			<h3>注文数</h3>
-			<input type="text" name="order_amount" onkeyup="checkInputText();"><br>
+			<input type="text" name="order_amount" onkeyup="checkInputText();" onchange="checkAmount();"><br>
 		</div>
 
 		<div style="position:absolute;top:500px;left:950px;">
