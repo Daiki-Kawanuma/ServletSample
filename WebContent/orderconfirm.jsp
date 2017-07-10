@@ -5,6 +5,7 @@
 <%@ page import="com.ibm.jp.icw.model.User"%>
 <%@ page import="com.ibm.jp.icw.model.Brand"%>
 <%@ page import="com.ibm.jp.icw.constant.SessionConstants" %>
+<%@ page import="java.text.NumberFormat;"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	User user = (User) session.getAttribute(SessionConstants.PARAM_USER);
@@ -89,7 +90,7 @@
 		</tr>
 		<tr>
 			<th style="color: white;">注文単価</th>
-			<td><%= (int) order.getOrderUnitPrice() == 0 ? "ー" : order.getOrderUnitPrice() + " 円" %></td>
+			<td><%= (int) order.getOrderUnitPrice() == 0 ? "ー" : NumberFormat.getNumberInstance().format(order.getOrderUnitPrice()) + " 円" %></td>
 		</tr>
 		<tr>
 			<th style="color: white;">注文数</th>
@@ -97,7 +98,7 @@
 		</tr>
 		<tr>
 			<th style="color: white;">注文金額合計</th>
-			<td><%= (int) (order.getOrderUnitPrice() * order.getOrderAmount() ) %> 円</td>
+			<td><%= (int) order.getOrderUnitPrice() == 0 ? "ー" : NumberFormat.getNumberInstance().format(order.getOrderUnitPrice() * order.getOrderAmount() ) + "円" %></td>
 		</tr>
 	</table>
 	<br>

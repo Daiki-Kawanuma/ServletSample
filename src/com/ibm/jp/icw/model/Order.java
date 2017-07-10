@@ -104,10 +104,11 @@ public class Order {
 	private Date closingDate;
 	private OrderStatus orderStatus;
 
-	public Order(Brand brand, User user, OrderType orderType,OrderCondition orderCondition,
+	public Order(Brand brand, User user, String tradingType, OrderType orderType,OrderCondition orderCondition,
 			int orderAmount, int orderUnitPrice, Date orderDate){
 		this.brand = brand;
 		this.user = user;
+		this.tradingType = tradingType;
 		this.orderType = orderType;
 		this.orderCondition = orderCondition;
 		this.orderAmount = orderAmount;

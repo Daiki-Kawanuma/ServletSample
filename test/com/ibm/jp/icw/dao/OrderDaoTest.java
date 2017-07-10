@@ -64,7 +64,7 @@ public class OrderDaoTest {
 		User user = new User("1000000000000001");
 		Brand brand = new Brand("1332", "日本水産", "正常銘柄", 682);
 
-		Order order = new Order(brand, user, Order.OrderType.getEnum("成行"),
+		Order order = new Order(brand, user, "B", Order.OrderType.getEnum("成行"),
 				Order.OrderCondition.getEnum("無条件"),
 				Integer.parseInt("999"), Integer.parseInt("999"), new Date());
 
@@ -79,7 +79,7 @@ public class OrderDaoTest {
 		User user = new User("99999999999999999");
 		Brand brand = new Brand("99999", "日本水産", "正常銘柄", 682);
 
-		Order order = new Order(brand, user, Order.OrderType.getEnum("成行"),
+		Order order = new Order(brand, user, "B", Order.OrderType.getEnum("成行"),
 				Order.OrderCondition.getEnum("無条件"),
 				Integer.parseInt("100"), Integer.parseInt("100"), new Date());
 
@@ -94,7 +94,7 @@ public class OrderDaoTest {
 		User user = new User("0000000000000000");
 		Brand brand = new Brand("0000", "日本水産", "正常銘柄", 682);
 
-		Order order = new Order(brand, user, Order.OrderType.getEnum("成行"),
+		Order order = new Order(brand, user, "B", Order.OrderType.getEnum("成行"),
 				Order.OrderCondition.getEnum("無条件"),
 				Integer.parseInt("100"), Integer.parseInt("100"), new Date());
 

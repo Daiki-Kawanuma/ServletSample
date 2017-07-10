@@ -79,7 +79,7 @@ public class OrderServlet extends BaseServlet {
 				if(checkAccountBalance(user.getAccountNumber(), Integer.parseInt(orderAmount) * Integer.parseInt(orderUnitPrice))){
 					nextPage = ServletConstants.ORDER_CONFIRM + ".jsp";
 
-					order = new Order(brand, user, Order.OrderType.getEnum(orderType),
+					order = new Order(brand, user, "B", Order.OrderType.getEnum(orderType),
 							Order.OrderCondition.getEnum(orderCondition),
 							Integer.parseInt(orderAmount), Integer.parseInt(orderUnitPrice), new Date());
 
