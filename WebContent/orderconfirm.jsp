@@ -87,7 +87,7 @@ h2:after {
 	<!-- ヘッダー部分 -->
 	<h2>ご注文内容の確認</h2>
 	<br>
-	<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
+	<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif; float: left;margin: 0px 50px 50px 0px">
 	<table class="tableOrder" border="1">
 		<tr>
 		</tr>
@@ -127,12 +127,16 @@ h2:after {
 	</div>
 	<br>
 	<br>
-	<input class="square_btn" style="font-size: 20pt" type="button" onClick="location.href='order'" value="注文を修正する">
-	<br>
-	<br>
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<div style="float: left;margin: 0px 50px 50px 0px">
+	<input class="square_btn" style="font-size: 20pt" type="button" onClick="location.href='order'" value="注文を修正する" >
+	</div>
+
 	<form action="order" method="POST">
 		<input type="hidden" name="current_page" value="orderconfirm">
-		<input class="square_btn" type="submit" value="注文を確定する" style="font-size: 20pt" />
+		<div style="float: left;margin: 0px 50px 50px 0px">
+		<input class="square_btn" type="submit" value="注文を確定する" style="font-size: 20pt" >
+		</div>
 	</form>
 	<br>
 </body>
