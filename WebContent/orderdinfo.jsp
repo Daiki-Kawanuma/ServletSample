@@ -124,8 +124,7 @@
 				<td align="center">
 					<!-- <input type="submit" value="銘柄詳細情報を表示する"></td> --> <input
 					type="hidden" name="current_page" value="brandlist"> <br>
-					<button type="submit" name="detail"
-						value="<%=o.getBrand().getBrandCode()%>">詳細閲覧</button> <br> <br>
+					<button class="square_btn" type="submit" name="detail" value="<%=o.getBrand().getBrandCode()%>" style="width: 100%; height: 100%; font-size: 100%;">銘柄詳細</button> <br> <br>
 			</tr>
 			<%
 				}
@@ -133,7 +132,7 @@
 		</table>
 	</div>
 	</form>
-	<input type="button" onClick="location.href='mypage.jsp'" value="戻る">
+	<input class="square_btn" type="button" onClick="location.href='mypage.jsp'" value="戻る" style="float: right; width: 110px; font-size: 100%">
 
 </body>
 </html>
