@@ -132,7 +132,7 @@
 		</table>
 	</div>
 	</form>
-	<input class="square_btn" type="button" onClick="location.href='mypage.jsp'" value="戻る" style="float: right; width: 110px; font-size: 100%">
+	<!--  <input class="square_btn" type="button" onClick="location.href='mypage.jsp'" value="戻る" style="float: right; width: 110px; font-size: 100%"> -->
 
 </body>
 </html>
