@@ -49,7 +49,7 @@
 					</div>
 					<br>
 					<div class="button-panel">
-						<input type="submit" class="button title=" ログイン" value=ログインする></input>
+						<input type="submit" class="square_btn" ログイン" value=ログインする style="width: 125px; margin: 8px 10px 0px 0px; font-size: 100%"></input>
 					</div>
 					<br>
 				</div>

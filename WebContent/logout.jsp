@@ -16,7 +16,7 @@
 			<h2 >
 			</div>
 			<div align="center">
-				<input type="button" class="button" onClick="location.href='login'" value="ログイン画面に戻る">
+				<input type="button" class="square_btn" onClick="location.href='login'" value="ログイン画面に戻る" style="width: 180px; margin: 8px 10px 0px 0px; font-size: 100%">
 	</div>
 </body>
 </html>
