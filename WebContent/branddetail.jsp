@@ -126,7 +126,7 @@ d3用 -->.axis path, .axis line {
 	<br>
 	<svg id="chart" style="margin: 0px 0px 0px 50px"></svg>
 
-	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
 	<script type="text/javascript">
 		// 表示サイズを設定
 		var margin = {
