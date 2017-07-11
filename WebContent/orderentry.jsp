@@ -132,35 +132,35 @@ table, td {
 		<input type="hidden" name="current_page" value="orderentry">
 
 		<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;float: left;margin: 8px 50px 50px 0px">
-			<h3>注文の種類</h3>
+			<h3>1.注文の種類</h3>
 			<input type="radio" name="order_type" value="成行" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">成行<br>
 			<input type="radio" name="order_type" value="指値" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">指値<br> <br>
 		</div>
 
 		<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;float: left;margin: 8px 50px 50px 0px">
-			<h3>執行条件</h3>
+			<h3>2.執行条件</h3>
 			<input type="radio" name=order_condition value="無条件" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">無条件<br>
 			<input type="radio" name=order_condition value="寄付" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">寄付<br>
 			<input type="radio" name=order_condition value="引け" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">引け<br>
 			<input type="radio" name=order_condition value="指成" onClick="checkOrderCondition();" style="width:50px;height:50px;vertical-align:middle;">指成<br>
 		</div>
 
-		<div float: left;margin: 800px 50px 50px 0px>
-			<h3>注文数</h3>
+		<div style="float: left; margin: 8px 50px 0px 0px">
+			<h3>3.注文数</h3>
 			<input type="text" name="order_amount" onkeyup="checkInputText();" onchange="checkAmount();"><br>
 		</div>
 
-		<div float: left;margin: 8px 50px 50px 0px>
-			<h3>注文単価</h3>
+		<div style="float: left;margin: 8px 50px 0px 0px">
+			<h3>4.注文単価</h3>
 			<input type="text" name="order_unit_price" onkeyup="checkInputText();"><br>
 		</div>
 
-		<div float: left;margin: 8px 50px 50px 0px>
-			<h3>注文合計</h3>
+		<div style="float: left;margin: 8px 50px 0px 0px">
+			<h3>5.注文合計</h3>
 			<input type="text" name="order_sum" readonly="readonly"><br><br>
 		</div>
 
-		<div float: left;margin: 8px 50px 50px 0px>
+		<div style="float: right;margin: 0px 50px 50px 0px">
 			<input class="square_btn" type="submit" value="注文確認へ進む" style="font-size: 20pt" />
 		</div>
 
