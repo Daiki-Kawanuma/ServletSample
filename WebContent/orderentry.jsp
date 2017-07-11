@@ -35,6 +35,27 @@ table, td {
 	border-color: black;
 }
 
+h2 {
+	color: #444;
+	position: relative;
+	padding: 0.6em;
+	background: #e0edff;
+	font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,
+		Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+}
+
+h2:after {
+	position: absolute;
+	content: '';
+	top: 100%;
+	left: 30px;
+	border: 15px solid transparent;
+	border-top: 15px solid #e0edff;
+	width: 0;
+	height: 0;
+}
+
+
 </style>
 </head>
 
@@ -118,7 +139,7 @@ table, td {
 	<p>
 		<font color="red"><%=message%></font>
 	</p>
-	<h2 style="color: <%=color%>;"><%=brandStatus + brand.getBrandName()%></h2>
+	<h3 style="color: <%=color%>;"><%=brandStatus + brand.getBrandName()%></h3>
 	<h3>
 		銘柄コード：<%=brand.getBrandCode()%></h3>
 	<h3>
@@ -133,8 +154,8 @@ table, td {
 
 		<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;float: left;margin: 8px 50px 50px 0px">
 			<h3>1.注文の種類</h3>
-			<input type="radio" class="disabled_radio" name="order_type" value="成行" onClick="checkOrderType();" >成行<br>
-			<input type="radio" class="disabled_radio" name="order_type" value="指値" onClick="checkOrderType();" >指値<br> <br>
+			<input type="radio" class="disabled_radio" name="order_type" value="成行" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">成行<br>
+			<input type="radio" class="disabled_radio" name="order_type" value="指値" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">指値<br> <br>
 		</div>
 
 		<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;float: left;margin: 8px 50px 50px 0px">
@@ -160,7 +181,7 @@ table, td {
 			<input type="text" name="order_sum" readonly="readonly"><br><br>
 		</div>
 
-		<div style="float: right;margin: 0px 50px 50px 0px">
+		<div style="float: left;margin: 0px 50px 50px 0px">
 			<input class="square_btn" type="submit" value="注文確認へ進む" style="font-size: 20pt" />
 		</div>
 

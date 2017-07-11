@@ -22,7 +22,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>銘柄詳細｜TS長谷川証券</title>
 <link rel="stylesheet" href="Header.css" type="text/css">
-<style>
+<style type="text/css">
 .tablebrandlist {
 	border-style: solid;
 	border-width: 0px;
@@ -54,6 +54,27 @@ d3用 -->.axis path, .axis line {
 	stroke: #1572F9;
 	stroke-width: 1.5px;
 }
+
+h2 {
+	color: #444;
+	position: relative;
+	padding: 0.6em;
+	background: #e0edff;
+	font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,
+		Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+}
+
+h2:after {
+	position: absolute;
+	content: '';
+	top: 100%;
+	left: 30px;
+	border: 15px solid transparent;
+	border-top: 15px solid #e0edff;
+	width: 0;
+	height: 0;
+}
+
 </style>
 <body>
 	<!-- ヘッダー部分 -->
