@@ -32,8 +32,6 @@
 }
 
 .tableOrder th {
-	color: "#FFF";
-	width: 50%;
 	background-color: #999999;
 }
 
@@ -93,35 +91,35 @@ h2:after {
 		</tr>
 		<tr>
 			<th style="color: white;">銘柄コード</th>
-			<td><%= order.getBrand().getBrandCode() %></td>
+			<td align="center"><%= order.getBrand().getBrandCode() %></td>
 		</tr>
 		<tr>
 			<th style="color: white;">銘柄名</th>
-			<td style="color: <%= color %>;"><%= brandStatus + brand.getBrandName()%></td>
+			<td align="center" style="color: <%= color %>;"><%= brandStatus + brand.getBrandName()%></td>
 		</tr>
 		<tr>
 			<th style="color: white;">売買区分</th>
-			<td><%= buyOrSell %></td>
+			<td align="center"><%= buyOrSell %></td>
 		</tr>
 		<tr>
 			<th style="color: white;">注文の種類</th>
-			<td><%= order.getOrderType().toString() %></td>
+			<td align="center"><%= order.getOrderType().toString() %></td>
 		</tr>
 		<tr>
 			<th style="color: white;">執行条件</th>
-			<td><%= order.getOrderConditions().toString() %></td>
+			<td align="center"><%= order.getOrderConditions().toString() %></td>
 		</tr>
 		<tr>
 			<th style="color: white;">注文単価</th>
-			<td><%= (int) order.getOrderUnitPrice() == 0 ? "ー" : NumberFormat.getNumberInstance().format(order.getOrderUnitPrice()) + " 円" %></td>
+			<td align="center"><%= (int) order.getOrderUnitPrice() == 0 ? "ー" : NumberFormat.getNumberInstance().format(order.getOrderUnitPrice()) + " 円" %></td>
 		</tr>
 		<tr>
 			<th style="color: white;">注文数</th>
-			<td><%= order.getOrderAmount() %></td>
+			<td align="center"><%= order.getOrderAmount() %></td>
 		</tr>
 		<tr>
 			<th style="color: white;">注文金額合計</th>
-			<td><%= (int) order.getOrderUnitPrice() == 0 ? "ー" : NumberFormat.getNumberInstance().format(order.getOrderUnitPrice() * order.getOrderAmount() ) + "円" %></td>
+			<td align="center"><%= (int) order.getOrderUnitPrice() == 0 ? "ー" : NumberFormat.getNumberInstance().format(order.getOrderUnitPrice() * order.getOrderAmount() ) + "円" %></td>
 		</tr>
 	</table>
 	</div>

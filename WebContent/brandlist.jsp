@@ -30,6 +30,9 @@
 
 .tablebrandlist th {
 	background-color: #999999;
+		width: 700px;
+	height: 70px;
+
 }
 
 .tablebrandlist td {

@@ -87,9 +87,10 @@ h2:after {
 			class="square_btn" type="submit" value="検索" style="font-size: 20pt" />
 	</form>
 	<form method="POST" action="search">
+	<br><br>
 	<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;">
-		<table border=1>
-			<tr>
+		<table class="tablechumonjokyo" border=1>
+			<tr style="color: #FFFFFF">
 				<th>受付番号</th>
 				<th>銘柄名</th>
 				<th>銘柄コード</th>
@@ -109,12 +110,12 @@ h2:after {
 				<th>成約数</th>
 				<th>成約単価</th>
 				<th>成約合計金額</th>
-				<th>銘柄詳細</th>
+				<th width="110px">銘柄詳細</th>
 			</tr>
 			<%
 				for (Order o : orderList) {
 			%>
-			<tr>
+			<tr align="center">
 				<td><%=o.getReceptionNumber()%></td>
 				<td
 					style="color: <%=o.getBrand().getBrandStatus().equals("正常銘柄") ? "black" : "red"%>;"><%=o.getBrand().getBrandStatus().equals("正常銘柄") ? o.getBrand().getBrandName()
