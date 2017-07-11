@@ -34,6 +34,7 @@ table, td {
 	border-width: 1px;
 	border-color: black;
 }
+
 </style>
 </head>
 
@@ -42,23 +43,22 @@ table, td {
 
 		if(document.myForm.order_type[0].checked){
 			document.myForm.order_unit_price.disabled = true;
-			document.myForm.order_unit_price.value = ""
+			document.myForm.order_unit_price.value = "";
+			document.myForm.order_unit_price.placeholder = "成行の場合、単価は入力できません"
 		} else {
 			document.myForm.order_unit_price.disabled = false;
+			document.myForm.order_unit_price.placeholder = "";
 		}
 	}
 
 	function checkOrderCondition() {
 
-		if(!document.myForm.order_condition[3].checked){
-			document.myForm.order_type[0].disabled = false;
-			document.myForm.order_type[1].disabled = false;
+		if(document.myForm.order_condition[3].checked){
+			document.myForm.order_type[1].checked = true;
+			checkOrderType();
 		} else {
-			document.myForm.order_unit_price.disabled = false;
-			document.myForm.order_type[0].checked = false;
-			document.myForm.order_type[1].checked = false;
-			document.myForm.order_type[0].disabled = true;
-			document.myForm.order_type[1].disabled = true;
+			// document.myForm.order_type[0].disabled = true;
+			// document.myForm.order_type[1].disabled = true;
 		}
 	}
 
@@ -133,8 +133,8 @@ table, td {
 
 		<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;float: left;margin: 8px 50px 50px 0px">
 			<h3>1.注文の種類</h3>
-			<input type="radio" name="order_type" value="成行" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">成行<br>
-			<input type="radio" name="order_type" value="指値" onClick="checkOrderType();" style="width:50px;height:50px;vertical-align:middle;">指値<br> <br>
+			<input type="radio" class="disabled_radio" name="order_type" value="成行" onClick="checkOrderType();" >成行<br>
+			<input type="radio" class="disabled_radio" name="order_type" value="指値" onClick="checkOrderType();" >指値<br> <br>
 		</div>
 
 		<div style="font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,Osaka, 'MS PGothic', arial, helvetica, sans-serif;float: left;margin: 8px 50px 50px 0px">
@@ -147,7 +147,7 @@ table, td {
 
 		<div style="float: left; margin: 8px 50px 0px 0px">
 			<h3>3.注文数</h3>
-			<input type="text" name="order_amount" onkeyup="checkInputText();" onchange="checkAmount();"><br>
+			<input type="text" name="order_amount" placeholder="単元株単位の注文数を入力してください" onkeyup="checkInputText();" onchange="checkAmount();"><br>
 		</div>
 
 		<div style="float: left;margin: 8px 50px 0px 0px">

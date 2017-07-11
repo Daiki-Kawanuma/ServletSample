@@ -75,9 +75,9 @@ public class OrderServlet extends BaseServlet {
 				String orderAmount = request.getParameter(PARAM_ORDER_AMOUNT);
 				String orderUnitPrice = request.getParameter(PARAM_ORDER_UNIT_PRICE);
 
-				if (orderCondition != null && orderCondition.equals("指成")) {
+				/*if (orderCondition != null && orderCondition.equals("指成")) {
 					orderType = "指成";
-				}
+				}*/
 
 				if (orderType != null && orderType.equals("成行")) {
 					orderUnitPrice = "0";

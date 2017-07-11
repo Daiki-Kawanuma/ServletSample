@@ -40,7 +40,7 @@ input[type=text] {
 	font-size: 1.2em
 }
 
-input{
+input {
 	font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,
 		Osaka, 'MS PGothic', arial, helvetica, sans-serif;
 }
@@ -51,7 +51,7 @@ input[type=password] {
 	font-size: 1.2em
 }
 
-input[type=radio]{
+input[type=radio] {
 	font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ,
 		Osaka, 'MS PGothic', arial, helvetica, sans-serif;
 }
@@ -61,21 +61,37 @@ input#submit_button {
 	height: 30px;
 }
 
+input[type="text"]:disabled{
+    background:#ECECEC;
+    cursor:not-allowed; /* 禁止カーソル */
+}
+
+.disabled_radio {
+	width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+
 .square_btn {
 	background: #fff;
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: #67c5ff;
-    border: solid 4px #67c5ff;
-    border-radius: 3px;
-    transition: .4s;"WebContent/Header.css"
-    background: white;
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #67c5ff;
+	border: solid 4px #67c5ff;
+	border-radius: 3px;
+	transition: .4s;
+	"
+	WebContent
+	/Header.css"
+	background
+	:
+	white;
 }
 
 .square_btn:hover {
-    background: #67c5ff;
-    color: white;
+	background: #67c5ff;
+	color: white;
 }
 
 .mb1 {
@@ -109,4 +125,8 @@ p.a {
 	background: #e6e6fa;
 	max-width: 500px;
 	min-height: 100px;
-	style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;"}
+	style ="padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #333333;
+	"
+}
